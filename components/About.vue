@@ -10,7 +10,7 @@
           alt="ebong okposong vector passport"
         />
       </section>
-      <section class="lg:w-7/12 w-full p-3 z-10 mt-6 lg:mt-0">
+      <section class="lg:w-7/12 w-full p-4 z-10 my-6 lg:mt-0">
         <header>
           <h1
             class="font-head lg:text-4xl text-3xl font-bold leading-tight text-blue-600"
@@ -32,10 +32,12 @@
           thinking, to help me develop my problem solving skills and achieve my
           goal of becoming a better product developer and system administrator.
         </p>
-
-        <button class="bg-blue-600 p-3 lg:mt-6 text-white">
-          Download Resume
-        </button>
+        <a
+          href="https://docs.google.com/document/d/12Xhyh0ZbZ20jK7gw-n4_93zRBKn2SXds833isPWdFtA/edit"
+          class="relative bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-6 py-3 rounded-md"
+          target="_blanks"
+          >Download Resume</a
+        >
       </section>
     </div>
   </section>

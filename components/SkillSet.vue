@@ -28,11 +28,13 @@
           </div>
         </section>
       </section>
-      <div
-        class="absolute bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 right-0 mr-6 text-white bg-blue-600 px-6 py-3 rounded-md"
-      >
-        Education and achievements &rarr;
-      </div>
+      <!-- <section class="flex justify-end">
+        <button
+          class="relative bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-3 py-3 rounded-md"
+        >
+          Education and achievements &rarr;
+        </button>
+      </section> -->
     </section>
   </section>
 </template>

@@ -15,7 +15,7 @@
           alt="ebong okposong vector passport"
         />
       </figure>
-      <section class="text-center z-10 p-3">
+      <section class="text-center z-10 p-3" style="margin-bottom: 2%">
         <h1
           class="font-head text-4xl font-bold leading-tight capitalize text-white"
         >
@@ -27,10 +27,29 @@
           class="space-x-3 flex justify-evenly w-full bg-gray-900 shadow-outline rounded mt-3 text-white"
         >
           <li>
-            <a href="" class="hover:bg-blue-600 p-3 block">Facebook</a>
+            <a
+              class="hover:bg-blue-600 p-3 block"
+              target="_blank"
+              href="https://facebook/oebong"
+              >Facebook</a
+            >
           </li>
-          <li><a href="" class="hover:bg-blue-600 p-3 block">Twitter</a></li>
-          <li><a href="" class="hover:bg-blue-600 p-3 block">LinkedIn</a></li>
+          <li>
+            <a
+              href="twitter.com/lilarmstrong007"
+              class="hover:bg-blue-600 p-3 block"
+              target="_blank"
+              >Twitter</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/lil-armstrong/"
+              class="hover:bg-blue-600 p-3 block"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </li>
         </ul>
       </section>
     </section>

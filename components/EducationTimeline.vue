@@ -1,4 +1,4 @@
-<template>
+las<template>
   <section class="page-section bg-blue-200">
     <header class="p-3">
       <h1 class="font-head text-4xl font-bold leading-tight text-blue-600">
@@ -9,25 +9,19 @@
 
     <section class="mt-6 w-full">
       <div>
-        <!-- <section class="timelines">
-          <section
-            v-for="entry of education"
-            :key="entry.name"
-            class="timeline my-6"
-          >
-            <h2 class="uppercase font-head">{{ entry.name }}</h2>
-            <p class="text-sm font-light">{{ entry.location }}</p>
-            <p class="text-sm font-light">{{ entry.award }}</p>
-            <small class="font-light">{{ entry.timeline }}</small>
-          </section>
-        </section> -->
         <section class="timelines">
           <div v-for="entry of education" :key="entry.name" class="timeline">
             <div class="timeline-content">
-              <h2 class="uppercase font-head">{{ entry.name }}</h2>
-              <p class="text-sm font-light">{{ entry.location }}</p>
-              <p class="text-sm font-light">{{ entry.award }}</p>
-              <small class="font-light">{{ entry.timeline }}</small>
+              <h2 class="uppercase font-head text-blue-600">
+                {{ entry.name }}
+              </h2>
+              <p class="text-sm font-light text-gray-700">
+                {{ entry.location }}
+              </p>
+              <p class="text-sm font-light text-gray-700">{{ entry.award }}</p>
+              <small class="font-light text-gray-700">{{
+                entry.timeline
+              }}</small>
             </div>
           </div>
         </section>

@@ -1,5 +1,5 @@
 <template>
-  <section class="page-section bg-purple-800 w-full">
+  <section class="page-section bg-purple-800 w-screen left-0">
     <header class="p-3">
       <h1 class="font-head text-4xl font-bold leading-tight text-white">
         Portfolio
@@ -39,7 +39,7 @@ export default {
       portfolios: JSON.parse(portfolios),
       swiperOption: {
         direction: 'horizontal',
-        spaceBetween: 50,
+        spaceBetween: 20,
         slidesPerView: 'auto',
         mousewheel: true,
         pagination: {
@@ -70,25 +70,19 @@ export default {
   background: white;
   width: 100%;
   object-fit: contain;
-  min-width: 350px;
+  // min-width: 350px;
 }
 
 .showcase {
-  padding: 15px;
-  width: calc(100vw - 30px);
+  padding: 8px;
+  // width: calc(100vw - 30px);
   position: relative;
   @media screen and (min-width: 768px) {
-    width: calc(100vw - 100px);
+    // width: calc(100vw - 100px);
     // left: -60px;
   }
 }
 .portfolio-slide {
   width: 80%;
-}
-.portfolio-slide:nth-child(2n) {
-  width: 60%;
-}
-.portfolio-slide:nth-child(3n) {
-  width: 40%;
 }
 </style>

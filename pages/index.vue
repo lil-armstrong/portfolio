@@ -1,21 +1,9 @@
 <template>
-  <main class="">
+  <main class="overflow-hidden">
     <splash-screen></splash-screen>
-    <div v-swiper:pageSwiper="swiperOption" class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <about> </about>
-        </div>
-        <div class="swiper-slide">
-          <portfolio></portfolio>
-        </div>
-        <div class="swiper-slide">
-          <skill-set></skill-set>
-        </div>
-      </div>
-      <div class="swiper-pagination"></div>
-      <!-- <div class="swiper-scrollbar" slot="scrollbar"></div> -->
-    </div>
+    <about> </about>
+    <portfolio></portfolio>
+    <skill-set></skill-set>
     <education-timeline></education-timeline>
     <contact-me></contact-me>
   </main>
