@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;500;700&family=Roboto&display=swap');
 
 body {
-    font-family   : 'DM Sans', sans-serif;
+    @apply font-body;
     letter-spacing: .025em;
     line-height   : 1.5;
     @apply text-gray-900;

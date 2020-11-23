@@ -1,5 +1,5 @@
 <template>
-  <section class="page-section bg-purple-800 w-screen left-0">
+  <section class="page-section bg-black w-screen left-0">
     <header class="p-3">
       <h1 class="font-head text-4xl font-bold leading-tight text-white">
         Portfolio

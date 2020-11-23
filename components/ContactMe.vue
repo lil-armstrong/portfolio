@@ -10,10 +10,10 @@
     <section class="flex flex-wrap">
       <section class="p-3 w-auto lg:w-3/12">
         <ul class="socials">
-          <li class="socials-item">Github</li>
-          <li class="socials-item">Facebook</li>
-          <li class="socials-item">Twitter</li>
-          <li class="socials-item">Linked In</li>
+          <li class="socials-item"><span class="icon">G</span>Github</li>
+          <li class="socials-item"><span class="icon">F</span>Facebook</li>
+          <li class="socials-item"><span class="icon">T</span>Twitter</li>
+          <li class="socials-item"><span class="icon">Li</span>Linked In</li>
         </ul>
       </section>
       <section class="flex-auto lg:w-9/12">
@@ -50,7 +50,7 @@
               class="relative bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-6 py-3 rounded-md flex-grow-0"
               target="_blanks"
             >
-              Complete
+              Complete request
             </button>
           </section>
         </form>
@@ -81,7 +81,7 @@ export default {
     margin-bottom: 16px;
     // background: #fff;
 
-    &:before {
+    .icon {
       content: '';
       position: absolute;
       width: 50px;
@@ -93,9 +93,12 @@ export default {
       border: 4px solid orange;
       border-radius: 8px;
       z-index: 10;
-
-      /* graphics */
-
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      @apply font-head;
+      @apply text-xl;
+      color: #1c64f2;
       width: 50px;
       height: 50px;
       left: 0px;

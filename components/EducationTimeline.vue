@@ -12,14 +12,16 @@ las<template>
         <section class="timelines">
           <div v-for="entry of education" :key="entry.name" class="timeline">
             <div class="timeline-content">
-              <h2 class="uppercase font-head text-blue-600">
+              <h2 class="uppercase font-head text-blue-600 font-bold">
                 {{ entry.name }}
               </h2>
-              <p class="text-sm font-light text-gray-700">
+              <p class="text-xs font-light text-gray-600 leading-relaxed">
                 {{ entry.location }}
               </p>
-              <p class="text-sm font-light text-gray-700">{{ entry.award }}</p>
-              <small class="font-light text-gray-700">{{
+              <p class="text-xs font-light text-gray-600 leading-relaxed">
+                {{ entry.award }}
+              </p>
+              <small class="text-xs font-light text-gray-500 leading-tight">{{
                 entry.timeline
               }}</small>
             </div>

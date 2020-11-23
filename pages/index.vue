@@ -1,11 +1,24 @@
 <template>
   <main class="overflow-hidden">
     <splash-screen></splash-screen>
-    <about> </about>
-    <portfolio></portfolio>
+    <about></about>
     <skill-set></skill-set>
+    <portfolio></portfolio>
     <education-timeline></education-timeline>
     <contact-me></contact-me>
+    <div class="flex justify-between items-center px-3 py-4 bg-gray-200">
+      <div class="container mx-auto">
+        <div class="flex space-x-3">
+          <p class="inline-flex items-center font-bold mr-auto text-gray-600">
+            Ebong, Okposong
+          </p>
+
+          <p class="inline-flex items-center text-gray-600 text-sm">
+            Made with <span class="text-2xl ml-2 text-red-600">&#10084;</span>
+          </p>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 

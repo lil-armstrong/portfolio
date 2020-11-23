@@ -28,26 +28,27 @@
         >
           <li>
             <a
-              class="hover:bg-blue-600 p-3 block"
+              class="hover:bg-blue-600 p-3 block text-sm"
               target="_blank"
               href="https://facebook/oebong"
-              >Facebook</a
+              ><span class="iconfont icon-facebook"></span>Facebook</a
             >
           </li>
+
           <li>
             <a
-              href="twitter.com/lilarmstrong007"
-              class="hover:bg-blue-600 p-3 block"
+              href="https://www.github.com/lil-armstrong/"
+              class="hover:bg-blue-600 p-3 block text-sm"
               target="_blank"
-              >Twitter</a
+              ><span class="iconfont icon-github"></span> Github</a
             >
           </li>
           <li>
             <a
               href="https://www.linkedin.com/in/lil-armstrong/"
-              class="hover:bg-blue-600 p-3 block"
+              class="hover:bg-blue-600 p-3 block text-sm"
               target="_blank"
-              >LinkedIn</a
+              ><span class="iconfont icon-linkedin"></span> LinkedIn</a
             >
           </li>
         </ul>
