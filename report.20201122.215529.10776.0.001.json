@@ -1,0 +1,440 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201122.215529.10776.0.001.json",
+    "dumpEventTime": "2020-11-22T21:55:29Z",
+    "dumpEventTimeStamp": "1606078529453",
+    "processId": 10776,
+    "cwd": "/home/popsicles/dev/project/portfolio",
+    "commandLine": [
+      "/home/popsicles/.nvm/versions/node/v12.14.1/bin/node",
+      "/home/popsicles/dev/project/portfolio/node_modules/.bin/nuxt"
+    ],
+    "nodejsVersion": "v12.14.1",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.14.1",
+      "v8": "7.7.299.13-node.16",
+      "uv": "1.33.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.14.1/node-v12.14.1.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "5.3.0-7648-generic",
+    "osVersion": "#41~1586790036~18.04~600aeb5-Ubuntu SMP Mon Apr 13 17:47:15 UTC ",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-2450M CPU @ 2.50GHz",
+        "speed": 1024,
+        "user": 13188400,
+        "nice": 37900,
+        "sys": 3345700,
+        "idle": 51619200,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-2450M CPU @ 2.50GHz",
+        "speed": 1050,
+        "user": 13250300,
+        "nice": 42800,
+        "sys": 3486200,
+        "idle": 50858100,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-2450M CPU @ 2.50GHz",
+        "speed": 975,
+        "user": 13344300,
+        "nice": 51800,
+        "sys": 3224200,
+        "idle": 50589700,
+        "irq": 0
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-2450M CPU @ 2.50GHz",
+        "speed": 991,
+        "user": 12674500,
+        "nice": 46600,
+        "sys": 3503000,
+        "idle": 51099300,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "wlp3s0",
+        "internal": false,
+        "mac": "00:08:ca:84:13:60",
+        "address": "192.168.43.124",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "wlp3s0",
+        "internal": false,
+        "mac": "00:08:ca:84:13:60",
+        "address": "fe80::57eb:2a04:b4fb:862b",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 3
+      }
+    ],
+    "host": "pop-os"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b05ba5",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x00000000009dbd93",
+      "symbol": "node::OnFatalError(char const*, char const*) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b3b18e",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000b3b509",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000ce68a5",
+      "symbol": " [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000ce6f36",
+      "symbol": "v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf2dca",
+      "symbol": "v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::GCCallbackFlags) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf3cd5",
+      "symbol": "v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cf66e8",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationAlignment) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000cbd017",
+      "symbol": "v8::internal::Factory::NewFillerObject(int, bool, v8::internal::AllocationType) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000000ff307b",
+      "symbol": "v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    },
+    {
+      "pc": "0x0000000001376259",
+      "symbol": " [/home/popsicles/.nvm/versions/node/v12.14.1/bin/node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2157600768,
+    "totalCommittedMemory": 2153899240,
+    "usedMemory": 2143687080,
+    "availableMemory": 45740608,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 32568,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 1450192,
+        "capacity": 2094976,
+        "used": 463408,
+        "available": 1631568
+      },
+      "old_space": {
+        "memorySize": 2062135296,
+        "committedMemory": 2061853184,
+        "capacity": 2057424656,
+        "used": 2055854696,
+        "available": 1569960
+      },
+      "code_space": {
+        "memorySize": 2523136,
+        "committedMemory": 2308160,
+        "capacity": 2087072,
+        "used": 2087072,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 7606272,
+        "committedMemory": 7375520,
+        "capacity": 4589440,
+        "used": 4589440,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 79970304,
+        "committedMemory": 79970304,
+        "capacity": 79838248,
+        "used": 79838248,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 909312,
+        "committedMemory": 909312,
+        "capacity": 821920,
+        "used": 821920,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 2094976,
+        "used": 0,
+        "available": 2094976
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 131.27,
+    "kernelCpuSeconds": 3.64916,
+    "cpuConsumptionPercent": 123.779,
+    "maxRss": 2280865792,
+    "pageFaults": {
+      "IORequired": 74,
+      "IONotRequired": 849188
+    },
+    "fsActivity": {
+      "reads": 17056,
+      "writes": 3120
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 62.1102,
+    "kernelCpuSeconds": 1.59216,
+    "cpuConsumptionPercent": 58.4425,
+    "fsActivity": {
+      "reads": 17056,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "USER": "popsicles",
+    "LANGUAGE": "en_GB:en",
+    "LC_TIME": "en_GB.UTF-8",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_user_agent": "yarn/1.22.10 npm/? node/v12.14.1 linux x64",
+    "TEXTDOMAIN": "im-config",
+    "XDG_SEAT": "seat0",
+    "npm_config_bin_links": "true",
+    "XDG_SESSION_TYPE": "wayland",
+    "npm_node_execpath": "/home/popsicles/.nvm/versions/node/v12.14.1/bin/node",
+    "npm_config_init_version": "1.0.0",
+    "SHLVL": "2",
+    "QT4_IM_MODULE": "xim",
+    "HOME": "/home/popsicles",
+    "OLDPWD": "/home/popsicles",
+    "DESKTOP_SESSION": "pop-wayland",
+    "NVM_BIN": "/home/popsicles/.nvm/versions/node/v12.14.1/bin",
+    "npm_package_devDependencies_eslint_config_prettier": "^6.12.0",
+    "npm_config_init_license": "MIT",
+    "GNOME_SHELL_SESSION_MODE": "pop",
+    "YARN_WRAP_OUTPUT": "false",
+    "npm_config_version_tag_prefix": "v",
+    "LC_MONETARY": "en_GB.UTF-8",
+    "MANAGERPID": "1448",
+    "DBUS_STARTER_BUS_TYPE": "session",
+    "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/1000/bus,guid=6932041b47c5c16a6706395a5fbab388",
+    "npm_package_dependencies__nuxtjs_pwa": "^3.0.2",
+    "COLORTERM": "truecolor",
+    "npm_package_description": "## Build Setup",
+    "NVM_DIR": "/home/popsicles/.nvm",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_dependencies_vue_awesome_swiper": "^4.1.1",
+    "npm_package_dependencies_nuxt": "^2.14.6",
+    "WAYLAND_DISPLAY": "wayland-0",
+    "IM_CONFIG_PHASE": "2",
+    "npm_package_devDependencies_prettier": "^2.1.2",
+    "npm_package_scripts_dev": "nuxt",
+    "LOGNAME": "popsicles",
+    "JOURNAL_STREAM": "9:31733",
+    "_": "/home/popsicles/.nvm/versions/node/v12.14.1/bin/yarn",
+    "npm_package_devDependencies_node_sass": "^5.0.0",
+    "npm_package_private": "true",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "USERNAME": "popsicles",
+    "XDG_SESSION_ID": "1",
+    "TERM": "xterm-256color",
+    "npm_package_dependencies_core_js": "^3.6.5",
+    "GNOME_DESKTOP_SESSION_ID": "this-is-deprecated",
+    "npm_package_scripts_start": "nuxt start",
+    "npm_config_ignore_scripts": "",
+    "PATH": "/tmp/yarn--1606078420909-0.23230068289830963:/home/popsicles/dev/project/portfolio/node_modules/.bin:/home/popsicles/.config/yarn/link/node_modules/.bin:/home/popsicles/.nvm/versions/node/v12.14.1/libexec/lib/node_modules/npm/bin/node-gyp-bin:/home/popsicles/.nvm/versions/node/v12.14.1/lib/node_modules/npm/bin/node-gyp-bin:/home/popsicles/.nvm/versions/node/v12.14.1/bin/node_modules/npm/bin/node-gyp-bin:/home/popsicles/.local/bin:/home/popsicles/.yarn/bin:/home/popsicles/.config/yarn/global/node_modules/.bin:/home/popsicles/.nvm/versions/node/v12.14.1/bin:/home/popsicles/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "NODE": "/home/popsicles/.nvm/versions/node/v12.14.1/bin/node",
+    "INVOCATION_ID": "ce5c2558ec744eb4bc0fdbccdeb145ab",
+    "PAPERSIZE": "a4",
+    "SESSION_MANAGER": "local/pop-os:@/tmp/.ICE-unix/1505,unix/pop-os:/tmp/.ICE-unix/1505",
+    "npm_package_dependencies_swiper": "^6.3.5",
+    "npm_package_name": "ebong-okposong",
+    "XDG_MENU_PREFIX": "gnome-",
+    "LC_ADDRESS": "en_GB.UTF-8",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "DISPLAY": ":0",
+    "LANG": "en_GB.UTF-8",
+    "TILIX_ID": "b2bc01e3-0cd6-4db5-b4bf-75b86b1e1221",
+    "XDG_CURRENT_DESKTOP": "pop:GNOME",
+    "LC_TELEPHONE": "en_GB.UTF-8",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "XDG_SESSION_DESKTOP": "pop-wayland",
+    "XMODIFIERS": "@im=ibus",
+    "npm_lifecycle_script": "nuxt",
+    "SSH_AUTH_SOCK": "/run/user/1000/keyring/ssh",
+    "npm_config_version_git_message": "v%s",
+    "LC_NAME": "en_GB.UTF-8",
+    "SHELL": "/bin/bash",
+    "npm_lifecycle_event": "dev",
+    "npm_package_version": "1.0.0",
+    "GDMSESSION": "pop-wayland",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"dev\"],\"original\":[\"dev\"]}",
+    "npm_package_devDependencies__nuxtjs_tailwindcss": "^3.1.0",
+    "npm_package_scripts_build": "nuxt build",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "LC_MEASUREMENT": "en_GB.UTF-8",
+    "npm_package_devDependencies_sass_loader": "^10.1.0",
+    "npm_package_dependencies__nuxt_content": "^1.9.0",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_git_sign": "",
+    "TEXTDOMAINDIR": "/usr/share/locale/",
+    "LC_IDENTIFICATION": "en_GB.UTF-8",
+    "npm_package_scripts_generate": "nuxt generate",
+    "npm_config_strict_ssl": "true",
+    "XDG_VTNR": "2",
+    "QT_IM_MODULE": "ibus",
+    "npm_package_devDependencies_eslint_plugin_prettier": "^3.1.4",
+    "PWD": "/home/popsicles/dev/project/portfolio",
+    "LOCAL_IP": "192.168.43.124 ",
+    "npm_execpath": "/home/popsicles/.nvm/versions/node/v12.14.1/lib/node_modules/yarn/bin/yarn.js",
+    "CLUTTER_IM_MODULE": "xim",
+    "NVM_CD_FLAGS": "",
+    "XDG_DATA_DIRS": "/usr/share/pop-wayland:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop",
+    "DBUS_STARTER_ADDRESS": "unix:path=/run/user/1000/bus,guid=6932041b47c5c16a6706395a5fbab388",
+    "XDG_CONFIG_DIRS": "/etc/xdg/xdg-pop-wayland:/etc/xdg",
+    "LC_NUMERIC": "en_GB.UTF-8",
+    "npm_config_save_prefix": "^",
+    "npm_config_ignore_optional": "",
+    "LC_PAPER": "en_GB.UTF-8",
+    "npm_package_dependencies__nuxtjs_axios": "^5.12.2",
+    "VTE_VERSION": "5202",
+    "INIT_CWD": "/home/popsicles/dev/project/portfolio",
+    "NODE_ENV": "development",
+    "_applied": "true",
+    "_AXIOS_BASE_URL_": "http://localhost:3000/",
+    "VUE_ENV": "server"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 4096,
+      "hard": 4096
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 31080,
+      "hard": 31080
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/lib/x86_64-linux-gnu/libnss_files.so.2",
+    "/home/popsicles/dev/project/portfolio/node_modules/node-sass/vendor/linux-x64-72/binding.node"
+  ]
+}

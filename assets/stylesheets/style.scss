@@ -1,0 +1,14 @@
+@import 'typography';
+
+:root {
+    --light: ''
+}
+
+.page-section {
+    // padding : 30px;
+    position: relative;
+
+    @media screen and (min-width: 768px) {
+        padding: 100px;
+    }
+}
