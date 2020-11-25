@@ -2,7 +2,7 @@
   <section class="w-full h-full flex page-section bg-white">
     <div class="flex w-full flex-wrap">
       <section
-        class="lg:w-5/12 md:w-full h-full lg:relative absolute z-0 opacity-25 lg:opacity-100"
+        class="lg:w-5/12 md:w-full h-full lg:relative absolute z-0 opacity-25 lg:opacity-100 transition-all duration-75"
       >
         <img
           class="w-full h-full object-contain"
@@ -20,12 +20,12 @@
           <p class="lg:text-base text-sm font-normal">& Me</p>
         </header>
 
-        <p class="my-6 description">
-          I work professionally as a freelancer, with an <em class="text-blue-600 font-bold">accrued 4+ years of
-          relevant experiences</em> developing web apps. The relevant programming
-          tools I use quite often include <em class="text-blue-600 font-bold">VSCode, Webstorm, SCSS, Git, Laravel,
+        <p class="my-6 text-gray-900">
+          I work professionally as a freelancer, with an <span class="text-blue-600">accrued 4+ years of
+          relevant experiences</span> developing web apps. The relevant programming
+          tools I use quite often include <span class="text-blue-600">VSCode, Webstorm, SCSS, Git, Laravel,
           Vue.js, MySQL, PostgreSQL, Apollo, GraphQL, MongoDB, Nuxt.js and of
-          course Node.js</em>. I can also work independently as a frontend web
+          course Node.js</span>. I can also work independently as a frontend web
           developer as well as a backend web developer. I have practical skills
           in system administration and maintenance. </p>
         <a
