@@ -21,17 +21,13 @@
         </header>
 
         <p class="my-6 description">
-          I work professionally as a freelancer, with an accrued 4+ years of
-          relevant experiences developing web apps. The relevant programming
-          tools I use quite often include VSCode, Webstorm, SCSS, Git, Laravel,
+          I work professionally as a freelancer, with an <em class="text-blue-600 font-bold">accrued 4+ years of
+          relevant experiences</em> developing web apps. The relevant programming
+          tools I use quite often include <em class="text-blue-600 font-bold">VSCode, Webstorm, SCSS, Git, Laravel,
           Vue.js, MySQL, PostgreSQL, Apollo, GraphQL, MongoDB, Nuxt.js and of
-          course Node.js. I can also work independently as a frontend web
+          course Node.js</em>. I can also work independently as a frontend web
           developer as well as a backend web developer. I have practical skills
-          in system administration and maintenance. I am looking for a working
-          environment that supports creativity, flexibility and independent
-          thinking, to help me develop my problem solving skills and achieve my
-          goal of becoming a better product developer and system administrator.
-        </p>
+          in system administration and maintenance. </p>
         <a
           href="https://docs.google.com/document/d/12Xhyh0ZbZ20jK7gw-n4_93zRBKn2SXds833isPWdFtA/edit"
           class="relative bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-6 py-3 rounded-md"
