@@ -67,7 +67,8 @@ export default {
 .portfolio img {
   min-height: 250px;
   border-radius: 8px;
-  background: #212121;
+  //background: #212121;
+@apply bg-gray-600;
   width: 100%;
   object-fit: contain;
   // min-width: 350px;
