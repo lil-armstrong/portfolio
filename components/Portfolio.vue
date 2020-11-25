@@ -1,5 +1,5 @@
 <template>
-  <section class="page-section bg-black w-screen left-0">
+  <section class="page-section bg-gray-900 w-screen left-0">
     <header class="p-3">
       <h1 class="font-head text-4xl font-bold leading-tight text-white">
         Portfolio
@@ -67,7 +67,7 @@ export default {
 .portfolio img {
   min-height: 250px;
   border-radius: 8px;
-  background: white;
+  background: #212121;
   width: 100%;
   object-fit: contain;
   // min-width: 350px;
