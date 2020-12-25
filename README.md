@@ -1,4 +1,7 @@
-# ebong-okposong
+# Ebong, Okposong's Personal Portfolio Website
+
+Passionate about using disruptive technology to solve real world problems.
+Innovator, growth advocate, and a deep thinker.
 
 ## Build Setup
 
