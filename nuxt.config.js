@@ -4,11 +4,12 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'ebong-okposong',
+    title: 'Ebong, Okposong - Personal Portfolio Website',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      {name:"description", content: "Author:Ebong, Okposong, Type of website: Personal portfolio website, Industry: Information Technology, Description: Find here my personal portfolio. You can get in touch."}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
