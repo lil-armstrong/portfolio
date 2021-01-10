@@ -22,7 +22,7 @@
           </p>
         </header>
 
-        <p class="my-6 text-gray-900">
+        <p class="my-6 block text-gray-900">
           Pragmatic web developer with an eye for good layout and design. Passionate about using disruptive technologies to solve real world problems.
         </p>
         <p>
@@ -30,7 +30,7 @@
         </p>
         <a
           href="https://docs.google.com/document/d/12Xhyh0ZbZ20jK7gw-n4_93zRBKn2SXds833isPWdFtA/edit"
-          class="relative bottom-0 mb-12 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-6 py-3 rounded-md"
+          class="relative my-3 hover:shadow-outline active:shadow-outline hover:bg-blue-700 text-white bg-blue-600 px-6 py-3 rounded-md"
           target="_blanks"
           >Download Resume</a
         >
