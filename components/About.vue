@@ -26,7 +26,7 @@
           Pragmatic web developer with an eye for good layout and design. Passionate about using disruptive technologies to solve real world problems.
         </p>
         <p>
-          Looking for a small team that solves real world challenges using disruptive technologies. My strengths are mostly in frontend using Vuejs as a library and Nuxtjs as a framework, but I can also work independently as a backend Nodejs/Express engineer using MongoDB as a database, and Apollo/GraphQL as API development tool.
+          Looking to work with teams that solves real world challenges using disruptive technologies. My strengths are mostly in frontend using Vuejs as a library and Nuxtjs as a framework, but I can also work independently as a backend Nodejs/Express engineer using MongoDB as a database, and Apollo/GraphQL as API development tool.
         </p>
         <a
           href="https://docs.google.com/document/d/12Xhyh0ZbZ20jK7gw-n4_93zRBKn2SXds833isPWdFtA/edit"
