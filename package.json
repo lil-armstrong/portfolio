@@ -14,6 +14,7 @@
     "@nuxtjs/pwa": "^3.0.2",
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
+    "sass": "^1.49.0",
     "swiper": "5.x",
     "vue-awesome-swiper": "^4.1.1"
   },
@@ -22,7 +23,6 @@
     "@tailwindcss/custom-forms": "^0.2.1",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "node-sass": "^5.0.0",
     "prettier": "^2.1.2",
     "sass-loader": "^10.1.0"
   }
