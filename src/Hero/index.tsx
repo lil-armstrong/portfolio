@@ -28,12 +28,12 @@ export default function Hero({
             marginTop: "30vh",
           }}
         >
-          <h1 className="hero-title ">
+          <h1 className="hero-title select-none">
             <div className="before-title"></div>
             {mainTitle}
             <div className="after-title"></div>
           </h1>
-          <div className="subtitle">{subTitle}</div>
+          <div className="subtitle select-none">{subTitle}</div>
         </header>
 
         <div className="mt-[60px] p-[4px]">

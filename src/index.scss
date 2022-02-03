@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "./variables";
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap");
+@import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap');
 
 @mixin light-theme() {
   --bg: #fff;
@@ -41,12 +41,22 @@
   overflow: hidden;
   text-transform: capitalize;
 }
+@media (prefers-reduced-motion){
+
+}
+
 body {
   @include light-theme();
-
-  &[data-theme="dark"] {
+  &[data-theme='dark'] {
     @include dark-theme();
   }
+
+  /* @media (prefers-color-scheme: dark) {
+    @include dark-theme();
+  }
+  @media (prefers-color-scheme: light) {
+    @include light-theme();
+  } */
   transition: var(--fade-in);
   // max-height: 100vh;
   padding: 0;
@@ -54,7 +64,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100vmin;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   background-color: var(--bg-accent);
   aspect-ratio: 1;
   font-size: 16px;
@@ -63,7 +73,7 @@ body {
   font-weight: 300;
   scroll-behavior: smooth;
   color: var(--text-color);
-  &[data-schema="true"] * {
+  &[data-schema='true'] * {
     outline: 1px dashed #71c1f055;
     outline-offset: 0px;
   }
@@ -181,7 +191,7 @@ body {
     position: absolute;
     top: 30px;
     left: 4px;
-    content: "";
+    content: '';
     width: 2px;
     height: calc(100% - 60px);
     background: var(--bg);
@@ -217,7 +227,7 @@ body {
   line-height: 47px;
   color: #000000;
   margin-bottom: 25px;
-  [data-theme="dark"] & {
+  [data-theme='dark'] & {
     color: #8c8c8c;
   }
 }
@@ -333,7 +343,7 @@ textarea {
   transition: var(--fade-in);
   color: #c3c4c4;
   max-width: 100vw;
-  
+
   // border-radius: 10px;
   // color: #28a6f9;
 }
@@ -350,7 +360,7 @@ textarea {
   font-weight: 600;
   min-width: 150px;
   color: var(--default);
-  &[data-active="true"] {
+  &[data-active='true'] {
     background: var(--primary);
     color: white;
     box-shadow: /* inset 0 0 0px 2px white, */ var(--beam-shadow);
@@ -365,7 +375,7 @@ textarea {
   // border-radius: 50px;
 } */
 
-[data-hide="true"] {
+[data-hide='true'] {
   visibility: hidden;
   display: none;
   opacity: 0;
@@ -395,7 +405,7 @@ a {
   .list-item {
     font-size: 12px;
     &:not(:last-of-type)::after {
-      content: "•";
+      content: '•';
       width: 12px;
       height: 12px;
       position: relative;
