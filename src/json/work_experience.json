@@ -1,0 +1,30 @@
+[
+  {
+    "org": "TheRoothub",
+    "roles": [
+      "Web Development Training Facilitator"
+    ],
+    "location": "Akwa Ibom, Nigeria",
+    "timeline": "October 2020 - Present",
+    "description": "Presentation, Project management, and collaboration, Capacity building, and problem-solving"
+  },
+  {
+    "org": "Tedikom Wireless",
+    "roles": [
+      "Lead Visual Designer (Volunteer)",
+      "Graphics Designer"
+    ],
+    "location": "Akwa Ibom, Nigeria",
+    "timeline": "June – December 2016",
+    "description": "Brand design, Design instructor, Problem-solving, and collaboration"
+  },
+  {
+    "org": "TodayFM95.1",
+    "roles": [
+      "Assistant System Administrator (Intern)"
+    ],
+    "location": "Rivers, Nigeria",
+    "timeline": " June 2015 – December 2015",
+    "description": "System administration, networking and hardware procurement, and maintenance"
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Cointc",
+    "roles": [
+      "Project manager",
+      "Fullstack Javascript engineer (Nodejs/Reactjs)"
+    ],
+    "timeline": "Oct 2021 - jan 2022",
+    "description": "P2P Cryptocurrency Trading platform - PostgreSQL, styled-components, RWD, Reactjs, Node.js, Github actions, Tatum.io",
+    "link": "https://cointc.net"
+  },
+  {
+    "name": "Perzsi",
+    "roles": [
+      "Project manager",
+      "Frontend Engineer (React.js/Next.js)"
+    ],
+    "timeline": "July - Aug 2021",
+    "description": "Ecommerce store products listing bot - SWR, styled-components, RWD, TailwindCSS, ChakraUI, Next.js, AWS, MongoDB",
+    "link": "https://perzsi.com"
+  },
+  {
+    "name": "Ordavo.nl",
+    "roles": [
+      "Lead Frontend Engineer (Vue.js/Nuxt.js)"
+    ],
+    "timeline": "January – June 2021",
+    "description": "Ecommerce web app - SEO optimization, UI, RWD, Vue/Nuxt, ApolloGraphQL, Tailwind CSS, SCSS, Instant messaging, Internalization",
+    "link": "https://ordavo.nl"
+  },
+  {
+    "name": "EGLogistics",
+    "roles": [
+      "Lead Frontend Engineer (Vue.js/Nuxt.js)"
+    ],
+    "timeline": "October 2021",
+    "description": "Logistics web application - UI/UX, Payment integration, SEO optimization, Web application interface design, Vue/Nuxt, ApolloGraphQL, Custom Google Map Integration",
+    "link": "https://eglogisticsng.com"
+  }
+]
