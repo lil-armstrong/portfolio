@@ -1,15 +1,13 @@
-import { Context, createContext, useEffect, useReducer, useState } from "react";
-interface ThemeConfigInterface {
-  currentValue: string;
-}
+import { createContext, useEffect, useState } from 'react'
+
 interface ThemeContextInterface {
-  currentValue: string;
-  onSwitch: Function;
+  currentValue: string
+  onSwitch: Function
 }
 
-export const ThemeCtx = createContext<ThemeContextInterface | null>(null);
+export const ThemeCtx = createContext<ThemeContextInterface | null>(null)
 
-const themeReducer = (
+/* const themeReducer = (
   state: any,
   action: { type: string; value: any }
 ): any => {
@@ -21,19 +19,18 @@ const themeReducer = (
       return state;
     }
   }
-};
-const defaultConfig: ThemeConfigInterface = {
-  currentValue: "light",
-};
+}; */
 
 export default function ThemeContextProvider(props: any) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light')
   function onSwitch() {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(theme === 'light' ? 'dark' : 'light')
   }
+  useEffect(() => { }, [theme])
+  
   return (
     <ThemeCtx.Provider value={{ onSwitch, currentValue: theme }}>
       {props?.children}
     </ThemeCtx.Provider>
-  );
+  )
 }

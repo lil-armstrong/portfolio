@@ -1,31 +1,37 @@
-import "./App.scss";
-import Hero from "./Hero";
-import FixedRightPanel from "./FixedPanel";
-import Skills from "./Skills/Skills";
-import Projects from "./Projects/Project";
-import { RiGithubLine, RiPhoneFill, RiLinkedinFill } from "react-icons/ri";
-import { ThemeCtx } from "./context/ThemeContext";
-import { useContext, useEffect } from "react";
-import Tab, { Test } from "./Tab";
-import WorkExperience from "./WorkExperience";
+import './App.scss'
+import Hero from './Hero'
+import FixedRightPanel from './FixedPanel'
+import Skills from './Skills/Skills'
+import Projects from './Projects/Project'
+import { RiGithubLine, RiPhoneFill, RiLinkedinFill } from 'react-icons/ri'
+import { ThemeCtx } from './context/ThemeContext'
+import { useContext, useEffect } from 'react'
+import Tab from './Tab'
+import WorkExperience from './WorkExperience'
 
+const LINKS = {
+  cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
+  github: 'https://github.com/lil-armstrong',
+  linkedin: 'https://linkedin.com/in/lil-armstrong',
+  phone: 'tel:08109875593',
+}
 const CONTACT_LINKS: any[] = [
   <>
-    <a href="https://github.com/lil-armstrong">
+    <a href={LINKS?.github}>
       <RiGithubLine />
     </a>
   </>,
   <>
-    <a href="https://linkedin.com/in/lil-armstrong">
+    <a href={LINKS?.linkedin}>
       <RiLinkedinFill />
     </a>
   </>,
   <>
-    <a href="tel:08109875593">
+    <a href={LINKS?.phone}>
       <RiPhoneFill />
     </a>
   </>,
-];
+]
 
 /* TAB */
 const tabHead = [
@@ -33,18 +39,18 @@ const tabHead = [
   <>Skills & Interest</>,
   <>Projects</>,
   <>Certifications</>,
-];
-const tabContent = [<WorkExperience />, <Skills />, <Projects />, null];
+]
+const tabContent = [<WorkExperience />, <Skills />, <Projects />, null]
 
 // MAIN APP
 function App() {
-  const theme = useContext(ThemeCtx);
+  const theme = useContext(ThemeCtx)
   useEffect(() => {
-    const body = document?.body;
+    const body = document?.body
     if (theme && body) {
-      body?.setAttribute("data-theme", theme?.currentValue);
+      body?.setAttribute('data-theme', theme?.currentValue)
     }
-  }, [theme?.currentValue]);
+  }, [theme])
   return (
     <div className="">
       <FixedRightPanel />
@@ -52,7 +58,7 @@ function App() {
         mainTitle={<div className="">Ebong Okposong</div>}
         subTitle={
           <>
-            <ul className="list list-row " style={{ justifyContent: "center" }}>
+            <ul className="list list-row " style={{ justifyContent: 'center' }}>
               <li className="list-item">Javascript Engineer</li>
             </ul>
           </>
@@ -67,7 +73,7 @@ function App() {
             {/* ABOUT */}
             <section
               className="flex-grow flex flex-col w-full"
-              style={{ borderBottom: "1px solid var(--primary-accent)" }}
+              style={{ borderBottom: '1px solid var(--primary-accent)' }}
             >
               <div className="boxed_layout w-full h-full flex flex-col  pt-[70px] md:pt-[118px] ">
                 {/* ABOUT */}
@@ -77,11 +83,11 @@ function App() {
                   </header>
                   <p className="lead ">
                     I am a motivated and skilled individual seeking new
-                    opportunities in IT support and software development. I love{" "}
+                    opportunities in IT support and software development. I love{' '}
                     <span className="tag">
                       simplicity, elegance and clarity
-                    </span>{" "}
-                    and have experience working professionally as a freelance{" "}
+                    </span>{' '}
+                    and have experience working professionally as a freelance{' '}
                     <span className="tag">
                       visual designer, Project manager & web application
                       developer
@@ -90,23 +96,23 @@ function App() {
                   </p>
                   <p className="lead ">
                     By completing several online courses, I have gained
-                    practical ample hands-on skills and training in{" "}
+                    practical ample hands-on skills and training in{' '}
                     <span className="tag">
                       business, IT support, computer networking, project
                       management
-                    </span>{" "}
+                    </span>{' '}
                     etc. I am passionate about continuously learning and I am
                     curious about how I can help and add value to people by
                     solving their technical problems.
                   </p>
 
                   <p>
-                    I am currently taking on contract and freelance projects.{" "}
+                    I am currently taking on contract and freelance projects.{' '}
                   </p>
                 </section>
                 <div className="flex w-full justify-end self-end mt-[30px]">
                   <a
-                    href=""
+                    href={LINKS?.cv}
                     download
                     className="btn btn-outline btn-lg md:mr-[-17%]"
                   >
@@ -227,7 +233,7 @@ function App() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

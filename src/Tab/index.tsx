@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
 
-interface TabDataInterface {
-  name: string | JSX.Element;
-  content: string | JSX.Element;
-}
+// interface TabDataInterface {
+//   name: string | JSX.Element;
+//   content: string | JSX.Element;
+// }
 
 interface TabPropsInterface {
   /* data: Array<TabDataInterface>;
@@ -11,18 +11,18 @@ interface TabPropsInterface {
   headClass?: string | Array<string>;
   contentClass?: string | Array<string>; */
   (props: {
-    activeIndex: string | number;
-    setActiveIndex: React.Dispatch<React.SetStateAction<string | number>>;
-  }): JSX.Element;
+    activeIndex: string | number
+    setActiveIndex: React.Dispatch<React.SetStateAction<string | number>>
+  }): JSX.Element
 }
 
 export default function Tab({ children }: { children: TabPropsInterface }) {
-  const [activeIndex, setActiveIndex] = React.useState<string | number>(0);
-  return children({ activeIndex, setActiveIndex });
+  const [activeIndex, setActiveIndex] = React.useState<string | number>(0)
+  return children({ activeIndex, setActiveIndex })
 }
 
 export function Test() {
-  const head = [<>Skills</>, <>Projects</>];
+  const head = [<>Skills</>, <>Projects</>]
   const content = [
     <div className="p-4">
       Skills Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
@@ -36,7 +36,7 @@ export function Test() {
       repellendus error molestiae modi? Autem ut quam sunt? Tenetur doloribus
       dolore voluptate atque.
     </div>,
-  ];
+  ]
   return (
     <Tab>
       {({ activeIndex, setActiveIndex }) => (
@@ -60,5 +60,5 @@ export function Test() {
         </>
       )}
     </Tab>
-  );
+  )
 }

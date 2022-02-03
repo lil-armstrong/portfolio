@@ -1,34 +1,31 @@
-import { useContext } from "react";
-import { ThemeCtx } from "../context/ThemeContext";
-import skills from "../json/skills.json";
+import skills from '../json/skills.json'
 
 interface TechnicalSkillInterface {
-  name: string;
-  tools?: Array<SkillDataToolInterface>;
-  level?: string;
-  icon?: string;
+  name: string
+  tools?: Array<SkillDataToolInterface>
+  level?: string
+  icon?: string
 }
 
 interface SkillDataToolInterface {
-  name: string;
-  level?: string;
+  name: string
+  level?: string
 }
 
 export default function Skills() {
-  const theme = useContext(ThemeCtx);
   return (
     <div className="flex flex-col gap-[30px]">
       {Object.entries(skills)?.map(
         ([key, value]: [key: string, value?: Array<any>], indx) => (
           <ul key={indx} className="flex flex-col gap-[15px]">
             <li>
-              <p className="capitalize text-lg">{key?.replace(/[-_]/g, " ")}</p>
+              <p className="capitalize text-lg">{key?.replace(/[-_]/g, ' ')}</p>
             </li>
             {value?.length && (
               <li>
                 {(() => {
                   switch (key) {
-                    case "technical-skills": {
+                    case 'technical-skills': {
                       return (
                         <ul className="flex flex-col flex-wrap gap-[15px]">
                           {value?.map((item: TechnicalSkillInterface, idx) => (
@@ -67,10 +64,10 @@ export default function Skills() {
                             </li>
                           ))}
                         </ul>
-                      );
+                      )
                     }
-                    case "soft-skills":
-                    case "interest": {
+                    case 'soft-skills':
+                    case 'interest': {
                       return (
                         <ul className="flex gap-[8px] flex-wrap text-sm">
                           {value?.map((item, key) => (
@@ -79,7 +76,7 @@ export default function Skills() {
                             </li>
                           ))}
                         </ul>
-                      );
+                      )
                     }
                   }
                 })()}
@@ -89,5 +86,5 @@ export default function Skills() {
         )
       )}
     </div>
-  );
+  )
 }

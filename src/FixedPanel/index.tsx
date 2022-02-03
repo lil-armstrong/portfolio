@@ -1,5 +1,5 @@
 import "./index.scss";
-import { RiMoonLine, RiArrowDownCircleLine, RiSunFill } from "react-icons/ri";
+import { RiMoonLine, RiSunFill } from "react-icons/ri";
 import { ThemeCtx } from "../context/ThemeContext";
 import { useContext } from "react";
 
@@ -8,7 +8,7 @@ export default function ThemeSwitch() {
   return (
     <div className="fixed right-[0] z-[2] md:mr-[60px]  mr-[15px] mt-[40px]">
       <button className="round-btn" onClick={() => theme?.onSwitch()}>
-        {theme?.currentValue == "light" ? (
+        {theme?.currentValue === "light" ? (
           <RiMoonLine/>
         ) : (
           <RiSunFill />

@@ -1,10 +1,6 @@
 import { RiExternalLinkLine } from "react-icons/ri";
 import projects from "../json/projects.json";
 
-interface ProjectPropsInterface {
-  data: Array<JSX.Element>;
-}
-
 interface ProjectDataInterface {
   name: string;
   roles: Array<string>;
@@ -41,6 +37,7 @@ export default function Projects() {
             <a
               href={link}
               target="_blank"
+              rel="noreferrer"
               className="absolute right-[30px] top-[30px]"
             >
               <RiExternalLinkLine />
