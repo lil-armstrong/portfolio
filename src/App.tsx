@@ -110,7 +110,7 @@ function App() {
                     I am currently taking on contract and freelance projects.{' '}
                   </p>
                 </section>
-                <div className="flex w-full justify-end self-end mt-[30px]">
+                <div className="flex  justify-end self-end mt-[30px]">
                   <a
                     href={LINKS?.cv}
                     download

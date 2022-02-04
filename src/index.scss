@@ -41,8 +41,7 @@
   overflow: hidden;
   text-transform: capitalize;
 }
-@media (prefers-reduced-motion){
-
+@media (prefers-reduced-motion) {
 }
 
 body {
@@ -325,9 +324,10 @@ textarea {
 }
 
 .hidden_scrollbar {
-  scrollbar-width: none;
-  &::-webkit-scrollbar-thumb {
-    width: 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
     // color: red;
   }
 }
