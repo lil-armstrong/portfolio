@@ -104,7 +104,7 @@ function App() {
                     </p>
 
                     <p>
-                      I am currently taking on contract and freelance projects.{' '}
+                      I am currently taking on remote contract and freelance jobs.
                     </p>
                   </div>
                 </section>
