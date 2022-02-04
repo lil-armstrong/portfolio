@@ -69,13 +69,13 @@ function App() {
       <section className="page_section relative z-[1]">
         <div className="flex flex-row flex-wrap-reverse meta_box lg:flex-nowrap">
           {/* META_BOX LEFT */}
-          <div className="flex-grow meta_box-left h-full overflow-y-auto overflow-x-hidden hidden_scrollbar">
+          <div className="flex-grow meta_box-left h-full overflow-y-auto max-h-screen overflow-x-hidden hidden_scrollbar">
             {/* ABOUT */}
             <section
               className="flex-grow flex flex-col w-full"
               style={{ borderBottom: '1px solid var(--primary-accent)' }}
             >
-              <div className="boxed_layout w-full h-full flex flex-col  pt-[70px] md:pt-[118px] ">
+              <div className="boxed_layout w-full h-full flex flex-col  pt-[30px] md:pt-[100px] ">
                 {/* ABOUT */}
                 <section className="flex-grow px-[30px]">
                   <header className=" ">
@@ -123,8 +123,8 @@ function App() {
             </section>
 
             {/* CONTACT FORM */}
-            <section className="flex-grow w-full flex flex-col">
-              <section className="boxed_layout w-full h-full flex flex-col pt-[70px] md:pt-[118px]">
+            <section className="flex-grow  flex flex-col">
+              <section className="boxed_layout  w-full  flex flex-col pt-[30px] md:pt-[100px]">
                 <header className="px-[30px] flex-grow">
                   <h3 className="section_title">CONTACT</h3>
                   <p>I am open to new opportunities?</p>
