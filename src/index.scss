@@ -101,7 +101,7 @@ body {
   }
 }
 .card {
-  --opacity: 0.85;
+  --opacity: 0.95;
   display: flex;
   row-gap: 10px;
   column-gap: 30px;
@@ -281,6 +281,7 @@ textarea {
       width: 450px;
     }
     width: 100%;
+    // flex-grow: 1;
     min-height: 80px;
   }
   &.btn-primary {

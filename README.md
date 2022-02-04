@@ -1,112 +1,46 @@
-> This project has been moved from [lil-armstrong's](https://github.com/lil-armstrong/p2p-react-node-app) repository to [cointc-team](https://github.com/cointc-team/p2p-react-node-app) repository. Use the following commands to set the remote url to point to this repository.
+# Getting Started with Create React App
 
-```git
-git remote set-url origin git@github.com:cointc-team/p2p-react-node-app.git
-```
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# **COINTC WEB APP**
-**COINTC** is a cryptocurrency **Wallet, Exchange, Chat and P2P Trading** platform. It supports transactions between five (_5_) kinds of cryptocurrencies (`ETH, BTC, EOS, Ripple, Tether, XRP`).
+## Available Scripts
 
-Use the contents of the file `.env.example` to create environment variables for the project.
+In the project directory, you can run:
 
-This project consist of two parts: `client` and `server`. Once you have cloned the project you can run 
+### `npm start`
 
-```bash
-yarn install-all
-```
-The above command will install all packages for both parts of the project.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## CLIENT
-The frontend was scaffolded using Create-React-App template. It is built using the following web technologies:
-+ [React](https://reactjs.org)
-+ [TailwindCSS](https://tailwindcss.com)
-+ [SASS](https://sass-lang.com)
-+ [Styled components](https://styled-components.com/docs)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### HOW TO START
-To run the client-side part of the project, run the following command in your terminal
+### `npm test`
 
-```bash
-yarn client-start
-```
-For testing
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```bash
-yarn client-test
-```
+### `npm run build`
 
-## SERVER
-The `server` uses the following web technologies at its core:
-+ [Hapi](https://hapi.dev)
-+ [Tatum](https://tatum.io)
-+ [sequelize](https://sequelize.org)
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### HOW TO START
-To run the server-side part of the project add a `.env` file using the `.env.sample` file. Then run the following command in your terminal
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```bash
-yarn server-start
-```
-For testing
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```bash
-yarn server-test
-```
+### `npm run eject`
 
-## How to sync client with server in production
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-First of all, I will explain to you how the production server is able to serve the app publicly. As you know, from the project structure, there is a `server` and `client` folder. The `server` folder is where all the server related files reside, and the client folder is where all client-side related files reside. 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-> In production, the server folder is responsible for serving the full app, whereas in development, each folder can be served independently.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-In order for the server to render the client side as well as the server side, I created a folder to house the client static files. The folder is named `static`, and its contents are rendered directly through the server. 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-This means that if you introduce any new route on the client side, you will need to register it on the server side. To do that you navigate to the server side relative path `./plugins/app.plugins.js`. You will see an array of paths, add the new path there.
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-> If you do not add a new route as stated above, in production, the server will not be able to render that route.
-
-So the following steps are to be taken in order to successfully sync the client code to the server in production. 
-
-> *Note* This project uses a postgresql database. So before beginning the following steps, ensure that postgresql is running in the background and that your database env configurations are correct.
-
-1) First ensure that the production server is currently running using the following command.
-
-  ```bash
-  pm2 status
-  ```
-
-> You should see a table with a column name, `app`. Ensure that the app named `cointc_server` is **running** and is **online**.
-
-> Once server is running, you can seed some users records into the database using the command `yarn db-seed` from the root directory
-2) Once you have confirmed that the server is online, you can then navigate to the `client` folder  on your local machine and run the following command to build the client static files.
-
-  ```bash
-  yarn build
-  ```
-
-3) The command from **step 2**, will create a build folder in the client folder. This build folder contains all the static builds for the react app.
-Next, copy the contents of the folder `/client/build` to the production server’s `/server/views` folder *(Create if it doesn’t exist)*, using an FTP client.
-
-4) After you have completed **step 3**,  check that the server is still running on the production server using the following command
-  
-  ```bash
-  pm2 status && pm2 logs
-  ```
-
-  If the server is still running and has not encountered any errors, you should see the text on the terminal `Server running on <PORT>`. (__PORT__ is a placeholder, depending on which port was configured). Then you're done.
-
-**NOTE**
-
-> I wrote a script to take care of all of these worries, but unfortunately, the production server crashes at **step 2**. So instead I do the client side building on my local machine and then copy the contents of the `build` folder to the server `views` folder in the production server. 
-> 
-In case you want to use this script, navigate to the `root` of the project and run the following command.
-
-```bash
-yarn client-build
-```
-
-# Important links and commands
-> ### Sync local content to remote SSH \
-rsync -rlptzv --progress --delete --exclude=.git . "user@hostname:/remote/source/code/path" \
-[Remote Development Tips and Tricks](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-server)
+To learn React, check out the [React documentation](https://reactjs.org/).
