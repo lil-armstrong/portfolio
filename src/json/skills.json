@@ -4,17 +4,24 @@
       "name": "Javascript",
       "tools": [
         {
-          "name": "Reactjs"
+          "name": "React Native",
+          "level": "Intermediate"
+        },
+        {
+          "name": "Reactjs", 
+          "level": "Advanced"
         },
         {
           "name": "Typescript",
           "level": "Intermediate"
         },
         {
-          "name": "Nodejs"
+          "name": "Nodejs",
+          "level": "Advanced"
         },
         {
-          "name": "Vuejs"
+          "name": "Vuejs",
+          "level": "Advanced"
         }
       ],
       "level": "Advanced",
