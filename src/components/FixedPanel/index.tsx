@@ -9,7 +9,7 @@ export default function ThemeSwitch() {
     <div className="fixed right-[0] z-[2] md:mr-[60px]  mr-[15px] mt-[40px]">
       <button className="round-btn" onClick={() => theme?.onSwitch()}>
         {theme?.currentValue === 'light' ? <RiMoonLine /> : <RiSunFill />}
-        <span>{theme?.currentValue === 'light' ? "Dark" : "Light"}</span>
+        <span className="hidden md:block">{theme?.currentValue === 'light' ? "Dark" : "Light"}</span>
       </button>
     </div>
   )
