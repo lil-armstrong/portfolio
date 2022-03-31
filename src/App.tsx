@@ -99,8 +99,8 @@ function App() {
                     ))}
                   </ul>
                 </header>
-                <div className="flex h-full flex-grow overflow-hidden">
-                  <div className="boxed_layout overflow-y-auto hidden_scrollbar z-0 relative">
+                <div className="flex h-full flex-grow overflow-y-auto hidden_scrollbar">
+                  <div className="boxed_layout   z-0 relative">
                     {tabContent?.map((item, idx) => (
                       <div
                         className="py-[60px] h-full flex-grow px-6"

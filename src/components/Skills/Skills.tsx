@@ -1,4 +1,4 @@
-import skills from '../../json/skills.json'
+import skills from 'src/.data/skills.json'
 
 interface TechnicalSkillInterface {
   name: string

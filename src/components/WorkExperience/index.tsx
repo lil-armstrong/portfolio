@@ -1,4 +1,4 @@
-import work_experience from "../../json/work_experience.json";
+import work_experience from 'src/.data/work_experience.json'
 
 export default function WorkExperience() {
   return (
