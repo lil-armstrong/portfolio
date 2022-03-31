@@ -9,7 +9,7 @@
   --bg-accent: #f2f2f2;
   --text-color: #1e1e1e;
   --highlighted: #28a6f9;
-  --primary-accent: #d9d9d9;
+  --primary-accent: #28a6f9;
   --darken: #72788b;
   --lighten: #72788b;
   --beam-shadow: 0px 20px 30px 6px rgba(0, 0, 0, 0.125);
@@ -103,7 +103,7 @@ body {
   }
 }
 .card {
-  --opacity: 0.95;
+  --opacity: .75;
   display: flex;
   row-gap: 10px;
   column-gap: 30px;
@@ -112,7 +112,7 @@ body {
   position: relative;
   // margin-bottom: 30px;
   background-color: var(--bg-accent);
-  color: #c4c4c4;
+  color: var(--text-color);
   transition: var(--fade-in);
   // border-radius: 4px;
   &:hover {
@@ -182,6 +182,7 @@ body {
   }
 }
 .timeline-listing {
+  padding-left: 15px;
   &::before {
     position: absolute;
     top: 30px;
@@ -189,7 +190,7 @@ body {
     content: '';
     width: 2px;
     height: calc(100% - 60px);
-    background: var(--bg);
+    background: var(--bg-accent);
   }
   .card {
     margin-bottom: 30px;
@@ -331,7 +332,7 @@ textarea {
 }
 
 .tab_head {
-  background: var(--bg);
+  background: var(--bg-accent);
   box-shadow: var(--beam-shadow);
   // border: 2px solid var(--primary-accent);
   font-style: normal;
