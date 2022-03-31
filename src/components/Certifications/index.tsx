@@ -1,5 +1,5 @@
 import { RiExternalLinkLine } from 'react-icons/ri'
-import certifications from '../json/certifications.json'
+import certifications from '../../json/certifications.json'
 
 export default function Certifications() {
   return (
