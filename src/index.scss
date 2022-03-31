@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import './variables';
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap');
 
 @mixin light-theme() {
   --bg: hsl(0, 0%, 90%);
@@ -63,7 +63,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100vh;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-accent);
   aspect-ratio: 1;
   font-size: 16px;
@@ -112,7 +112,7 @@ body {
   position: relative;
   // margin-bottom: 30px;
   background-color: var(--bg-accent);
-  color: #868686c5;
+  color: #c4c4c4;
   transition: var(--fade-in);
   // border-radius: 4px;
   &:hover {

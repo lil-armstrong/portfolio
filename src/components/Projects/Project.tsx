@@ -1,5 +1,5 @@
 import { RiExternalLinkLine } from "react-icons/ri";
-import projects from "../../json/projects.json";
+import projects from "src/.data/projects.json";
 
 interface ProjectDataInterface {
   name: string;
