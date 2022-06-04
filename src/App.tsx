@@ -86,7 +86,7 @@ function App() {
             {({ activeIndex, setActiveIndex }) => (
               <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
                 <header className="tab_head z-[1] top-[0px] sticky max-w-full">
-                  <ul className="flex boxed_layout md:justify-evenly overflow-x-auto hidden_scrollbar ">
+                  <ul className="flex  md:justify-evenly overflow-x-auto hidden_scrollbar ">
                     {tabHead.map((item, idx) => (
                       <li
                         className="badge flex-grow pill cursor-pointer"

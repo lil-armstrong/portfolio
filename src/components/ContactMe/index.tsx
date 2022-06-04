@@ -6,7 +6,7 @@ export default function ContactMe() {
       <section className="boxed_layout  w-full  flex flex-col items-center text-center pt-[30px] md:pt-[100px]">
         <header className="px-[30px] flex-grow">
           <h3 className="section_title">CONTACT</h3>
-          <p>I am open to new opportunities</p>
+          <p>I am open to new opportunities in tech</p>
           <ul className="flex flex-wrap justify-center mt-4 gap-[30px]">
             {CONTACT_LINKS?.map((item, idx) => (
               <li className="social_icon" key={idx}>
@@ -45,8 +45,8 @@ export default function ContactMe() {
                 </div>
               </form> */}
 
-        <div className="flex justify-center mt-[30px]">
-          <button type="submit" className="btn btn-outline btn-lg ">
+        <div className="flex  w-full justify-center  mt-[30px]">
+          <button type="submit" className="btn btn-outline btn-lg">
             <a href="mailto:oebong1@gmail.com">Get in touch</a>
           </button>
         </div>

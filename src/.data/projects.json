@@ -1,11 +1,21 @@
 [
   {
+    "name": "Metamask - Block-stars",
+    "roles": [
+      "Contract",
+      "Frontend Javascript engineer (Reactjs)"
+    ],
+    "timeline": "May 2022",
+    "description": "Client wanted the following features: \u2022 Rebranding of the Metamask app \u2022 Autoloading of custom tokens",
+    "link": "https://cointc.net"
+  },
+  {
     "name": "Cointc",
     "roles": [
       "Project manager",
       "Fullstack Javascript engineer (Nodejs/Reactjs)"
     ],
-    "timeline": "Oct 2021 - jan 2022",
+    "timeline": "Oct 2021 - Jan 2022",
     "description": "P2P Cryptocurrency Trading platform - PostgreSQL, styled-components, RWD, Reactjs, Node.js, Github actions, Tatum.io",
     "link": "https://cointc.net"
   },
