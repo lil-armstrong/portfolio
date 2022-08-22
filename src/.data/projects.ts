@@ -18,7 +18,7 @@ export default [
     \u2022 UI redesign\\
     \u2022 Completion of all UI flows\\
     \u2022 Instant messaging`,
-    link: 'https://www.play.google.com/store/apps/details?id=com.lopeer.lopeer',
+    link: 'https://play.google.com/store/apps/details?id=com.lopeer.lopeer',
     image_url: 'lopeer-icon.png',
   },
   {
