@@ -1,4 +1,4 @@
-import { useEffect, useRef, createRef, LegacyRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import projects from 'src/.data/projects'
 import ReactMarkdown from 'react-markdown'
