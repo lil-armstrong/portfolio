@@ -1,6 +1,8 @@
+import { useEffect, useRef, createRef, LegacyRef } from 'react'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import projects from 'src/.data/projects'
 import ReactMarkdown from 'react-markdown'
+import MansonryLayout from 'masonry-layout'
 
 interface ProjectDataInterface {
   name: string
@@ -14,6 +16,24 @@ interface ProjectDataInterface {
 }
 
 export default function Projects() {
+  const gridRef = createRef<HTMLUListElement>()
+  const isMounted = useRef<boolean>(true)
+
+  useEffect(() => {
+    if (!isMounted?.current) isMounted.current = true
+
+    if (gridRef?.current) {
+      var msnry = new MansonryLayout(gridRef?.current, {
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 200,
+      })
+    }
+    return () => {
+      isMounted.current = false
+    }
+  }, [])
+
   function resolveAsset(location: string) {
     try {
       const asset = `/assets/${location}`
@@ -23,83 +43,95 @@ export default function Projects() {
     }
   }
   return (
-    <ul className="flex flex-col gap-y-[30px] pb-[20px]">
-      {projects?.map(
-        (
-          {
-            name,
-            roles,
-            timeline,
-            description,
-            client,
-            client_url,
-            link,
-            image_url,
-          }: ProjectDataInterface,
-          idx
-        ) => (
-          <div className="card project " key={idx}>
-            <div>
-              <div className="flex gap-[15px]">
-                <div className="rounded-lg overflow-hidden w-[50px] h-[50px]  bg-opacity-50 text-[8px] justify-center items-center text-center flex flex-column">
-                  <img
-                    src={
-                      image_url
-                        ? resolveAsset(image_url)
-                        : 'https://via.placeholder.com/50'
-                    }
-                    alt="Logo"
-                  />
-                </div>
+    // <ul className="flex flex-col gap-y-[30px] pb-[20px]">
+    <div className="pb-[20px] flex flex-col items-center ">
+      <div className="w-full">
+        <ul className="flex flex-wrap gap-8">
+          {projects?.map(
+            (
+              {
+                name,
+                roles,
+                timeline,
+                description,
+                client,
+                client_url,
+                link,
+                image_url,
+              }: ProjectDataInterface,
+              idx
+            ) => (
+              <div
+                className={['card min-w-[300px] flex-grow project '].join(' ')}
+                key={idx}
+              >
                 <div>
-                  <p className="name text-capitalize">{name}</p>
-                  <ul className="inline-flex gap-[8px] meta">
-                    {client ? (
-                      <li className="timeline text-gray-500" title={timeline}>
-                        {client_url ? (
-                          <a
-                            rel="noreferrer"
-                            target="_blank"
-                            href={client_url}
-                            title={`${client} website`}
+                  <div className="flex gap-[15px]">
+                    <div className="rounded-lg overflow-hidden w-[50px] h-[50px]  bg-opacity-50 text-[8px] justify-center items-center text-center flex flex-column">
+                      <img
+                        src={
+                          image_url
+                            ? resolveAsset(image_url)
+                            : 'https://via.placeholder.com/50'
+                        }
+                        alt="Logo"
+                      />
+                    </div>
+                    <div>
+                      <p className="name text-capitalize">{name}</p>
+                      <ul className="inline-flex gap-[8px] meta">
+                        {client ? (
+                          <li
+                            className="timeline text-gray-500"
+                            title={timeline}
                           >
-                            {client}
-                          </a>
-                        ) : (
-                          client
-                        )}
+                            {client_url ? (
+                              <a
+                                rel="noreferrer"
+                                target="_blank"
+                                href={client_url}
+                                title={`${client} website`}
+                              >
+                                {client}
+                              </a>
+                            ) : (
+                              client
+                            )}
+                          </li>
+                        ) : null}
+                        <li className="timeline text-gray-700" title={timeline}>
+                          {timeline}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="description">
+                    <ReactMarkdown>{description}</ReactMarkdown>
+                  </div>
+                  <ul className="roles">
+                    {roles?.map((role, roleIdx) => (
+                      <li className="role" title={role} key={roleIdx}>
+                        {role}
                       </li>
-                    ) : null}
-                    <li className="timeline text-gray-500" title={timeline}>
-                      {timeline}
-                    </li>
+                    ))}
                   </ul>
                 </div>
+                {link ? (
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="absolute right-[30px] top-[30px]"
+                  >
+                    <RiExternalLinkLine />
+                  </a>
+                ) : null}
               </div>
-              <div className="description">
-                <ReactMarkdown>{description}</ReactMarkdown>
-              </div>
-              <ul className="roles">
-                {roles?.map((role, roleIdx) => (
-                  <li className="role" title={role} key={roleIdx}>
-                    {role}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {link ? (
-              <a
-                href={link}
-                target="_blank"
-                rel="noreferrer"
-                className="absolute right-[30px] top-[30px]"
-              >
-                <RiExternalLinkLine />
-              </a>
-            ) : null}
-          </div>
-        )
-      )}
-    </ul>
+            )
+          )}
+        </ul>
+      </div>
+      {/* <div className="border-2 border-red-400 w-full py-[20px] my-[30px]"></div> */}
+    </div>
   )
 }

@@ -2,8 +2,8 @@ import { CONTACT_LINKS } from 'src/App'
 
 export default function ContactMe() {
   return (
-    <section className="flex-grow  flex flex-col">
-      <section className="boxed_layout  w-full  flex flex-col items-center text-center pt-[30px] md:pt-[100px]">
+    <section className="flex-grow h-[80vh] items-center justify-center flex flex-col">
+      <section className="boxed_layout  w-full  flex flex-col items-center text-center ">
         <header className="px-[30px] flex-grow">
           <h3 className="section_title">CONTACT</h3>
           <p>I am open to new opportunities in tech</p>
