@@ -7,7 +7,7 @@ export default [
     \u2022 UI functionality implementation\\
     \u2022 Completion of all UI flows\\
     `,
-    link: 'https://.com',
+    // link: 'https://.com',
     image_url: 'relaywash-icon.png',
   },
   {
@@ -18,7 +18,7 @@ export default [
     \u2022 UI redesign\\
     \u2022 Completion of all UI flows\\
     \u2022 Instant messaging`,
-    link: 'https://www.play.google.com/details?id=com.lopeer.lopeer',
+    link: 'https://www.play.google.com/store/apps/details?id=com.lopeer.lopeer',
     image_url: 'lopeer-icon.png',
   },
   {
