@@ -2,7 +2,6 @@ import { useEffect, useRef, createRef, LegacyRef } from 'react'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import projects from 'src/.data/projects'
 import ReactMarkdown from 'react-markdown'
-import MansonryLayout from 'masonry-layout'
 
 interface ProjectDataInterface {
   name: string
@@ -16,19 +15,11 @@ interface ProjectDataInterface {
 }
 
 export default function Projects() {
-  const gridRef = createRef<HTMLUListElement>()
   const isMounted = useRef<boolean>(true)
 
   useEffect(() => {
     if (!isMounted?.current) isMounted.current = true
 
-    if (gridRef?.current) {
-      var msnry = new MansonryLayout(gridRef?.current, {
-        // options
-        itemSelector: '.grid-item',
-        columnWidth: 200,
-      })
-    }
     return () => {
       isMounted.current = false
     }
