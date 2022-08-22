@@ -2,13 +2,13 @@ import { LINKS } from '../../App'
 
 export function AboutMe() {
   return (
-    <section className="flex-grow flex flex-col w-full h-full">
+    <section className="boxed_layout flex-grow flex flex-col w-full h-full">
       <div className="h-full flex flex-col pb-[30px]">
         {/* ABOUT */}
         <section className="flex-grow px-[15px]">
-          <header className=" ">
+          {/* <header className=" ">
             <h3 className="section_title">ABOUT</h3>
-          </header>
+          </header> */}
           <div className="overflow-y-auto  hidden_scrollbar">
             <p className="lead ">
               I am a motivated and skilled individual seeking new opportunities
@@ -41,12 +41,14 @@ export function AboutMe() {
             Download CV
           </a>
         </div>
-        <footer className="py-[30px] flex flex-col items-center justify-center opacity-[.5]">
+        <footer className="py-[30px] flex flex-col items-center justify-center opacity-[.95] font-medium">
           <p>
             This is project was designed using Figma &amp; built using Reactjs
             by yours truly.
           </p>
-          <p>Copyright &copy;. Since 2022. Today is {new Date().toDateString()}</p>
+          <p>
+            Copyright &copy;. Since 2022. Today is {new Date().toDateString()}
+          </p>
         </footer>
       </div>
     </section>

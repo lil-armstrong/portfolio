@@ -69,7 +69,7 @@
       "level": "Advanced"
     },
     {
-      "name": "API Documentation",
+      "name": "Documentation",
       "tools": [
         {
           "name": "GraphQL"
@@ -78,7 +78,7 @@
           "name": "RESTAPI"
         }
       ],
-      "level": "Intermediate"
+      "level": "Advanced"
     },
     {
       "name": "DevOps",
@@ -95,14 +95,15 @@
           "name": "Firebase",
           "level": "Intermediate"
         }
-      ]
+      ],
+      "level": "Advanced"
     },
     {
       "name": "Design",
       "tools": [
         {
           "name": "Figma",
-          "level": "Intermediate"
+          "level": "Advanced"
         },
         {
           "name": "Inkscape",
@@ -116,7 +117,8 @@
           "name": "Adobe Illustrator",
           "level": "Intermediate"
         }
-      ]
+      ],
+      "level": "Advanced"
     },
     {
       "name": "Project management",
@@ -141,10 +143,13 @@
           "name": "Asana",
           "level": "Intermediate"
         }
-      ]
+      ],
+      "level": "Intermediate"
     }
   ],
   "interest": [
+    "Blockchain/Web3",
+    "Technical Writing",
     "UI/UX implementation & optimization",
     "Computer Programming",
     "SEO optimization",

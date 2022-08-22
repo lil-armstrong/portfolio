@@ -1,5 +1,14 @@
 [
   {
+    "org": "APTECH, Uyo",
+    "roles": [
+      "Technical Trainer"
+    ],
+    "location": "Uyo, Akwa Ibom, Nigeria",
+    "timeline": "October 2020 - Present",
+    "description": "Teach students in several technical areas in subject areas such as: Databases e.g MongoDB, and Web development"
+  },
+  {
     "org": "TheRoothub",
     "roles": [
       "Web Development Training Facilitator"

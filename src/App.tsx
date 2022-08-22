@@ -91,6 +91,7 @@ function App() {
                       <li
                         className="badge flex-grow pill cursor-pointer"
                         data-active={idx === activeIndex}
+                        data-hoverable={'true'}
                         key={idx}
                         onClick={() => setActiveIndex(idx)}
                       >
@@ -100,10 +101,10 @@ function App() {
                   </ul>
                 </header>
                 <div className="flex h-full flex-grow overflow-y-auto hidden_scrollbar">
-                  <div className="boxed_layout   z-0 relative">
+                  <div className="z-0 relative w-full">
                     {tabContent?.map((item, idx) => (
                       <div
-                        className="py-[60px] h-full flex-grow px-6"
+                        className="lg:py-[45px] py-[30px] h-full flex-grow px-4 m-auto"
                         data-hide={idx !== activeIndex}
                         key={idx}
                       >
