@@ -1,4 +1,5 @@
 {
+  "homepage": "https://lil-armstrong.github.io/portfolio",
   "name": "react-with-typescript",
   "version": "0.1.0",
   "private": true,
@@ -20,6 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "npx gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.5",
     "postcss-nesting": "^10.1.2",
     "sass": "^1.49.0",

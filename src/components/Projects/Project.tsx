@@ -122,7 +122,16 @@ export default function Projects() {
           )}
         </ul>
       </div>
-      {/* <div className="border-2 border-red-400 w-full py-[20px] my-[30px]"></div> */}
+     <div>
+        <header>
+          <h3>Gallery</h3>
+        </header>
+        <div className="columns-3xs w-full py-[20px] my-[30px]">
+         <div className="max-w-[350px] max-h-[300px]">
+           <img src="https://via.placeholder.com/400" />
+         </div>
+        </div>  
+     </div> 
     </div>
   )
 }
