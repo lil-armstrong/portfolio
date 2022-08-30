@@ -13,6 +13,21 @@
   align-items: center;
   width: calc(100vh - 30px);
 }
+#fixed-left-panel {
+  position: fixed;
+  bottom: -10px;
+  left: 0px;
+  margin: 0 auto;
+  z-index: 10;
+  // margin-top: -27px;
+  // transform-origin: center right;
+  // transform: rotate(90deg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vh - 30px);
+}
 @mixin btn() {
   display: flex;
   flex-direction: row;
@@ -23,8 +38,8 @@
   text-transform: capitalize;
   // width: 50px;
   // height: 50px;
-  background: var(--bg-accent);
-  border: 1px solid var(--darken);
+  background: var(--bg);
+  border: 2px solid var(--darken);
   &:hover {
     // color: var(--primary);
     box-shadow: inset 0 -4px 4px -3px #ffffff35, var(--beam-shadow);

@@ -1,10 +1,12 @@
 import { CONTACT_LINKS } from 'src/App'
+// import React from 'react'
 
 export default function ContactMe() {
+
   return (
-    <section className="flex-grow h-[80vh] items-center justify-center flex flex-col">
-      <section className="boxed_layout  w-full  flex flex-col items-center text-center ">
-        <header className="px-[30px] flex-grow">
+    <section  className="flex-grow h-full  items-center justify-center flex flex-col">
+      <section className="boxed_layout  w-full  p-[30px] flex flex-col items-center text-center ">
+        <header className="flex-grow">
           <h3 className="section_title">CONTACT</h3>
           <p>I am open to new opportunities in tech</p>
           <ul className="flex flex-wrap justify-center mt-4 gap-[30px]">

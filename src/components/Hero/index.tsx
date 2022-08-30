@@ -36,8 +36,8 @@ export default function Hero({
           <div className="subtitle select-none">{subTitle}</div>
         </header>
 
-        <div className="mt-[60px] p-[4px]">
-          <ul className="list list-row gap-[30px]">
+        <div className="mt-[30px]">
+          <ul className="list list-row gap-x-[30px]">
             {contact_links.map((content, idx) => (
               <li key={idx} className="list-item social_icon">
                 {content}
