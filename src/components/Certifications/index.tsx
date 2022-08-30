@@ -3,8 +3,8 @@ import certifications from 'src/.data/certifications.json'
 
 export default function Certifications() {
   return (
-    <div className="pb-[20px] flex flex-col items-center ">
-      <ul className="lg:columns-2 gap-[20px] pb-[20px]">
+    <div className="p-[30px] flex flex-col items-center ">
+      <ul className="lg:columns-2 gap-[20px]">
         {certifications?.map(({ name, timeline, link }, idx) => (
           <li key={idx} className="card mt-[20px]">
             <div>

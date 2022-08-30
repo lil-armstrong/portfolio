@@ -1,7 +1,7 @@
 #page_hero {
   width: 100%;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 90vh;
+  height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +30,8 @@
   text-align: center;
   position: relative;
   color: var(--text-color);
+  text-shadow: 2px 2px 2px var(--text-contrast);
+
   @media screen and (max-width: 768px) {
     font-size: 30px;
   }
@@ -92,7 +94,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 20%;
+  margin-top: 5%;
+  @media screen and (max-width: 768px) {
+    margin-top: 30%;
+  }
 }
 .me_passport {
   position: absolute;
@@ -101,9 +106,9 @@
     mix-blend-mode: multiply;
     filter: contrast(120%);
     // opacity: 0.75;
-    max-width: 85%;
+    max-width: 90%;
     @media screen and (min-width: 768px) {
-      max-width: 45%;
+      max-width: 40%;
     }
     margin: 0 auto 150px;
     // opacity: 0.95;

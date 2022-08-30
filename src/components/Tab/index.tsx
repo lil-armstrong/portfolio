@@ -18,6 +18,12 @@ interface TabPropsInterface {
 
 export default function Tab({ children }: { children: TabPropsInterface }) {
   const [activeIndex, setActiveIndex] = React.useState<string | number>(0)
+  // React.useEffect(()=>{
+  //   window.scrollTo({
+  //     behavior: "smooth",
+  //     top: 0
+  //   })
+  // }, [activeIndex])
   return children({ activeIndex, setActiveIndex })
 }
 

@@ -3,7 +3,7 @@ import work_experience from 'src/.data/work_experience.json'
 export default function WorkExperience() {
   return (
     <section className="boxed_layout">
-      <ul className="flex flex-col timeline-listing">
+      <ul className="flex flex-col timeline-listing  p-[30px]">
         {work_experience?.map(
           ({ org, roles, timeline, location, description }, idx) => (
             <li key={idx} className="card timeline">

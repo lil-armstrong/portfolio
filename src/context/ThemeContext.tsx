@@ -8,57 +8,73 @@ interface ThemeContextInterface {
 export const ThemeCtx = createContext<ThemeContextInterface | null>(null)
 
 /* const themeReducer = (
-  state: any,
-  action: { type: string; value: any }
+state: any,
+action: { type: string; value: any }
 ): any => {
-  switch (action?.type) {
-    case "": {
-      return;
-    }
-    default: {
-      return state;
-    }
-  }
+switch (action?.type) {
+case "": {
+return;
+}
+default: {
+return state;
+}
+}
 }; */
 
 export default function ThemeContextProvider(props: any) {
-  const [theme, setTheme] = useState('')
-  function onSwitch() {
-    setTheme(theme === 'light' ? 'dark' : 'light')
+  const [theme, setTheme] = useState('');
+
+  const setThemeValue = (themeValue: string): void => {
+    document.body.setAttribute('data-theme', themeValue)
+    setTheme(themeValue)
   }
+
+  function onSwitch() {
+    const fromLocalStore = localStorage.getItem('theme');
+    console.log(fromLocalStore)
+    const value = fromLocalStore === 'light' ? 'dark' : 'light'
+    localStorage.setItem('theme', value)
+    setThemeValue(value);
+  }
+
   useEffect(() => {
-    // document.documentElement.style.display = 'none'
-    const setThemeValue = (themeValue: string): void => {
-      document.body.setAttribute('data-theme', themeValue)
-      setTheme(themeValue)
-    }
+    const fromLocalStore = localStorage.getItem('theme');
 
-    if (window) {
-      if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
-        const darkModeMediaQuery = window.matchMedia(
-          '(prefers-color-scheme: dark)'
-        )
 
-        let darkModeOn = darkModeMediaQuery.matches
-        let themeValue = darkModeOn ? 'dark' : 'light'
-        if (!theme) {
-          setThemeValue(themeValue)
+    if(!fromLocalStore){
+      // document.documentElement.style.display = 'none'
+
+
+      if (window) {
+        if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+          const darkModeMediaQuery = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          )
+
+          let darkModeOn = darkModeMediaQuery.matches
+          let themeValue = darkModeOn ? 'dark' : 'light'
+          if (!theme) {
+            setThemeValue(themeValue);
+            localStorage.setItem('theme', themeValue)
+          }
+
+          darkModeMediaQuery.addEventListener('change', (e) => {
+            darkModeOn = e.matches
+            themeValue = darkModeOn ? 'dark' : 'light'
+            setThemeValue(themeValue)
+            localStorage.setItem('theme', themeValue)
+          })
         }
-
-        darkModeMediaQuery.addEventListener('change', (e) => {
-          darkModeOn = e.matches
-          themeValue = darkModeOn ? 'dark' : 'light'
-          setThemeValue(themeValue)
-
-          // console.log(`Dark mode is ${darkModeOn ? '🌒 on' : '☀️ off'}.`)
-        })
       }
+    }else{
+      setThemeValue(fromLocalStore);
     }
+
   }, [theme])
 
   return (
     <ThemeCtx.Provider value={{ onSwitch, currentValue: theme }}>
-      {props?.children}
+    {props?.children}
     </ThemeCtx.Provider>
   )
 }
