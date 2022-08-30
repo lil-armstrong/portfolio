@@ -8,6 +8,7 @@
   --bg: rgb(233, 233, 233);
   --bg-accent: hsla(0, 0%, 85%, 0.75);
   --text-color: #131313;
+  --text-contrast: #f3f3f3;
   --highlighted: #0d0d0e;
   --primary-accent: #044d69ee;
   --primary-contrast: rgb(234, 235, 241);
@@ -27,6 +28,7 @@
   --darken: #72788b;
   --lighten: #72788b;
   --text-color: #f2f2f2;
+  --text-contrast: #121212;
   --highlighted: #28a6f9;
 }
 
@@ -86,13 +88,22 @@ body {
     outline-offset: 0px;
   }
 }
+
+#gallery{
+  background-color: var(--bg-accent);
+  // @media screen and (min-width: 768px){
+  //   position: sticky;
+  //   top: 0
+  // }
+}
 .boxed_layout {
   margin: 0 auto;
   @media screen and (min-width: 768px) {
-    width: calc(55%);
+    width: calc(75%);
   }
   // display: none
 }
+
 
 .page_section {
   height: 100vh;
@@ -200,17 +211,10 @@ body {
 .timeline-listing {
   padding-left: 30px;
   border-left: 4px solid var(--bg-accent);
-  // &::before {
-  //   position: absolute;
-  //   // top: 30px;
-  //   left: 30px;
-  //   content: '';
-  //   width: 4px;
-  //   height: 100%;
-  //   background: var(--bg-accent);
-  // }
+
   .card {
     margin-bottom: 30px;
+
     &:before {
       left: -30px;
       width: 30px;
@@ -225,7 +229,7 @@ body {
     .meta {
       background: var(--bg);
       padding: 4px 12px;
-      margin-left: -30px;
+      // margin-left: -30px;
       transition: var(--fade-in);
       box-shadow: var(--beam-shadow);
       border-radius: 8px;
@@ -398,7 +402,7 @@ textarea {
   justify-content: center;
   line-height: 16px;
   font-weight: 600;
-  min-width: 150px;
+  min-width: 200px;
   color: var(--text-color);
   opacity: 0.85;
   &[data-hoverable='true'] {
@@ -416,6 +420,12 @@ textarea {
 .tag {
   @include tag();
   font-size: 0.75rem;
+}
+.highlight{
+  background-color: #fff2cc;
+  color: #333;
+  display: inline;
+  padding: 1px 4px;
 }
 /* .pill {
   // border-radius: 50px;
@@ -467,7 +477,7 @@ a {
   margin-bottom: 15px;
   &:after {
     content: '';
-    background: var(--primary-accent);
+    background: var(--bg-accent);
     width: 60px;
     height: 4px;
     position: absolute;
