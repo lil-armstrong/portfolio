@@ -10,7 +10,7 @@ export function ContactMe() {
         <section className="boxed_layout">
           <header className="flex flex-col grow items-center justify-center w-full">
             <p className="text-[4rem]">👋</p>
-            <p className="prose">
+            <p className="prose text-center">
               Nice to meet you! Reach out to me using the following
             </p>
             <ul className="flex flex-wrap justify-center mt-4 gap-[30px]">
