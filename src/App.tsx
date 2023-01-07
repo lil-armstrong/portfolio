@@ -167,10 +167,10 @@ function App() {
       <div className="fixed right-[30px] bottom-[60px] z-[10]">
         <div className="flex flex-col gap-[10px] items-center">
           <ThemeSwitcher />
-          <Menu />
+          {/* <Menu /> */}
           <div
             id="scroll__btn"
-            className="relative h-[100px]  w-[50px] shadow-sm overflow-hidden rounded-[25px] py-[4px]   flex flex-col items-center justify-center"
+            className="relative h-[100px]  w-[50px] floating__btn shadow-sm overflow-hidden rounded-[25px] py-[4px]   flex flex-col items-center justify-center"
           >
             <button
               disabled={state.disableUp}
@@ -192,11 +192,7 @@ function App() {
 
       <div className="z-[1] sticky top-0">
         <Hero
-          mainTitle={
-            <div className="w-full">
-              <TypeWriter speed={1000} text="Ebong Okposong" />
-            </div>
-          }
+          mainTitle={<div className="w-full">Ebong Okposong</div>}
           subTitle={
             <>
               <ul
@@ -204,7 +200,25 @@ function App() {
                 style={{ justifyContent: 'center' }}
               >
                 <li className="list-item font-bold">
-                  Software Engineer/Architect
+                  <TypeWriter
+                    speed={1000}
+                    loop
+                    text={[
+                      [
+                        `<strong class="highlight">Software engineer</strong> Front-end`,
+                        `Back-end`,
+                      ],
+                      [
+                        `<strong class="highlight">Platforms</strong> Web`,
+                        ` Mobile`,
+                        `Command line`,
+                      ],
+                      [
+                        `<strong class="highlight">UI</strong> designer`,
+                        'engineer',
+                      ],
+                    ]}
+                  />
                 </li>
               </ul>
             </>
