@@ -14,7 +14,7 @@ export function Certifications() {
             <li key={idx} className="card mt-[20px]">
               <div>
                 <p className="cert__title mb-1">{name}</p>
-                <ul className="dot-list meta text-gray-700 font-medium">
+                <ul className="dot-list meta opacity-60 font-medium">
                   <li className="list-item" title={timeline}>
                     {timeline}
                   </li>

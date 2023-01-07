@@ -1,0 +1,30 @@
+.title {
+  font-weight: 600;
+  font-size: 18px;
+  position: relative;
+  margin-bottom: 15px;
+  display: inline-flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  &:before {
+    content: '';
+    background: var(--highlighted);
+    width: 50%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 4px;
+    transform: translate(0px, 32px);
+  }
+  &:after {
+    content: '';
+    background: var(--highlighted);
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    position: absolute;
+    left: 55%;
+    transform: translate(0px, 32px);
+  }
+}

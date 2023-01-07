@@ -3,9 +3,9 @@
   flex-wrap: wrap;
   height: auto;
   row-gap: 20px;
-  width: 100%;
   padding-bottom: 100px;
   padding-top: 100px;
+  width: 100%;
   .grid-child {
     flex-grow: 1;
   }
@@ -15,7 +15,6 @@
     grid-template-rows: repeat(3, 1fr);
     grid-template-areas: 'one two three' 'two one one' 'one two one';
     grid-gap: 20px;
-    max-width: 100vw;
     gap: 20px;
 
     .grid-child {
