@@ -42,7 +42,7 @@
     "@vitejs/plugin-react-swc": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "gh-pages": "^4.0.0",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.21",
     "postcss-nesting": "^10.1.2",
     "sass": "^1.49.0",
     "styled-components": "^5.3.6",
