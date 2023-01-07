@@ -664,7 +664,6 @@ a {
   animation: bounceInRight; /* referring directly to the animation's @keyframe declaration */
   animation-duration: 1s;
   background: var(--bg);
-  box-shadow: 0 0px 20px -8px rgba(0, 0, 0, 0.377);
 
   button {
     &:focus {
@@ -679,5 +678,17 @@ a {
       background: var(--primary);
       color: var(--primary-contrast);
     }
+  }
+}
+
+.floating__btn {
+  transition: var(--fade-in);
+  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.377);
+
+  &:hover {
+    @media screen and (min-width: 768px) {
+      transform: translate(-2px, -2px);
+    }
+    box-shadow: var(--beam-shadow);
   }
 }

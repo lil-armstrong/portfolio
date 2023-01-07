@@ -8,7 +8,7 @@ function ThemeSwitcher() {
   return (
     <>
       <button
-        className={`${styles.button} rounded-full text-[20px]`}
+        className={`${styles.button} floating__btn rounded-full text-[20px]`}
         onClick={() => theme?.toggle()}
       >
         {theme?.mode === 'light' ? <BiMoon /> : <BiSun />}
