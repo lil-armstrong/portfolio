@@ -477,23 +477,6 @@ a {
   }
 }
 
-.skill-title {
-  font-weight: 500;
-  font-size: 18px;
-  position: relative;
-  margin-bottom: 15px;
-  &:after {
-    content: '';
-    background: var(--highlighted);
-    width: 60px;
-    height: 4px;
-    position: absolute;
-    left: 0;
-    border-radius: 4px;
-    transform: translate(0px, 32px);
-  }
-}
-
 .grid-item {
   width: 300px;
 }
@@ -684,6 +667,7 @@ a {
 .floating__btn {
   transition: var(--fade-in);
   box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.377);
+  border: 1px solid var(--bg-accent);
 
   &:hover {
     @media screen and (min-width: 768px) {

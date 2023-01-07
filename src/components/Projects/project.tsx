@@ -109,7 +109,7 @@ function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
                   )}
                 </li>
               ) : null}
-              <li className="timeline text-gray-700" title={timeline}>
+              <li className="timeline opacity-60" title={timeline}>
                 {timeline}
               </li>
             </ul>

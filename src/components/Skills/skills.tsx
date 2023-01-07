@@ -1,3 +1,4 @@
+import styles from './style.module.scss'
 import skills from '@/.data/skills'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
@@ -24,7 +25,7 @@ export default function Skills() {
             ([key, value]: [key: string, value?: Array<any>], indx) => (
               <ul key={indx} className="flex flex-col gap-[15px] ">
                 <li>
-                  <p className="capitalize  skill-title">
+                  <p className={`capitalize  ${styles.title}`}>
                     {key?.replace(/[-_]/g, ' ')}
                   </p>
                 </li>
@@ -53,7 +54,7 @@ export default function Skills() {
                                             {item?.name}
                                           </p>
                                           {item?.level && (
-                                            <small className="capitalize text-gray-700 inline-block font-medium mt-2">
+                                            <small className="capitalize opacity-60 inline-block font-medium mt-2">
                                               {item?.level}
                                             </small>
                                           )}

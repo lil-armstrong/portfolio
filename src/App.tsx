@@ -170,12 +170,12 @@ function App() {
           {/* <Menu /> */}
           <div
             id="scroll__btn"
-            className="relative h-[100px]  w-[50px] floating__btn shadow-sm overflow-hidden rounded-[25px] py-[4px]   flex flex-col items-center justify-center"
+            className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px]   flex flex-col items-center justify-center"
           >
             <button
               disabled={state.disableUp}
               onClick={handleScrollUp}
-              className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000001e] top-[0] w-full h-[50px]"
+              className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
             >
               <AiOutlineUp />
             </button>
