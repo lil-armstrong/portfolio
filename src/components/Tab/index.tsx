@@ -1,29 +1,17 @@
 import React from 'react'
-
-// interface TabDataInterface {
-//   name: string | JSX.Element;
-//   content: string | JSX.Element;
-// }
-
+import useAppCxt from '@/hook/app.hook'
+import { PAGES } from '@/types/pages'
 interface TabPropsInterface {
-  /* data: Array<TabDataInterface>;
-  clearStyles?: boolean;
-  headClass?: string | Array<string>;
-  contentClass?: string | Array<string>; */
   (props: {
     activeIndex: string | number
-    setActiveIndex: React.Dispatch<React.SetStateAction<string | number>>
+    setActiveIndex: React.Dispatch<React.SetStateAction<PAGES>>
   }): JSX.Element
 }
 
 export default function Tab({ children }: { children: TabPropsInterface }) {
-  const [activeIndex, setActiveIndex] = React.useState<string | number>(0)
-  // React.useEffect(()=>{
-  //   window.scrollTo({
-  //     behavior: "smooth",
-  //     top: 0
-  //   })
-  // }, [activeIndex])
+  const appCxt = useAppCxt()
+  const [activeIndex, setActiveIndex] = React.useState<PAGES>(appCxt.active)
+
   return children({ activeIndex, setActiveIndex })
 }
 
