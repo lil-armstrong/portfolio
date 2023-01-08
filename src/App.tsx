@@ -7,25 +7,31 @@ import {
   Skills,
   Tab,
   WorkExperience,
+  ThemeSwitcher,
+  TypeWriter,
 } from '@/components'
-import * as ThemeContext from '@/context/theme.context'
-import React, { createRef, useContext, useEffect } from 'react'
-import { RiGithubLine, RiLinkedinFill, RiPhoneFill } from 'react-icons/ri'
-// import FixedRightPanel from '@/components/FixedPanel'
 import Hero from '@/components/Hero/hero'
+import * as ThemeContext from '@/context/theme.context'
 import '@/styles/index.scss'
 import { PAGES } from '@/types/pages'
-import useAppCxt from './hook/app.hook'
-import '@fontsource/bakbak-one'
-import '@fontsource/anonymous-pro'
 import '@fontsource/alexandria/200.css'
 import '@fontsource/alexandria/300.css'
+import '@fontsource/anonymous-pro'
+import '@fontsource/bakbak-one'
 import 'animate.css'
+import { isDownDisabled, isUpDisabled } from '@/helper'
+import React, { createRef, useContext, useEffect } from 'react'
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
-import { BiSun, BiMoon } from 'react-icons/bi'
-import TypeWriter from './components/TypeWriter/type_writer'
-import ThemeSwitcher from './components/ThemeSwitcher/theme_switcher'
-// import '@fontsource/black-han-sans'
+import {
+  RiArrowUpCircleLine,
+  RiGithubLine,
+  RiLinkedinFill,
+  RiPhoneFill,
+} from 'react-icons/ri'
+import useAppCxt from './hook/app.hook'
+import { Poppable } from 'webrix/components'
+// import TestCmp from '@/components/Test'
+
 export const LINKS = {
   cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
   github: 'https://github.com/lil-armstrong',
@@ -53,62 +59,47 @@ export const CONTACT_LINKS: any[] = [
 
 const tab: Record<PAGES, { title: JSX.Element; content: React.FC }> = {
   [PAGES.ABOUT]: {
-    title: <>About Me</>,
+    title: <p>About Me</p>,
     content: AboutMe,
   },
   [PAGES.WORK_EXP]: {
-    title: <>Work Experience</>,
+    title: <p>Work Experience</p>,
     content: WorkExperience,
   },
   [PAGES.SKILL]: {
-    title: <>Skills</>,
+    title: <p>Skills</p>,
     content: Skills,
   },
   [PAGES.CERT]: {
-    title: <>Certifications</>,
+    title: <p>Certifications</p>,
     content: Certifications,
   },
   [PAGES.PROJECT]: {
-    title: <>Projects</>,
+    title: <p>Projects</p>,
     content: Projects,
   },
   [PAGES.CONTACT]: {
-    title: <>Contact</>,
+    title: <p>Contact</p>,
     content: ContactMe,
   },
-}
-
-function disableUp(scroll_height?: number) {
-  scroll_height = scroll_height
-    ? scroll_height
-    : document.documentElement.scrollTop
-  return !Boolean(scroll_height)
-}
-
-function disableDown(scroll_height?: number) {
-  scroll_height = scroll_height
-    ? scroll_height
-    : document.documentElement.scrollTop
-  const max_y = document.documentElement.scrollHeight
-  console.log({ scroll_height, max_y })
-  return scroll_height === max_y
 }
 
 // MAIN APP
 function App() {
   const theme = useContext(ThemeContext.ThemeCtx)
   const scrollRef = createRef<HTMLDivElement>()
+  const currentPageRef = React.useRef<PAGES>()
   const scroll_height = document.documentElement.scrollTop - window.innerHeight
   const appCxt = useAppCxt(),
-    activeTab = appCxt.active
+    activePage = appCxt.active
   const [state, set] = React.useState<{
     scroll_height: number
     disableUp: boolean
     disableDown: boolean
   }>({
     scroll_height: document.documentElement.scrollTop,
-    disableDown: disableDown(scroll_height),
-    disableUp: disableUp(scroll_height),
+    disableDown: isDownDisabled(scroll_height),
+    disableUp: isUpDisabled(scroll_height),
   })
 
   useEffect(() => {
@@ -118,29 +109,50 @@ function App() {
     }
   }, [theme])
 
+  useEffect(() => {
+    const cpr = currentPageRef.current,
+      sr = scrollRef.current
+    if (activePage && sr) {
+      if (cpr) {
+        if (cpr != activePage) {
+          currentPageRef.current = activePage
+          scrollRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+        }
+      } else {
+        currentPageRef.current = activePage
+        scrollRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    }
+  }, [activePage, scrollRef])
+
   const RenderTabContent = React.useCallback(() => {
-    const value = tab[activeTab]
-    const key = activeTab
+    const page = activePage ? activePage : PAGES.ABOUT
+
+    const value = tab[page]
+    const key = page
 
     return (
       <div className="h-full flex-grow m-auto">
         <value.content key={`tab_body_${key}`} />
       </div>
     )
-  }, [activeTab])
+  }, [activePage])
 
   const handleScrollUp = React.useCallback(() => {
     const scroll_height =
       document.documentElement.scrollTop - window.innerHeight
-    // window.scroll({
-    //   top: scroll_height,
-    // })
 
     set((prev) => ({
       ...prev,
       scroll_height,
-      disableDown: disableDown(scroll_height),
-      disableUp: disableUp(scroll_height),
+      disableDown: isDownDisabled(scroll_height),
+      disableUp: isUpDisabled(scroll_height),
     }))
     window.scrollBy(
       0,
@@ -154,23 +166,63 @@ function App() {
     set((prev) => ({
       ...prev,
       scroll_height: document.documentElement.scrollTop,
-      disableDown: disableDown(top),
-      disableUp: disableUp(top),
+      disableDown: isDownDisabled(top),
+      disableUp: isUpDisabled(top),
     }))
 
     window.scrollBy(0, window.innerHeight)
   }, [])
 
+  const isMenuItemActive = React.useCallback(
+    (itemId: PAGES) => {
+      return activePage == itemId
+    },
+    [activePage]
+  )
+  const GAP = 5
+
+  const menu_placement = React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
+    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
+      Poppable.Placements
+
+    return [
+      { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
+      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+      { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, -GAP) }, // Top right
+      { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
+      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, -GAP) }, // Bottom left
+      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
+    ]
+  }, [])
+
   return (
     <div className="block relative">
       {/* <FixedRightPanel /> */}
+      {/* <TestCmp /> */}
       <div className="fixed right-[30px] bottom-[60px] z-[10]">
         <div className="flex flex-col gap-[10px] items-center">
+          <Menu placement={{ initial: 6, area: menu_placement }}>
+            <div>
+              {Object.entries(tab).map(([id, { title }]) => (
+                <Menu.Item
+                  key={id}
+                  text={title}
+                  title={id}
+                  onClick={() => {
+                    appCxt.setPage(id as PAGES)
+                  }}
+                  active={isMenuItemActive(id as PAGES)}
+                />
+              ))}
+            </div>
+          </Menu>
           <ThemeSwitcher />
-          {/* <Menu /> */}
+
           <div
             id="scroll__btn"
-            className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px]   flex flex-col items-center justify-center"
+            className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px] flex flex-col items-center justify-center"
           >
             <button
               disabled={state.disableUp}
@@ -205,17 +257,16 @@ function App() {
                     loop
                     text={[
                       [
-                        `<strong class="highlight">Software engineer</strong> Front-end`,
-                        `Back-end`,
+                        ` <strong class="highlight">Roles</strong> Frontend_Engineer`,
+                        ` Backend_Engineer`,
+                        ` Technical_writer`,
                       ],
                       [
-                        `<strong class="highlight">Platforms</strong> Web`,
-                        ` Mobile`,
-                        `Command line`,
-                      ],
-                      [
-                        `<strong class="highlight">UI</strong> designer`,
-                        'engineer',
+                        `<strong class="highlight">Interest</strong> Web2_development`,
+                        ` Web3_development`,
+                        ` Mobile_development`,
+                        ` Electronics`,
+                        ` Design_(UI/UX)`,
                       ],
                     ]}
                   />
@@ -232,39 +283,10 @@ function App() {
           {({ activeIndex, setActiveIndex }) => {
             return (
               <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
-                {/* <header className="tab_head z-[3] top-[0px] sticky max-w-full">
-                  <ul className="flex overflow-x-auto">
-                    {Object.entries(tab).map(([k, v], idx) => (
-                      <li
-                        className="badge flex-grow  cursor-pointer"
-                        data-active={k === activeTab}
-                        data-hoverable={'true'}
-                        key={`tab_head_${k}_${idx}`}
-                        onClick={() => {
-                          setAppCxt &&
-                            setAppCxt((prev) => ({
-                              ...prev,
-                              active: k as PAGES,
-                            }))
-                          if (scrollRef.current) {
-                            scrollRef.current?.scrollIntoView({
-                              behavior: 'smooth',
-                              block: 'start',
-                            })
-                          }
-                        }}
-                      >
-                        {v.title}
-                      </li>
-                    ))}
-                  </ul>
-                </header> */}
-
                 <div
                   ref={scrollRef}
                   className="flex z-[1] flex-grow  overflow-y-auto hidden_scrollbar md:flex-nowrap flex-wrap"
                 >
-                  {/* Tab content screens*/}
                   <div className="z-0 relative w-full h-full overflow-y-auto hidden_scrollbar">
                     <RenderTabContent />
                   </div>
@@ -280,10 +302,6 @@ function App() {
           <div className="">
             <span>KEEP SCROLLING</span>
           </div>
-
-          {/* <button className="scroll-navigator round-btn">
-                    <RiArrowDownCircleLine />
-                  </button> */}
         </div>
       </div>
     </div>

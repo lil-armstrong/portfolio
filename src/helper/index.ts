@@ -51,3 +51,18 @@ export function typeWriter(config: TypeTextProps) {
 }
 
 // const a = typeWriter({text: "Hello World", target: console.log}).beginTyping();
+
+export function isUpDisabled(scroll_height?: number) {
+  scroll_height = scroll_height
+    ? scroll_height
+    : document.documentElement.scrollTop
+  return !Boolean(scroll_height)
+}
+
+export function isDownDisabled(scroll_height?: number) {
+  scroll_height = scroll_height
+    ? scroll_height
+    : document.documentElement.scrollTop
+  const max_y = document.documentElement.scrollHeight
+  return scroll_height === max_y
+}

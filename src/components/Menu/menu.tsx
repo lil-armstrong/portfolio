@@ -1,85 +1,211 @@
-import React, { useRef, forwardRef, useState, useCallback } from 'react'
-import { BiMenu } from 'react-icons/bi'
-import { Poppable, Movable } from 'webrix/components'
+import React from 'react'
+import { BiCaretRight, BiMenu, BiX } from 'react-icons/bi'
+import { Poppable } from 'webrix/components'
+import {
+  useClickOutside,
+  useDimensions,
+  useVisibilityState,
+} from 'webrix/hooks'
 import styles from './style.module.scss'
+import cls from 'classnames'
 
-const MovableRectangle = forwardRef(
-  (
-    { width, height, title }: { width: number; height: number; title: string },
-    ref
-  ) => {
-    const { innerWidth, innerHeight } = window
-    const [{ top, left }, setPosition] = useState({
-      top: (innerHeight - height * 2) / 2,
-      left: (innerWidth - width) / 2,
-    })
+type MenuProps = React.PropsWithChildren<
+  {
+    reference?: DOMRect
+    container?: React.RefObject<HTMLElement>
+  } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+>
 
-    const handleOnMove: React.MouseEventHandler<HTMLElement> = useCallback(
-      ({ clientX: cx, clientY: cy }) => {
-        setPosition(({ top, left }) => ({
-          top: top + cy,
-          left: left + cx,
-        }))
-      },
-      [setPosition]
-    )
+type MenuItemProps = React.PropsWithChildren<
+  {
+    active?: boolean
+    text: JSX.Element | string
+    icon?: JSX.Element | null
+  } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement>
+>
 
-    return (
-      <Movable
-        className={title.toLowerCase()}
-        title={title}
-        style={{ top, left }}
-        onBeginMove={handleOnMove}
-        onMove={handleOnMove}
-        ref={ref}
-      />
-    )
-  }
-)
+const GAP = 5
 
-function Menu() {
-  const reference = useRef()
-  const getPlacements = (rbr: any) => {
-    return [
-      { top: 100, left: 0 },
-      { top: 100, left: 100 },
-      { top: 0, left: 100 },
-      { top: -100, left: 100 },
-      { top: -100, left: 0 },
-      { top: -100, left: -100 },
-      { top: 0, left: -100 },
-      { top: 100, left: -100 },
-    ].map(({ top, left }) => ({ top: top + rbr.top, left: left + rbr.left }))
-  }
+export const Item = ({
+  children,
+  active,
+  text,
+  icon = null,
+  ...rest
+}: MenuItemProps) => {
+  const { visible, show, hide } = useVisibilityState()
+  const child = children && React.Children.only(children)
+  const ref = React.createRef<HTMLDivElement>()
   return (
-    <>
-      <div className={`${styles.container}`}>
-        <MovableRectangle
-          title="Reference"
-          height={100}
-          width={100}
-          ref={reference}
-        />
-        <Poppable
-          reference={reference}
-          placements={getPlacements}
-          className="poppable-target"
-        >
-          <BiMenu />
-        </Poppable>
-      </div>
-    </>
-  )
-}
-
-export default () => {
-  return (
-    <div className={`${styles.container}`}>
-      <button
-        className={`${styles.button} text-[20px] flex flex-col justify-center items-center w-[50px] h-[50px] rounded-full`}
-      >
-        <BiMenu />
-      </button>
+    <div
+      {...rest}
+      {...(!!child ? { onClick: show } : null)}
+      ref={ref}
+      className={cls(styles.menu__item, active ? styles.active_menu__item : '')}
+    >
+      {icon}
+      {text}
+      {child && <BiCaretRight />}
+      {visible && child && React.cloneElement(child, { reference: ref })}
     </div>
   )
 }
+// const Divider = () => <div className={cls(styles.divider)} />
+
+const Leaf = ({ children, reference, container }: MenuProps) => {
+  const menu = React.useRef()
+  const { width, height } = useDimensions(menu)
+  const ref = reference
+    ? reference
+    : new DOMRect(
+        (window.innerWidth - width) / 2,
+        (window.innerHeight - height) / 2,
+        0,
+        0
+      )
+
+  const placements: PlacementFnType = React.useCallback((rbr, tbr) => {
+    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
+      Poppable.Placements
+    return [
+      { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
+      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+      { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, GAP) }, // Top right
+      { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
+      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, GAP) }, // Bottom left
+      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
+    ]
+  }, [])
+
+  const props = {
+    reference,
+    placements,
+    className: 'poppable-target',
+    container,
+    ref: menu,
+  }
+
+  return (
+    <div className={`${styles.container}`}>
+      <Poppable {...props}>{children}</Poppable>
+    </div>
+  )
+}
+type MenuButton = React.PropsWithChildren<
+  {
+    open: boolean
+  } & React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLElement>,
+    HTMLButtonElement
+  >
+>
+
+const Button = React.forwardRef<HTMLButtonElement, MenuButton>((props, ref) => {
+  const { children, open, ...rest } = props
+
+  function Icon() {
+    return open ? <BiX /> : <BiMenu />
+  }
+
+  const className = cls('floating__btn', styles.button)
+
+  const $props = {
+    ...rest,
+    className,
+    ref,
+  }
+
+  return (
+    <button {...$props}>
+      <Icon />
+    </button>
+  )
+})
+type PlacementFnType = (
+  rbr: DOMRect,
+  tbr: DOMRect
+) => Array<{
+  top: number
+  left: number
+}>
+type PlacementTypes =
+  | 'top left'
+  | 'top center'
+  | 'top right'
+  | 'bottom left'
+  | 'bottom center'
+  | 'bottom right'
+  | 'center left'
+  | 'center right'
+type WrapperProps = React.PropsWithChildren<{
+  placement?: {
+    initial: number
+    area: PlacementFnType
+  }
+  container?: React.RefObject<HTMLElement>
+}>
+function Wrapper({ children, placement, container }: WrapperProps) {
+  const [open, setOpen] = React.useState<boolean>(false)
+  const btn_ref = React.createRef<HTMLButtonElement>()
+  const reference = React.createRef<HTMLDivElement>()
+
+  const initial_placement = placement?.initial ?? 0
+
+  const placements = placement?.area
+    ? placement.area
+    : React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
+        const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
+          Poppable.Placements
+
+        return [
+          { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
+          { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+          { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, GAP) }, // Top right
+          { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
+          { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+          { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, GAP) }, // Bottom left
+          { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+          { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
+        ]
+      }, [])
+
+  const poppable_props = {
+    default: initial_placement,
+    placements,
+    container,
+    reference: btn_ref,
+    className: 'fixed top-0',
+  }
+  const { visible, show, hide } = useVisibilityState()
+  const child = children && React.Children.only(children)
+  const handleOnMouseDownCapture = useClickOutside(hide)
+
+  return (
+    <div ref={reference}>
+      <Button open={visible} ref={btn_ref} onClick={visible ? hide : show} />
+
+      <Poppable
+        {...poppable_props}
+        onMouseDownCapture={handleOnMouseDownCapture}
+      >
+        {visible && child && (
+          <div className={cls(styles.container, 'rounded-md')}>
+            <div
+              className={cls(
+                styles.menu__title,
+                'sticky font-bold text-lg top-0 z-[1] shadow-lg'
+              )}
+            >
+              Menu
+            </div>
+            <div className={cls('p-4 z-[0]')}>{children}</div>
+          </div>
+        )}
+      </Poppable>
+    </div>
+  )
+}
+
+export default Object.assign(Wrapper, { Leaf, Item, Button })

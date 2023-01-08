@@ -13,7 +13,7 @@ type Props = React.PropsWithChildren<{
 }>
 
 function BottomNavigation(props: Props) {
-  const setAppCxt = useAppCxt().set
+  const setPage = useAppCxt().setPage
 
   const RenderSlot = React.useCallback(
     ({
@@ -33,9 +33,7 @@ function BottomNavigation(props: Props) {
             className={`cursor-pointer px-[25px] nav-link ${
               right ? 'justify-end' : 'justify-start'
             }`}
-            onClick={() =>
-              setAppCxt && setAppCxt((prev) => ({ ...prev, active: slot.to }))
-            }
+            onClick={() => setPage && setPage(slot.to)}
           >
             {!right && children}
             {slot.content}
@@ -45,7 +43,7 @@ function BottomNavigation(props: Props) {
       }
       return null
     },
-    [setAppCxt]
+    [setPage]
   )
 
   return (

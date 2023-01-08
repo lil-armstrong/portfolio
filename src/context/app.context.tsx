@@ -3,24 +3,56 @@ import { PAGES } from '@/types/pages'
 
 type ColorScheme = 'light' | 'dark' | 'system'
 type TContext = {
-  active: PAGES
-  set?: React.Dispatch<React.SetStateAction<TState>>
+  active: PAGES | null
+  setPage: (active: PAGES) => void
+  setThemeMode: (mode: ColorScheme) => void
+  set: React.Dispatch<React.SetStateAction<TState>>
   theme: { mode: ColorScheme; toggle: Function }
 }
 type TState = Omit<TContext, 'set'>
 
 export const AppCxt = createContext<TContext>({
-  active: PAGES.ABOUT,
-  theme: { mode: 'light', toggle: () => null },
+  setThemeMode: () => null,
+  active: null,
+  set: () => null,
+  theme: {
+    mode: 'light',
+    toggle: () => null,
+  },
+  setPage: () => null,
 })
 
 function AppCxtProvider({ children }: React.PropsWithChildren) {
   const [state, setState] = useState<TState>({
-    active: PAGES.ABOUT,
+    active: null,
+    setPage,
+    setThemeMode,
     theme: { mode: 'light', toggle: onThemeSwitch },
   })
 
-  const setThemeValue = (themeValue: ColorScheme): void => {
+  React.useEffect(() => {
+    const url = new URL(window.location.href)
+    const search = new URLSearchParams(url.search)
+
+    if (search.has('page')) {
+      const page = search.get('page') as PAGES
+      if (Object.values(PAGES).includes(page))
+        setPage(search.get('page') as PAGES)
+    }
+  }, [])
+
+  function setPage(active: PAGES) {
+    const url = new URLSearchParams('')
+    url.append('page', active)
+    window.history.pushState(
+      { page: active },
+      `Page change to ${active}`,
+      `?${url.toString()}`
+    )
+    setState((prev) => ({ ...prev, active }))
+  }
+
+  function setThemeMode(themeValue: ColorScheme) {
     document.body.setAttribute('data-theme', themeValue)
     setState((prev) => ({
       ...prev,
@@ -37,7 +69,7 @@ function AppCxtProvider({ children }: React.PropsWithChildren) {
 
     value = value === 'light' ? 'dark' : 'light'
     localStorage.setItem('theme', value)
-    setThemeValue(value)
+    setThemeMode(value)
   }
 
   React.useEffect(() => {
@@ -45,7 +77,6 @@ function AppCxtProvider({ children }: React.PropsWithChildren) {
 
     if (!fromLocalStore) {
       // document.documentElement.style.display = 'none'
-      console.log({ fromLocalStore })
 
       if (window) {
         if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
@@ -56,7 +87,7 @@ function AppCxtProvider({ children }: React.PropsWithChildren) {
           let darkModeOn = darkModeMediaQuery.matches
           let themeValue = darkModeOn ? 'dark' : ('light' as ColorScheme)
           if (state.theme.mode == 'system') {
-            setThemeValue(themeValue)
+            setThemeMode(themeValue)
             localStorage.setItem('theme', themeValue)
           }
 
@@ -64,13 +95,13 @@ function AppCxtProvider({ children }: React.PropsWithChildren) {
             console.log('Hello')
             darkModeOn = e.matches
             themeValue = darkModeOn ? 'dark' : ('light' as ColorScheme)
-            setThemeValue(themeValue)
+            setThemeMode(themeValue)
             localStorage.setItem('theme', themeValue)
           })
         }
       }
     } else {
-      setThemeValue(fromLocalStore)
+      setThemeMode(fromLocalStore)
     }
   }, [state.theme.mode])
 

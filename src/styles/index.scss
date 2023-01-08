@@ -8,11 +8,12 @@
   --bg-accent: hsla(0, 0%, 85%, 0.75);
   --text-color: #131313;
   --text-contrast: #f3f3f3;
-  --highlighted: #0d0d0e;
-  --primary-accent: hsla(197, 93%, 21%, 0.933);
+  --highlighted: hwb(340 24% 41%);
+  --highlighted-contrast: #fff;
+  --primary-accent: hwb(340 24% 41%);
   --primary-contrast: rgb(234, 235, 241);
-  --primary: #0e1225;
-  --darken: #72788b;
+  --primary: #120e27;
+  --subtle: hsl(326, 14%, 65%);
   --lighten: #72788b;
   --beam-shadow: 0px 20px 30px 6px rgba(0, 0, 0, 0.125);
 }
@@ -21,15 +22,16 @@
   // --beam-shadow: 0px 20px 30px -6px rgba(40, 166, 249, 0.2);
   --beam-shadow: 0 -5px 35px 1px rgba(40, 166, 249, 0.2);
   --primary: hsl(204, 85%, 40%);
-  --primary-accent: #265879;
+  --primary-accent: #127c9c;
   --bg: #141a31;
   --primary-contrast: rgb(239, 240, 245) 25;
   --bg-accent: #1d233a;
-  --darken: #72788b;
+  --subtle: #384368;
   --lighten: #72788b;
   --text-color: #f2f2f2;
   --text-contrast: #121212;
-  --highlighted: #28a6f9;
+  --highlighted: #f31d10;
+  --highlighted-contrast: #eabbba;
 }
 
 @mixin tag() {
@@ -55,7 +57,7 @@
 @media (prefers-reduced-motion) {
 }
 :root {
-  --fade-in: all 0.5s ease-in-out;
+  --fade-in: all 0.125s ease-in-out;
   --fancy-font: 'Anonymous Pro', sans-serif;
   --default-font: 'Alexandria', sans-serif;
   --prose-font: 'Alexandria', serif;
@@ -426,11 +428,11 @@ textarea {
   font-size: 0.75rem;
 }
 .highlight {
-  background-color: #fff2cc;
-  color: #333;
+  background-color: var(--highlighted);
+  color: var(--highlighted-contrast);
   display: inline;
   padding: 1px 4px;
-  font-weight: 700;
+  font-weight: 900;
   text-transform: none;
   font-style: normal;
 }
@@ -494,7 +496,7 @@ a {
   display: flex;
   column-gap: 10px;
   align-items: center;
-  color: var(--darken);
+  color: var(--subtle);
   width: 100vh;
   height: auto;
   text-transform: uppercase;
@@ -502,7 +504,7 @@ a {
   gap: 30px;
   &::before {
     content: '';
-    background: var(--darken);
+    background: var(--subtle);
     height: 1px;
     opacity: 0;
     position: relative;
@@ -516,7 +518,7 @@ a {
   &::after {
     opacity: 0.75;
     content: '';
-    background: var(--darken);
+    background: var(--subtle);
     height: 1px;
     position: relative;
     flex: auto;
@@ -666,8 +668,10 @@ a {
 
 .floating__btn {
   transition: var(--fade-in);
-  box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.377);
-  border: 1px solid var(--bg-accent);
+  box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.377), 0 0 8px -2px var(--subtle);
+  // border: 1px solid var(--subtle);
+  background: var(--bg);
+  font-size: 22px;
 
   &:hover {
     @media screen and (min-width: 768px) {
@@ -675,4 +679,8 @@ a {
     }
     box-shadow: var(--beam-shadow);
   }
+}
+.poppable-triangle {
+  --triangle-color: var(--bg);
+  position: absolute;
 }

@@ -10,11 +10,10 @@ function ImageSense(props: Props) {
   }))
   const calcXYZ = (x: number, y: number) => {
     const output = [
-      -(y - window.innerHeight / 2) / 15,
-      (x - window.innerWidth / 2) / 15,
+      -(y - window.innerHeight / 2) / 60,
+      (x - window.innerWidth / 2) / 60,
       1.0,
     ]
-    // console.log({ output })
     return output
   }
   const interpPerps = xyz.to(

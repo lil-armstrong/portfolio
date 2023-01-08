@@ -3,9 +3,10 @@ import { LINKS } from '@/types/links'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 // import MePng from '@/assets/me.png'
 import useAppCxt from '@/hook/app.hook'
+import cl from 'classnames'
 
 export function AboutMe() {
-  const setAppCxt = useAppCxt().set
+  const setPage = useAppCxt().setPage
 
   return (
     <>
@@ -23,10 +24,13 @@ export function AboutMe() {
             </figure> */}
             <div className="">
               <p className="lead prose">
-                <span className="block mb-3 font-bold">Nice to meet you.</span>
-                <span className="block">
-                  I build for the <em className="highlight">web</em> and{' '}
-                  <em className="highlight">mobile</em> application platforms
+                <span className="block pb-2 pt-4 text-2xl">
+                  👋 Nice to meet you.
+                </span>
+                <span className="block pt-[16px]">
+                  I build applications for the{' '}
+                  <em className="highlight">web</em> and{' '}
+                  <em className="highlight">mobile</em>
                 </span>
                 <span className="block">
                   Software engineer with a passion for solving complex problems
@@ -52,12 +56,9 @@ export function AboutMe() {
                   with a focus on delivering high-quality products that meet the
                   needs of users.{' '}
                   <a
-                    href="#skills"
-                    className="nav-link"
-                    onClick={() =>
-                      setAppCxt &&
-                      setAppCxt((prev) => ({ ...prev, active: PAGES.SKILL }))
-                    }
+                    href={`#${PAGES.SKILL}`}
+                    className="nav-link hover:underline underline-offset-4 decoration-dashed"
+                    onClick={() => setPage && setPage(PAGES.SKILL)}
                   >
                     Find out more
                   </a>
@@ -71,12 +72,12 @@ export function AboutMe() {
                   drive business growth
                 </span>
                 <a
-                  href="#contact-me"
-                  className="nav-link"
-                  onClick={() =>
-                    setAppCxt &&
-                    setAppCxt((prev) => ({ ...prev, active: PAGES.CONTACT }))
-                  }
+                  href={`#${PAGES.CONTACT}`}
+                  className={cl(
+                    'nav-link',
+                    'hover:underline underline-offset-4 decoration-dashed'
+                  )}
+                  onClick={() => setPage && setPage(PAGES.CONTACT)}
                 >
                   📫 Reach out
                 </a>
@@ -87,6 +88,8 @@ export function AboutMe() {
           <a
             href={LINKS?.CV}
             download
+            target="_blank"
+            rel="noreferrer"
             className="btn btn-primary btn-lg mb-[70px]"
           >
             Download CV

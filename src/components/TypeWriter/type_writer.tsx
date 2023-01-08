@@ -10,7 +10,7 @@ type Props = React.PropsWithChildren<{
 function TypeWriter({ speed = 500, text, loop }: Props) {
   const [char, set] = React.useState<string>('')
   const ref = React.createRef<HTMLDivElement>()
-
+  const renderText = (text: string) => text.replaceAll('_', ' ')
   React.useEffect(() => {
     if (ref.current) {
       let typewriter = new $TypeWriter(ref.current, {
@@ -22,7 +22,7 @@ function TypeWriter({ speed = 500, text, loop }: Props) {
 
         if (Array.isArray(value)) {
           value.forEach((v, idx) => {
-            typewriter.typeString(v).pauseFor(speed)
+            typewriter.typeString(renderText(v)).pauseFor(speed)
             // get last index of space
             const lspace = v.lastIndexOf(' ')
             if (lspace != -1) {
@@ -35,7 +35,8 @@ function TypeWriter({ speed = 500, text, loop }: Props) {
 
             typewriter.pause(speed / 2)
           })
-        } else typewriter.typeString(value).pauseFor(1000).deleteAll()
+        } else
+          typewriter.typeString(renderText(value)).pauseFor(1000).deleteAll()
 
         if (!loop && index >= text.length - 1) {
           typewriter.stop()
@@ -48,7 +49,7 @@ function TypeWriter({ speed = 500, text, loop }: Props) {
     }
   }, [])
 
-  return <div ref={ref}></div>
+  return <code ref={ref}></code>
 }
 
 export default TypeWriter

@@ -8,7 +8,7 @@
   margin-bottom: 30px;
   &:before {
     content: '';
-    background: var(--highlighted);
+    background: var(--primary);
     width: 50%;
     height: 4px;
     position: absolute;
@@ -19,7 +19,7 @@
   }
   &:after {
     content: '';
-    background: var(--highlighted);
+    background: var(--primary);
     width: 4px;
     height: 4px;
     border-radius: 4px;

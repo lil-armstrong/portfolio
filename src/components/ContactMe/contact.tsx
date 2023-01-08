@@ -1,6 +1,8 @@
 import { CONTACT_LINKS } from '@/App'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
+import styles from './style.module.scss'
+import cl from 'classnames'
 
 export function ContactMe() {
   return (
@@ -8,19 +10,25 @@ export function ContactMe() {
       <section className="flex-grow h-screen relative pb-[60px] items-center justify-center flex flex-col">
         <h3 className="section-heading">Contact</h3>
         <section className="boxed_layout">
-          <header className="flex flex-col grow items-center justify-center w-full">
-            <p className="text-[4rem]">👋</p>
-            <p className="prose text-center">
-              Nice to meet you! Reach out to me using the following
-            </p>
-            <ul className="flex flex-wrap justify-center mt-4 gap-[30px]">
-              {CONTACT_LINKS?.map((item, idx) => (
-                <li className="social_icon" key={idx}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </header>
+          <div className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center my-[30px]">
+            <header className="flex flex-col gap-x-[10px] my-[30px] grow items-center justify-center w-full mx-[30px]">
+              <p className="text-[4rem]">👋</p>
+              <p className={cl(styles.title, 'text-center mb-4')}>
+                Nice to meet you!
+              </p>
+              <p>Do reach out to me using the following</p>
+              <ul className="list mt-[60px] gap-[30px]">
+                {CONTACT_LINKS?.map((item, idx) => (
+                  <li className="list-item social_icon" key={idx}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </header>
+            <button type="submit" className="btn btn-outline btn-lg">
+              <a href="mailto:oebong1@gmail.com">Get in touch</a>
+            </button>
+          </div>
 
           {/* <form className="flex flex-col gap-[10px] my-[30px]">
                 <div className="px-[15px] flex flex-col gap-[10px]">
@@ -50,12 +58,6 @@ export function ContactMe() {
                   ></textarea>
                 </div>
               </form> */}
-
-          <div className="flex w-full justify-center gap-[20px] items-center my-[30px]">
-            <button type="submit" className="btn btn-outline btn-lg">
-              <a href="mailto:oebong1@gmail.com">Get in touch</a>
-            </button>
-          </div>
         </section>
       </section>
       <div className="absolute bottom-0 w-full left-0">

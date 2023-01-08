@@ -9,5 +9,7 @@ export { default as Projects } from "./Projects/project"
 export { default as Tab } from "./Tab"
 export { default as WorkExperience } from "./WorkExperience/work_experience"
 export { default as BottomNavigation } from "./BottomNavigation/bottom_navigation"
-export { default as ImageSense } from "./ImageSense/image_sense"
+export { default as ImageSense } from "./ImageSense/image_sense";
+export { default as TypeWriter } from "./TypeWriter/type_writer"
+export { default as ThemeSwitcher } from "./ThemeSwitcher/theme_switcher"
 export { default as Menu } from "./Menu/menu"
