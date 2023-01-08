@@ -8,30 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@fontsource/alexandria": "^4.5.0",
-    "@fontsource/anonymous-pro": "^4.5.9",
-    "@fontsource/bakbak-one": "^4.5.8",
-    "@fontsource/black-han-sans": "^4.5.9",
-    "@fontsource/esteban": "^4.5.10",
-    "@react-spring/web": "^9.6.1",
-    "animate.css": "^4.1.1",
-    "cssesc": "^3.0.0",
-    "i18next": "^21.8.8",
-    "i18next-browser-languagedetector": "^6.1.4",
-    "masonry-layout": "^4.2.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^11.17.0",
-    "react-icons": "^4.3.1",
-    "react-markdown": "^8.0.3",
-    "typewriter-effect": "^2.19.0",
-    "webrix": "^1.5.11"
-  },
-  "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

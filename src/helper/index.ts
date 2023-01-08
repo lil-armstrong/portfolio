@@ -10,7 +10,7 @@ export async function resolveAsset(url: string | undefined, async: boolean = tru
         return item.default
       })
     }
-
+    /* @ts-ignore */
     return require(/* @vite-ignore */url)
 
   } catch (error: any) {
