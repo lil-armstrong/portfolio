@@ -22,15 +22,10 @@ import 'animate.css'
 import { isDownDisabled, isUpDisabled } from '@/helper'
 import React, { createRef, useContext, useEffect } from 'react'
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
-import {
-  RiArrowUpCircleLine,
-  RiGithubLine,
-  RiLinkedinFill,
-  RiPhoneFill,
-} from 'react-icons/ri'
+import { RiGithubLine, RiLinkedinFill, RiPhoneFill } from 'react-icons/ri'
 import useAppCxt from './hook/app.hook'
 import { Poppable } from 'webrix/components'
-// import TestCmp from '@/components/Test'
+import cn from 'classnames'
 
 export const LINKS = {
   cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
@@ -196,115 +191,128 @@ function App() {
       { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
     ]
   }, [])
+  const menu_container_ref = React.createRef<HTMLDivElement>()
 
   return (
-    <div className="block relative">
-      {/* <FixedRightPanel /> */}
-      {/* <TestCmp /> */}
-      <div className="fixed right-[30px] bottom-[60px] z-[10]">
-        <div className="flex flex-col gap-[10px] items-center">
-          <Menu placement={{ initial: 6, area: menu_placement }}>
-            <div>
-              {Object.entries(tab).map(([id, { title }]) => (
-                <Menu.Item
-                  key={id}
-                  text={title}
-                  title={id}
-                  onClick={() => {
-                    appCxt.setPage(id as PAGES)
-                  }}
-                  active={isMenuItemActive(id as PAGES)}
-                />
-              ))}
-            </div>
-          </Menu>
-          <ThemeSwitcher />
+    <>
+      <div className="block relative">
+        {/* <FixedRightPanel /> */}
+        {/* <TestCmp /> */}
+        <div
+          ref={menu_container_ref}
+          className="fixed right-[30px] bottom-[60px] z-[10]"
+        >
+          <div className="flex flex-col gap-[10px] items-center">
+            <ThemeSwitcher />
 
-          <div
-            id="scroll__btn"
-            className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px] flex flex-col items-center justify-center"
-          >
-            <button
-              disabled={state.disableUp}
-              onClick={handleScrollUp}
-              className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
+            {/* Menu bar */}
+            <Menu
+              placement={{ initial: 6, area: menu_placement }}
+              container={menu_container_ref}
+              className={cn('ml-[-90px] mt-[-60px]')}
             >
-              <AiOutlineUp />
-            </button>
-            <button
-              disabled={state.disableDown}
-              onClick={handleScrollDown}
-              className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
+              <div>
+                {Object.entries(tab).map(([id, { title }]) => (
+                  <Menu.Item
+                    key={id}
+                    text={title}
+                    title={id}
+                    onClick={() => {
+                      appCxt.setPage(id as PAGES)
+                    }}
+                    active={isMenuItemActive(id as PAGES)}
+                  />
+                ))}
+              </div>
+            </Menu>
+            {/* END: Menu bar */}
+
+            <div
+              id="scroll__btn"
+              className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px] flex flex-col items-center justify-center"
             >
-              <AiOutlineDown />
-            </button>
+              <button
+                disabled={state.disableUp}
+                onClick={handleScrollUp}
+                className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
+              >
+                <AiOutlineUp />
+              </button>
+              <button
+                disabled={state.disableDown}
+                onClick={handleScrollDown}
+                className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
+              >
+                <AiOutlineDown />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="z-[1] sticky top-0">
-        <Hero
-          mainTitle={<div className="w-full">Ebong Okposong</div>}
-          subTitle={
-            <>
-              <ul
-                className="list list-row "
-                style={{ justifyContent: 'center' }}
-              >
-                <li className="list-item font-bold">
-                  <TypeWriter
-                    speed={1000}
-                    loop
-                    text={[
-                      [
-                        ` <strong class="highlight">Roles</strong> Frontend_Engineer`,
-                        ` Backend_Engineer`,
-                        ` Technical_writer`,
-                      ],
-                      [
-                        `<strong class="highlight">Interest</strong> Web2_development`,
-                        ` Web3_development`,
-                        ` Mobile_development`,
-                        ` Electronics`,
-                        ` Design_(UI/UX)`,
-                      ],
-                    ]}
-                  />
-                </li>
-              </ul>
-            </>
-          }
-          contact_links={CONTACT_LINKS}
-        />
-      </div>
-      {/* Tab*/}
-      <main id="main-content" className="z-[2] relative">
-        <Tab>
-          {({ activeIndex, setActiveIndex }) => {
-            return (
-              <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
-                <div
-                  ref={scrollRef}
-                  className="flex z-[1] flex-grow  overflow-y-auto hidden_scrollbar md:flex-nowrap flex-wrap"
+        <div className="z-[1] sticky top-0">
+          <Hero
+            mainTitle={<div className="w-full">Ebong Okposong</div>}
+            subTitle={
+              <>
+                <ul
+                  className="list list-row "
+                  style={{ justifyContent: 'center' }}
                 >
-                  <div className="z-0 relative w-full h-full overflow-y-auto hidden_scrollbar">
-                    <RenderTabContent />
+                  <li className="list-item font-bold">
+                    <TypeWriter
+                      speed={1000}
+                      loop
+                      text={[
+                        [
+                          ` <strong class="highlight">Roles</strong> Frontend_Engineer`,
+                          ` Backend_Engineer`,
+                          ` Technical_writer`,
+                        ],
+                        [
+                          `<strong class="highlight">Interest</strong> Web2_development`,
+                          ` Web3_development`,
+                          ` Mobile_development`,
+                          ` Electronics`,
+                          ` Design_(UI/UX)`,
+                        ],
+                      ]}
+                    />
+                  </li>
+                </ul>
+              </>
+            }
+            contact_links={CONTACT_LINKS}
+          />
+        </div>
+        {/* Tab*/}
+        <main id="main-content" className="z-[2] relative">
+          <Tab>
+            {({ activeIndex, setActiveIndex }) => {
+              return (
+                <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
+                  <div
+                    ref={scrollRef}
+                    className="flex z-[1] flex-grow  overflow-y-auto hidden_scrollbar md:flex-nowrap flex-wrap"
+                  >
+                    <div className="z-0 relative w-full h-full overflow-y-auto hidden_scrollbar">
+                      <RenderTabContent />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          }}
-        </Tab>
-      </main>
-      {/* Keep scrolling section*/}
-      <div className="scroll-indicator-container">
-        <div className="scroll-indicator">
-          <div className="">
-            <span>KEEP SCROLLING</span>
+              )
+            }}
+          </Tab>
+        </main>
+        {/* Keep scrolling section*/}
+        <div className="scroll-indicator-container">
+          <div className="scroll-indicator">
+            <div className="">
+              <span>KEEP SCROLLING</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

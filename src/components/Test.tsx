@@ -4,7 +4,7 @@ import { Poppable } from 'webrix/components'
 import cls from 'classnames'
 const GAP = 5
 
-const Reference = forwardRef((_, ref) => (
+const Reference = forwardRef<HTMLDivElement>((_, ref) => (
   <div
     className={cls(
       styles.reference,
@@ -17,8 +17,8 @@ const Reference = forwardRef((_, ref) => (
 ))
 
 const PoppableExample = () => {
-  const reference = useRef()
-  const placements = useCallback((rbr, tbr) => {
+  const reference = React.createRef<HTMLDivElement>()
+  const placements = useCallback((rbr: DOMRect, tbr: DOMRect) => {
     const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
       Poppable.Placements
     return [
@@ -58,19 +58,6 @@ const PoppableExample = () => {
       <Poppable {...props} default={area}>
         {map[area]}
       </Poppable>
-
-      <input
-        type="number"
-        name="area"
-        id="area"
-        min={0}
-        max={7}
-        defaultValue={area}
-        className={cls(
-          'text-md text-black font-bold bg-gray-300 mt-[30px] absolute bottom-[30px] w-[50%]  p-2'
-        )}
-        onChange={(e: Event) => set(e.target.value)}
-      />
     </>
   )
 }

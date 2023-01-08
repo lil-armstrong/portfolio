@@ -46,7 +46,7 @@ export const Item = ({
       {icon}
       {text}
       {child && <BiCaretRight />}
-      {visible && child && React.cloneElement(child, { reference: ref })}
+      {/* {visible && child && React.cloneElement<JSX.Element>(child, { reference: ref })} */}
     </div>
   )
 }
@@ -144,9 +144,10 @@ type WrapperProps = React.PropsWithChildren<{
     initial: number
     area: PlacementFnType
   }
-  container?: React.RefObject<HTMLElement>
+  container?: React.RefObject<HTMLElement | HTMLDivElement>
+  className?:string
 }>
-function Wrapper({ children, placement, container }: WrapperProps) {
+function Wrapper({ children, placement, className, container }: WrapperProps) {
   const [open, setOpen] = React.useState<boolean>(false)
   const btn_ref = React.createRef<HTMLButtonElement>()
   const reference = React.createRef<HTMLDivElement>()
@@ -176,7 +177,7 @@ function Wrapper({ children, placement, container }: WrapperProps) {
     placements,
     container,
     reference: btn_ref,
-    className: 'fixed top-0',
+    className: cls('fixed top-0', className),
   }
   const { visible, show, hide } = useVisibilityState()
   const child = children && React.Children.only(children)
