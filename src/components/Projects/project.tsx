@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { RiExternalLinkLine } from 'react-icons/ri'
 import projects from '@/.data/projects'
 import ReactMarkdown from 'react-markdown'
-import { resolveAsset } from '../../helper'
+// import { resolveAsset } from '../../helper'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import './style.scss'
@@ -60,7 +60,7 @@ export function Projects() {
 }
 
 function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
-  const [image, setImage] = useState('https://via.placeholder.com/50')
+  const [image, setImage] = useState<string>()
   const {
     name,
     roles,
@@ -73,10 +73,12 @@ function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
   } = props.data
 
   useEffect(() => {
-    ;(async () => {
-      const image = await resolveAsset(image_url)
-      setImage(image)
-    })()
+    if (image_url) {
+      ;(async () => {
+        const image = new URL(image_url, window.location.href).href
+        setImage(image)
+      })()
+    }
   }, [image_url])
 
   return (
@@ -84,11 +86,7 @@ function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
       <div className="flex-grow flex flex-col h-full">
         <div className="flex gap-[15px]">
           <div className="rounded-lg overflow-hidden w-[50px] h-[50px]  bg-opacity-50 text-[8px] justify-center items-center text-center flex flex-column">
-            <img
-              // @ts-ignore
-              src={image}
-              alt="Logo"
-            />
+            <img src={image} alt={name} />
           </div>
           <div className="ml-[8px] w-full">
             <p className="name text-capitalize">{name}</p>

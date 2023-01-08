@@ -15,7 +15,7 @@ export async function resolveAsset(url: string | undefined, async: boolean = tru
 
   } catch (error: any) {
     console.error(error?.message);
-    return 'https://via.placeholder.com/50'
+    return 'https://via.placeholder.com/60'
   }
 }
 type TypeTextProps = {

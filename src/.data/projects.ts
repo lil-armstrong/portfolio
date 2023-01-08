@@ -9,7 +9,7 @@ export default [
     \u2022 Implementation of an API distribution system
     \u2022 Documentation of API using Postman and Swagger
     `,
-    image_url: "/node.svg",
+    image_url: "node.svg",
     // link: "https://coin.api.block-stars-dev.com/api/v1/docs",
   },
   {
@@ -21,7 +21,7 @@ export default [
     \u2022 UI functionality implementation
     `,
     link: 'https://play.google.com/store/apps/details?id=com.relaywash.com&pli=1',
-    image_url: "/project/relaywash-icon.png",
+    image_url: "project/relaywash-icon.png",
   },
   {
     name: "Lopeer",
@@ -32,7 +32,7 @@ export default [
     \u2022 Completion of all UI flows
     \u2022 Instant messaging`,
     link: "https://play.google.com/store/apps/details?id=com.lopeer.lopeer",
-    image_url: "/project/lopeer-icon.png",
+    image_url: "project/lopeer-icon.png",
   },
   {
     name: "Metamask",
@@ -49,7 +49,7 @@ export default [
     description: `## Customization of Metamask Extension
     \u2022 Custom branding
     \u2022 Autoloading of custom tokens`,
-    image_url: "/project/metamask-icon.png",
+    image_url: "project/metamask-icon.png",
   },
   {
     name: "Perzsi",
@@ -67,7 +67,7 @@ export default [
       \u2022 Data scrapping
       \u2022 UI design implementation`,
     link: "https://perzsi.com",
-    image_url: "/project/perzsi-icon.png",
+    image_url: "project/perzsi-icon.png",
   },
   {
     name: "Cointc",
@@ -88,7 +88,7 @@ export default [
     \u2022 API Integration
     \u2022 User and Admin dashboard`,
     link: "https://cointc.net",
-    image_url: "/project/cointc-icon.png",
+    image_url: "project/cointc-icon.png",
   },
   {
     name: "Ordavo.nl",
@@ -100,7 +100,7 @@ export default [
       \u2022 Instant messaging
       \u2022 Internalization`,
     // link: 'https://ordavo.nl',
-    image_url: "/vue.svg"
+    image_url: "vue.svg"
   },
   {
     name: "EGLogistics",
@@ -113,6 +113,6 @@ export default [
       \u2022 Web application interface design
       \u2022 Custom Google Map Integration`,
     // link: 'https://eglogisticsng.com',
-    image_url: "/vue.svg"
+    image_url: "vue.svg"
   },
 ];
