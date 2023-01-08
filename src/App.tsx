@@ -209,7 +209,7 @@ function App() {
             <Menu
               placement={{ initial: 6, area: menu_placement }}
               container={menu_container_ref}
-              className={cn('ml-[-90px] mt-[-60px]')}
+              className={cn('right-[90px] mt-[-60px]')}
             >
               <div>
                 {Object.entries(tab).map(([id, { title }]) => (

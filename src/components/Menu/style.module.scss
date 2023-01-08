@@ -8,13 +8,12 @@
   scrollbar-width: none;
   overflow: hidden;
   overflow-y: auto;
-  right: 0;
   bottom: 30px;
   max-height: 450px;
   height: auto;
   box-shadow: var(--beam-shadow);
+  position: fixed;
 }
-
 .menu__title {
   background: var(--bg);
   border-bottom: 1px solid var(--bg-accent);

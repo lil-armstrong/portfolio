@@ -145,7 +145,7 @@ type WrapperProps = React.PropsWithChildren<{
     area: PlacementFnType
   }
   container?: React.RefObject<HTMLElement | HTMLDivElement>
-  className?:string
+  className?: string
 }>
 function Wrapper({ children, placement, className, container }: WrapperProps) {
   const [open, setOpen] = React.useState<boolean>(false)
@@ -177,7 +177,6 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
     placements,
     container,
     reference: btn_ref,
-    className: cls('fixed top-0', className),
   }
   const { visible, show, hide } = useVisibilityState()
   const child = children && React.Children.only(children)
@@ -192,7 +191,13 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
         onMouseDownCapture={handleOnMouseDownCapture}
       >
         {visible && child && (
-          <div className={cls(styles.container, 'rounded-md')}>
+          <div
+            className={cls(
+              styles.container,
+              'rounded-md',
+              className
+            )}
+          >
             <div
               className={cls(
                 styles.menu__title,
