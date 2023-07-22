@@ -1,7 +1,6 @@
 import { PAGES } from '@/types/pages'
 import { LINKS } from '@/types/links'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
-// import MePng from '@/assets/me.png'
 import useAppCxt from '@/hook/app.hook'
 import cl from 'classnames'
 

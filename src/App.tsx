@@ -6,9 +6,9 @@ import {
   Projects,
   Skills,
   Tab,
-  WorkExperience,
   ThemeSwitcher,
   TypeWriter,
+  WorkExperience,
 } from '@/components'
 import Hero from '@/components/Hero/hero'
 import * as ThemeContext from '@/context/theme.context'
@@ -19,13 +19,12 @@ import '@fontsource/alexandria/300.css'
 import '@fontsource/anonymous-pro'
 import '@fontsource/bakbak-one'
 import 'animate.css'
-import { isDownDisabled, isUpDisabled } from '@/helper'
-import React, { createRef, useContext, useEffect, useLayoutEffect } from 'react'
-import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
-import { RiGithubLine, RiLinkedinFill, RiPhoneFill } from 'react-icons/ri'
-import useAppCxt from './hook/app.hook'
-import { Poppable } from 'webrix/components'
 import cn from 'classnames'
+import React, { createRef, useContext, useEffect } from 'react'
+import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
+import { RiGithubLine, RiLinkedinFill } from 'react-icons/ri'
+import { Poppable } from 'webrix/components'
+import useAppCxt from './hook/app.hook'
 
 export const LINKS = {
   cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
@@ -86,18 +85,8 @@ function App() {
   const theme = useContext(ThemeContext.ThemeCtx)
   const scrollRef = createRef<HTMLDivElement>()
   const currentPageRef = React.useRef<PAGES>()
-  const scroll_height = document.documentElement.scrollTop - window.innerHeight
   const appCxt = useAppCxt(),
     activePage = appCxt.active
-  const [state, set] = React.useState<{
-    scroll_height: number
-    disableUp: boolean
-    disableDown: boolean
-  }>({
-    scroll_height: 0,
-    disableUp: false,
-    disableDown: false,
-  })
 
   useEffect(() => {
     const body = document?.body
@@ -141,10 +130,6 @@ function App() {
     )
   }, [activePage])
 
-  const isTopButtonDisabled = React.useMemo(() => {
-    return Boolean(window.scrollY == 0)
-  }, [window.scrollY, window.innerHeight])
-
   const handleScrollUp = React.useCallback(() => {
     window.scrollTo({
       behavior: 'smooth',
@@ -160,15 +145,15 @@ function App() {
   }, [])
 
   const ScrollButton = React.useCallback(() => {
-    const [isTopDisabled, setDisableTop] = React.useState(
-      Boolean(window.scrollY == 0)
-    )
+    const [isTopDisabled, setDisableTop] = React.useState(window.scrollY === 0)
 
     const [isBottomDisabled, setDisableBottom] = React.useState(
-      window.scrollY >=
-        Math.abs(document.body.scrollHeight -
-          document.body.clientHeight -
-          document.body.scrollTop)
+      window.scrollY !== 0 && window.scrollY >=
+        Math.abs(
+          document.body.scrollHeight -
+            document.body.clientHeight -
+            document.body.scrollTop
+        )
     )
 
     React.useEffect(() => {

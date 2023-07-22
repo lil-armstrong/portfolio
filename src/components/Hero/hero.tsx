@@ -17,7 +17,7 @@ export function Hero({
     <div id="page_hero">
       <figure className="me_passport">
         <ImageSense>
-          <img src={MePng} alt="my passport" />
+          <img src={MePng} alt="Ebong, Okposong" />
         </ImageSense>
       </figure>
 

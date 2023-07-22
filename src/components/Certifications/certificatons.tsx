@@ -11,7 +11,7 @@ export function Certifications() {
       <div className="boxed_layout">
         <ul className="lg:columns-2 gap-[20px] pt-[100px] py-[60px] flex-grow ">
           {certifications?.map(({ name, timeline, link }, idx) => (
-            <li key={idx} className="card mt-[20px]">
+            <li key={idx} className={`card mb-[20px]`}>
               <div>
                 <p className="cert__title mb-1">{name}</p>
                 <ul className="dot-list meta opacity-60 font-medium">
