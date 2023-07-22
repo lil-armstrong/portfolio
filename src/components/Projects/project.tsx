@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import './style.scss'
+import { StyledCard } from './styled'
 
 interface ProjectDataInterface {
   name: string
@@ -35,10 +36,10 @@ export function Projects() {
       <h3 className="section-heading">Projects</h3>
 
       <div className="boxed_layout">
-        <ul className="grid-container">
+        <ul className="flex flex-wrap gap-[20px] py-[100px]">
           {projects?.map((data: ProjectDataInterface, idx: number) => {
             return (
-              <li key={idx} className="grid-child">
+              <li key={idx} className="flex-grow">
                 <ProjectCard data={data} />
               </li>
             )
@@ -82,7 +83,7 @@ function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
   }, [image_url])
 
   return (
-    <div className={['card h-full min-w-[300px] flex-grow project '].join(' ')}>
+    <StyledCard className={['card h-full min-w-[300px] flex-grow project '].join(' ')}>
       <div className="flex-grow flex flex-col h-full">
         <div className="flex gap-[15px]">
           <div className="rounded-lg overflow-hidden w-[50px] h-[50px]  bg-opacity-50 text-[8px] justify-center items-center text-center flex flex-column">
@@ -134,7 +135,7 @@ function ProjectCard(props: { data: ProjectDataInterface }): JSX.Element {
           <RiExternalLinkLine />
         </a>
       ) : null}
-    </div>
+    </StyledCard>
   )
 }
 export default Projects

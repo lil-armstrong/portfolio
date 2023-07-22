@@ -191,21 +191,15 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
         onMouseDownCapture={handleOnMouseDownCapture}
       >
         {visible && child && (
-          <div
-            className={cls(
-              styles.container,
-              'rounded-md',
-              className
-            )}
-          >
-            <div
+          <div className={cls(styles.container, 'rounded-md', className)}>
+            {/* <div
               className={cls(
                 styles.menu__title,
-                'sticky font-bold text-lg top-0 z-[1] shadow-lg'
+                'sticky font-bold tracking-wide text-lg top-0 z-[1] shadow-lg'
               )}
             >
-              Menu
-            </div>
+              Navigation
+            </div> */}
             <div className={cls('p-4 z-[0]')}>{children}</div>
           </div>
         )}

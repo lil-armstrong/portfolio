@@ -14,15 +14,9 @@ export function AboutMe() {
         <h3 className="section-heading">About Me</h3>
         <section className="boxed_layout">
           {/* ABOUT */}
-          <section className="mt-[100px] flex-grow flex flex-col items-center justify-center">
-            {/* <figure className="lg:w-[200px]  m-[8px] overflow-hidden">
-              <img
-                src={MePng}
-                alt="my passport"
-                className="w-full max-w-[200px]"
-              />
-            </figure> */}
-            <div className="">
+          <section className="mt-[100px] flex-grow flex flex-col  justify-center">
+        
+            <div className="max-w-[900px]">
               <p className="lead prose">
                 <span className="block pb-2 pt-4 text-2xl">
                   👋 Nice to meet you.
@@ -43,11 +37,12 @@ export function AboutMe() {
                 <span className="block">
                   Proficient in a range of programming languages and frameworks,
                   such as{' '}
-                  <code className="highlighted">
+                  <strong className="highlight">
                     React Native, Javascript, Nodejs, React, Vue, Python, C
-                  </code>{' '}
-                  etc. with experience in both native and cross-platform app
-                  development.
+                  </strong>{' '}
+                  etc. with experience in both{' '}
+                  <em className="highlight">native</em> and
+                  <em className="highlight">cross-platform app development</em>.
                 </span>
                 <span className="block">
                   Skilled in{' '}

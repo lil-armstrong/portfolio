@@ -28,6 +28,28 @@ export function ContactMe() {
             <button type="submit" className="btn btn-outline btn-lg">
               <a href="mailto:oebong1@gmail.com">Get in touch</a>
             </button>
+            <div className="p-[8px] flex-grow justify-end items-center flex">
+              <a
+                href="https://www.buymeacoffee.com/lilarmstrong"
+                target="_blank"
+                rel="noreferrer"
+                data-name="bmc-button"
+                data-slug="lilarmstrong"
+                data-color="#000000"
+                data-emoji=""
+                data-font="Cookie"
+                data-text="Buy me a coffee"
+                data-outline-color="#ffffff"
+                data-font-color="#ffffff"
+                data-coffee-color="#FFDD00"
+              >
+                <img
+                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                  alt="Buy Me A Coffee"
+                  style={{ height: '70px', flexGrow: 1 }}
+                />
+              </a>
+            </div>
           </div>
 
           {/* <form className="flex flex-col gap-[10px] my-[30px]">
@@ -63,30 +85,7 @@ export function ContactMe() {
       <div className="absolute bottom-0 w-full left-0">
         <BottomNavigation
           leftSlot={{ content: 'Project', to: PAGES.PROJECT }}
-          rightComponent={
-            <div className="p-[8px] flex-grow justify-end items-center flex">
-              <a
-                href="https://www.buymeacoffee.com/lilarmstrong"
-                target="_blank"
-                rel="noreferrer"
-                data-name="bmc-button"
-                data-slug="lilarmstrong"
-                data-color="#000000"
-                data-emoji=""
-                data-font="Cookie"
-                data-text="Buy me a coffee"
-                data-outline-color="#ffffff"
-                data-font-color="#ffffff"
-                data-coffee-color="#FFDD00"
-              >
-                <img
-                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                  alt="Buy Me A Coffee"
-                  style={{ height: '40px', flexGrow: 1 }}
-                />
-              </a>
-            </div>
-          }
+          rightComponent={<></>}
         />
       </div>
     </>
