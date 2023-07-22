@@ -1,5 +1,5 @@
 [![ci](https://github.com/lil-armstrong/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/lil-armstrong/portfolio/actions/workflows/ci.yml)
-[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=i18next&package-manager=npm_and_yarn&previous-version=21.10.0&new-version=23.2.11)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
+[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=typescript&package-manager=npm_and_yarn&previous-version=4.9.5&new-version=5.1.6)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
 
 # Getting Started with Create React App
 
