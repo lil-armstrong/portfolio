@@ -148,7 +148,7 @@ const Others: IProject[] = [
       \u2022 UI design implementation
       \u2022 Instant messaging
       \u2022 Internalization`,
-    // link: 'https://ordavo.nl',
+    link: 'https://ordavonl.netlify.app',
     image_url: 'vue.svg',
   },
   {
@@ -161,7 +161,7 @@ const Others: IProject[] = [
       \u2022 SEO optimization
       \u2022 Web application interface design
       \u2022 Custom Google Map Integration`,
-    // link: 'https://eglogisticsng.com',
+    link: 'https://eglogistics-dev.netlify.app',
     image_url: 'vue.svg',
   },
 ]
