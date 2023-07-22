@@ -20,7 +20,7 @@ import '@fontsource/anonymous-pro'
 import '@fontsource/bakbak-one'
 import 'animate.css'
 import { isDownDisabled, isUpDisabled } from '@/helper'
-import React, { createRef, useContext, useEffect } from 'react'
+import React, { createRef, useContext, useEffect, useLayoutEffect } from 'react'
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
 import { RiGithubLine, RiLinkedinFill, RiPhoneFill } from 'react-icons/ri'
 import useAppCxt from './hook/app.hook'
@@ -45,12 +45,14 @@ export const CONTACT_LINKS: any[] = [
       <RiLinkedinFill />
     </a>
   </>,
-  <>
-    <a rel="noreferrer" href={LINKS?.phone}>
-      <RiPhoneFill />
-    </a>
-  </>,
+  // <>
+  //   <a rel="noreferrer" href={LINKS?.phone}>
+  //     <RiPhoneFill />
+  //   </a>
+  // </>,
 ]
+
+const GAP = 5
 
 const tab: Record<PAGES, { title: JSX.Element; content: React.FC }> = {
   [PAGES.ABOUT]: {
@@ -92,9 +94,9 @@ function App() {
     disableUp: boolean
     disableDown: boolean
   }>({
-    scroll_height: document.documentElement.scrollTop,
-    disableDown: isDownDisabled(scroll_height),
-    disableUp: isUpDisabled(scroll_height),
+    scroll_height: 0,
+    disableUp: false,
+    disableDown: false,
   })
 
   useEffect(() => {
@@ -139,33 +141,71 @@ function App() {
     )
   }, [activePage])
 
-  const handleScrollUp = React.useCallback(() => {
-    const scroll_height =
-      document.documentElement.scrollTop - window.innerHeight
+  const isTopButtonDisabled = React.useMemo(() => {
+    return Boolean(window.scrollY == 0)
+  }, [window.scrollY, window.innerHeight])
 
-    set((prev) => ({
-      ...prev,
-      scroll_height,
-      disableDown: isDownDisabled(scroll_height),
-      disableUp: isUpDisabled(scroll_height),
-    }))
-    window.scrollBy(
-      0,
-      -(window.innerHeight + (window.orientation > 1 ? 200 : 0))
-    )
+  const handleScrollUp = React.useCallback(() => {
+    window.scrollTo({
+      behavior: 'smooth',
+      top: 0,
+    })
   }, [])
 
   const handleScrollDown = React.useCallback(() => {
-    const top = document.documentElement.scrollTop + window.innerHeight
+    window.scrollTo({
+      behavior: 'smooth',
+      top: window.innerHeight,
+    })
+  }, [])
 
-    set((prev) => ({
-      ...prev,
-      scroll_height: document.documentElement.scrollTop,
-      disableDown: isDownDisabled(top),
-      disableUp: isUpDisabled(top),
-    }))
+  const ScrollButton = React.useCallback(() => {
+    const [isTopDisabled, setDisableTop] = React.useState(
+      Boolean(window.scrollY == 0)
+    )
 
-    window.scrollBy(0, window.innerHeight)
+    const [isBottomDisabled, setDisableBottom] = React.useState(
+      window.scrollY >=
+        Math.abs(document.body.scrollHeight -
+          document.body.clientHeight -
+          document.body.scrollTop)
+    )
+
+    React.useEffect(() => {
+      const onScroll = () => {
+        setDisableTop(window.scrollY === 0)
+        setDisableBottom(
+          window.scrollY >=
+            Math.abs(
+              document.body.scrollHeight -
+                document.body.clientHeight -
+                document.body.scrollTop
+            )
+        )
+      }
+      window.addEventListener('scroll', onScroll)
+      return () => {
+        window.removeEventListener('scroll', onScroll)
+      }
+    }, [])
+    return (
+      <>
+        <button
+          disabled={isTopDisabled}
+          onClick={handleScrollUp}
+          className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
+        >
+          <AiOutlineUp />
+        </button>
+        <button
+          disabled={isBottomDisabled}
+          onClick={handleScrollDown}
+          className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
+        >
+          <AiOutlineDown />
+        </button>
+      </>
+    )
   }, [])
 
   const isMenuItemActive = React.useCallback(
@@ -174,7 +214,6 @@ function App() {
     },
     [activePage]
   )
-  const GAP = 5
 
   const menu_placement = React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
     const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
@@ -197,7 +236,6 @@ function App() {
     <>
       <div className="block relative">
         {/* <FixedRightPanel /> */}
-        {/* <TestCmp /> */}
         <div
           ref={menu_container_ref}
           className="fixed right-[30px] bottom-[60px] z-[10]"
@@ -231,20 +269,7 @@ function App() {
               id="scroll__btn"
               className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px] flex flex-col items-center justify-center"
             >
-              <button
-                disabled={state.disableUp}
-                onClick={handleScrollUp}
-                className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
-              >
-                <AiOutlineUp />
-              </button>
-              <button
-                disabled={state.disableDown}
-                onClick={handleScrollDown}
-                className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
-              >
-                <AiOutlineDown />
-              </button>
+              <ScrollButton />
             </div>
           </div>
         </div>
@@ -285,7 +310,7 @@ function App() {
           />
         </div>
         {/* Tab*/}
-        <main id="main-content" className="z-[2] relative">
+        <main id="main-content" className="z-[2] relative hidden_scrollbar">
           <Tab>
             {({ activeIndex, setActiveIndex }) => {
               return (
