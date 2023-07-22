@@ -229,6 +229,7 @@ body {
       gap: 4px;
       align-items: flex-start;
       flex-wrap: wrap;
+      margin-top: 20px;
       .role {
         @include tag();
       }

@@ -1,14 +1,77 @@
-export default [
+export type IProject = {
+  name: string
+  roles: string[]
+  timeline: string
+  description: string
+  image_url?: string
+  link?: string
+  org?: {
+    name: string
+    website?: string
+  }
+}
+
+const orgs = {
+  celus: {
+    name: 'Celus',
+    website: 'https://celus.io',
+  },
+  blockStars: {
+    name: 'Block-stars',
+    website: 'https://block-stars.com',
+  },
+  librium: {
+    name: 'Librium Tech Ltd',
+    website: 'https://lopeer.com',
+  },
+}
+
+const Celus: IProject[] = [
   {
-    name: 'CELUS: Supernova UI - Design Studiio',
+    name: 'Supernova UI - Design Studiio',
     roles: ['Frontend Engineer'],
     timeline: 'June 2023',
     description: `## Implementation of auto-port addition
-    \u2022 Discovery task to figure best UI/UX approach for port aaddition impplementation
+    \u2022 Discovery task to figure best UI/UX approach for port addition impplementation
     \u2022 Implementation of new features
     \u2022 Design canvas improvements
     \u2022 Auto-resizing functionality and performance improvement`,
-    image_url: 'project/supernova-logo.png'
+    image_url: 'project/supernova-logo.png',
+    org: orgs.celus,
+  },
+]
+
+const Librium: IProject[] = [
+  {
+    name: 'Lopeer',
+    roles: ['Blockchain', 'React Native', 'Typescript', 'ECMAScript'],
+    timeline: 'May - June 2022',
+    description: `## Cryptocurrency exchange and saving app
+    \u2022 UI redesign
+    \u2022 Completion of all UI flows
+    \u2022 Instant messaging`,
+    link: 'https://play.google.com/store/apps/details?id=com.lopeer.lopeer',
+    org: orgs?.librium,
+    image_url: 'project/lopeer-icon.png',
+  },
+]
+
+const BlockStar: IProject[] = [
+  {
+    name: 'Metamask',
+    roles: [
+      'Browser extension',
+      'Blockchain',
+      'Reactjs',
+      'Contract',
+      'ECMAScript',
+    ],
+    timeline: 'May 2022',
+    image_url: 'project/metamask-icon.png',
+    description: `## Customization of Metamask Extension
+    \u2022 Custom branding
+    \u2022 Autoloading of custom tokens`,
+    org: orgs?.blockStars,
   },
   {
     name: 'Coin Market API',
@@ -21,8 +84,32 @@ export default [
     \u2022 Documentation of API using Postman and Swagger
     `,
     image_url: 'node-js.png',
+    org: orgs?.blockStars,
     // link: "https://coin.api.block-stars-dev.com/api/v1/docs",
   },
+  {
+    name: 'Cointc',
+    org: orgs?.blockStars,
+    roles: [
+      'Project manager',
+      'Nodejs',
+      'Reactjs',
+      'Blockchain',
+      'ECMAScript',
+      'PostgreSQL',
+    ],
+    timeline: 'Oct 2021 - Jan 2022',
+    description: `## P2P Cryptocurrency Trading platform
+    \u2022 UI design implementation
+    \u2022 Crypto OTC/P2P functionality
+    \u2022 API Integration
+    \u2022 User and Admin dashboard`,
+    // link: 'https://cointc.net',
+    image_url: 'project/cointc-icon.png',
+  },
+]
+
+const Others: IProject[] = [
   {
     name: 'Relaywash',
     roles: ['React Native', 'ECMAScript'],
@@ -33,34 +120,6 @@ export default [
     `,
     link: 'https://play.google.com/store/apps/details?id=com.relaywash.com&pli=1',
     image_url: 'project/relaywash-icon.png',
-  },
-  {
-    name: 'Lopeer',
-    roles: ['Blockchain', 'React Native', 'Typescript', 'ECMAScript'],
-    timeline: 'May - June 2022',
-    description: `## Cryptocurrency exchange and saving app
-    \u2022 UI redesign
-    \u2022 Completion of all UI flows
-    \u2022 Instant messaging`,
-    link: 'https://play.google.com/store/apps/details?id=com.lopeer.lopeer',
-    image_url: 'project/lopeer-icon.png',
-  },
-  {
-    name: 'Metamask',
-    client: 'Block-stars',
-    client_url: 'https://block-stars.com',
-    roles: [
-      'Browser extension',
-      'Blockchain',
-      'Reactjs',
-      'Contract',
-      'ECMAScript',
-    ],
-    timeline: 'May 2022',
-    description: `## Customization of Metamask Extension
-    \u2022 Custom branding
-    \u2022 Autoloading of custom tokens`,
-    image_url: 'project/metamask-icon.png',
   },
   {
     name: 'Perzsi',
@@ -79,27 +138,6 @@ export default [
       \u2022 UI design implementation`,
     link: 'https://perzsi.com',
     image_url: 'project/perzsi-icon.png',
-  },
-  {
-    name: 'Cointc',
-    client: 'Block-stars',
-    client_url: 'https://block-stars.com',
-    roles: [
-      'Project manager',
-      'Nodejs',
-      'Reactjs',
-      'Blockchain',
-      'ECMAScript',
-      'PostgreSQL',
-    ],
-    timeline: 'Oct 2021 - Jan 2022',
-    description: `## P2P Cryptocurrency Trading platform
-    \u2022 UI design implementation
-    \u2022 Crypto OTC/P2P functionality
-    \u2022 API Integration
-    \u2022 User and Admin dashboard`,
-    link: 'https://cointc.net',
-    image_url: 'project/cointc-icon.png',
   },
   {
     name: 'Ordavo.nl',
@@ -127,3 +165,4 @@ export default [
     image_url: 'vue.svg',
   },
 ]
+export default [...Celus, ...BlockStar, ...Librium, ...Others]
