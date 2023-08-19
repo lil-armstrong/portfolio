@@ -3,19 +3,19 @@ import { LINKS } from '@/types/links'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import useAppCxt from '@/hook/app.hook'
 import cl from 'classnames'
+import { ContainerStyled } from '../common/styled'
 
 export function AboutMe() {
   const setPage = useAppCxt().setPage
 
   return (
     <>
-      <div className="flex flex-col h-screen relative flex-grow ">
+      <ContainerStyled>
         <h3 className="section-heading">About Me</h3>
         <section className="boxed_layout">
           {/* ABOUT */}
-          <section className="mt-[100px] flex-grow flex flex-col  justify-center">
-        
-            <div className="max-w-[900px]">
+          <section className="flex-grow flex flex-col  justify-center">
+            <div className="">
               <p className="lead prose">
                 <span className="block pb-2 pt-4 text-2xl">
                   👋 Nice to meet you.
@@ -65,7 +65,7 @@ export function AboutMe() {
                   leverage my technical expertise and problem-solving skills to
                   drive business growth
                 </span>
-                <a
+                {/* <a
                   href={`#${PAGES.CONTACT}`}
                   className={cl(
                     'nav-link',
@@ -73,23 +73,35 @@ export function AboutMe() {
                   )}
                   onClick={() => setPage && setPage(PAGES.CONTACT)}
                 >
-                  📫 Reach out
-                </a>
+                  Reach out
+                </a> */}
               </p>
             </div>
+            {/*Button*/}
+            <div className="flex mt-[20px] flex-row-reverse mb-[70px] flex-wrap justify-evenly w-full items-center gap-[30px]">
+              <a
+                href={LINKS?.CV}
+                download
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary btn-lg "
+              >
+                Download CV
+              </a>
+              <span className="flex-grow text-center">OR</span>
+              <button
+                // href={`#${PAGES.CONTACT}`}
+                // target="_blank"
+                // rel="noreferrer"
+                className="btn btn-lg"
+                onClick={() => setPage && setPage(PAGES.CONTACT)}
+              >
+                📫 Reach out
+              </button>
+            </div>
           </section>
-          {/*Button*/}
-          <a
-            href={LINKS?.CV}
-            download
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-primary btn-lg mb-[70px]"
-          >
-            Download CV
-          </a>
         </section>
-      </div>
+      </ContainerStyled>
       <div className="absolute bottom-0 w-full text-center left-0">
         <BottomNavigation
           rightSlot={{

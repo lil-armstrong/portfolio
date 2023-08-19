@@ -2,6 +2,7 @@ import styles from './style.module.scss'
 import skills from '@/.data/skills'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
+import { ContainerStyled } from '../common/styled'
 
 interface TechnicalSkillInterface {
   name: string
@@ -17,7 +18,7 @@ interface SkillDataToolInterface {
 
 export default function Skills() {
   return (
-    <div className="flex flex-grow h-full w-full flex-col max-h-screen overflow-hidden ">
+    <ContainerStyled bordered>
       <h3 className="section-heading">Skills</h3>
       <section className="boxed_layout">
         <div className="flex flex-col gap-[30px] py-[60px] pb-[100px]">
@@ -156,6 +157,6 @@ export default function Skills() {
           }}
         />
       </div>
-    </div>
+    </ContainerStyled>
   )
 }

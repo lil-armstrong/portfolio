@@ -3,13 +3,14 @@ import certifications from '@/.data/certifications'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import './style.scss'
+import { ContainerStyled } from '../common/styled'
 
 export function Certifications() {
   return (
-    <div className="flex flex-col flex-grow h-full ">
+    <ContainerStyled>
       <h3 className="section-heading">Certification</h3>
       <div className="boxed_layout">
-        <ul className="lg:columns-2 gap-[20px] pt-[100px] py-[60px] flex-grow ">
+        <ul className="lg:columns-2 gap-[20px] flex-grow ">
           {certifications?.map(({ name, timeline, link }, idx) => (
             <li key={idx} className={`card mb-[20px]`}>
               <div>
@@ -42,7 +43,7 @@ export function Certifications() {
           }}
         />
       </div>
-    </div>
+    </ContainerStyled>
   )
 }
 

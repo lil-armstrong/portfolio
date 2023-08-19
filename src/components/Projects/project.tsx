@@ -1,13 +1,12 @@
-import { useState, useEffect, useRef } from 'react'
-import { RiExternalLinkLine } from 'react-icons/ri'
 import projects, { IProject } from '@/.data/projects'
-import ReactMarkdown from 'react-markdown'
+import { useEffect, useRef, useState } from 'react'
+import { RiExternalLinkLine } from 'react-icons/ri'
 // import { resolveAsset } from '../../helper'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import './style.scss'
 import { StyledCard } from './styled'
-import rgfm from 'remark-gfm'
+import { ContainerStyled } from '../common/styled'
 
 export function Projects() {
   const isMounted = useRef<boolean>(true)
@@ -21,11 +20,11 @@ export function Projects() {
   }, [])
 
   return (
-    <div className="flex flex-col flex-grow h-screen">
+    <ContainerStyled >
       <h3 className="section-heading">Projects</h3>
 
       <div className="boxed_layout">
-        <ul className="flex flex-wrap gap-[20px] py-[100px]">
+        <ul className="flex flex-wrap gap-[20px] ">
           {projects?.map((data, idx: number) => {
             return (
               <li key={idx} className="flex-grow">
@@ -36,7 +35,7 @@ export function Projects() {
         </ul>
       </div>
 
-      <div className="absolute w-full left-0 bottom-0">
+      <div className="absolute bottom-0 w-full left-0">
         <BottomNavigation
           leftSlot={{ content: 'Certifications', to: PAGES.CERT }}
           rightSlot={{
@@ -45,7 +44,7 @@ export function Projects() {
           }}
         />
       </div>
-    </div>
+    </ContainerStyled>
   )
 }
 
@@ -65,7 +64,7 @@ function ProjectCard(props: { data: IProject }): JSX.Element {
   return (
     <StyledCard
       className={[
-        `card h-full min-w-[300px] max-w-[100%] lg:max-w-[${100/3}px] flex-grow project`,
+        `card  min-w-[300px] max-w-[100%] lg:max-w-[${100/3}px] flex-grow project`,
       ].join(' ')}
     >
       <div className="flex-grow flex flex-col h-full">

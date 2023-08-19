@@ -1,13 +1,14 @@
-import { CONTACT_LINKS } from '@/App'
+import { CONTACT_LINKS } from '@/constant/contact'
 import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import styles from './style.module.scss'
 import cl from 'classnames'
+import { ContainerStyled } from '../common/styled'
 
 export function ContactMe() {
   return (
     <>
-      <section className="flex-grow h-screen relative pb-[60px] items-center justify-center flex flex-col">
+      <ContainerStyled>
         <h3 className="section-heading">Contact</h3>
         <section className="boxed_layout">
           <div className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center my-[30px]">
@@ -81,7 +82,7 @@ export function ContactMe() {
                 </div>
               </form> */}
         </section>
-      </section>
+      </ContainerStyled>
       <div className="absolute bottom-0 w-full left-0">
         <BottomNavigation
           leftSlot={{ content: 'Project', to: PAGES.PROJECT }}

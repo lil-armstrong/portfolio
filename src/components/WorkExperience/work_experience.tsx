@@ -1,12 +1,11 @@
 import work_experience from '@/.data/work_experience'
 import { PAGES } from '@/types/pages'
-import BottomNavigation from '../BottomNavigation/bottom_navigation'
-import './style.scss'
 import React from 'react'
-import type { TSingleWorkExperience } from './IProps'
-import { StyledPictureHolder, StyledTimelineCard } from './styled'
-import cn from 'classnames'
 import { AiOutlineCalendar } from 'react-icons/ai'
+import BottomNavigation from '../BottomNavigation/bottom_navigation'
+import type { TSingleWorkExperience } from './IProps'
+import './style.scss'
+import { StyledPictureHolder, StyledTimelineCard } from './styled'
 
 export default function WorkExperience() {
   const list = Object.entries(work_experience).reverse()

@@ -135,14 +135,20 @@ body {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none;
     // color: red;
   }
+  max-width: 500px;
+  // outline: 2px dashed red;
+  // outline-offset: -5px;
   @media screen and (min-width: 768px) {
-    width: calc(75%);
+    // width: calc(85%);
+    width: 100%;
+    max-width: 1024px
   }
   overflow-y: auto;
   // display: none
@@ -559,7 +565,7 @@ a {
   flex-grow: 1;
   outline-color: #ace414;
   outline-offset: 2px;
-  overflow: hidden;
+  // overflow: hidden;
   overflow-y: auto;
   height: 100vh;
   border-top: 1px solid var(--bg-accent);

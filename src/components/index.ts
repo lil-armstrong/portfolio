@@ -1,5 +1,5 @@
-export { default as AboutMe } from "./AboutMe/about"
-export { default as Blog } from "./Blog/blog"
+export { default as AboutMe } from "./AboutMe/AboutMe"
+export { default as Blog } from "./Blog/Blog"
 export { default as Certifications } from "./Certifications/certificatons"
 export { default as ContactMe } from "./ContactMe/contact"
 export { default as FixedPanel } from "./FixedPanel"

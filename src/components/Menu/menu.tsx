@@ -19,7 +19,7 @@ type MenuProps = React.PropsWithChildren<
 type MenuItemProps = React.PropsWithChildren<
   {
     active?: boolean
-    text: JSX.Element | string
+    text: JSX.Element | string | null
     icon?: JSX.Element | null
   } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement>
 >
@@ -148,7 +148,6 @@ type WrapperProps = React.PropsWithChildren<{
   className?: string
 }>
 function Wrapper({ children, placement, className, container }: WrapperProps) {
-  const [open, setOpen] = React.useState<boolean>(false)
   const btn_ref = React.createRef<HTMLButtonElement>()
   const reference = React.createRef<HTMLDivElement>()
 
@@ -191,7 +190,7 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
         onMouseDownCapture={handleOnMouseDownCapture}
       >
         {visible && child && (
-          <div className={cls(styles.container, 'rounded-md', className)}>
+          <div className={cls(styles.container, 'select-none rounded-lg', className)}>
             {/* <div
               className={cls(
                 styles.menu__title,

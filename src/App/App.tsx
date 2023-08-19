@@ -1,5 +1,6 @@
 import {
   AboutMe,
+  Blog,
   Certifications,
   ContactMe,
   Menu,
@@ -24,40 +25,21 @@ import React, { createRef, useContext, useEffect } from 'react'
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
 import { RiGithubLine, RiLinkedinFill } from 'react-icons/ri'
 import { Poppable } from 'webrix/components'
-import useAppCxt from './hook/app.hook'
-
-export const LINKS = {
-  cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
-  github: 'https://github.com/lil-armstrong',
-  linkedin: 'https://linkedin.com/in/lil-armstrong',
-  phone: 'tel:+2348109875593',
-}
-
-export const CONTACT_LINKS: any[] = [
-  <>
-    <a rel="noreferrer" target="_blank" href={LINKS?.github}>
-      <RiGithubLine />
-    </a>
-  </>,
-  <>
-    <a rel="noreferrer" target="_blank" href={LINKS?.linkedin}>
-      <RiLinkedinFill />
-    </a>
-  </>,
-  // <>
-  //   <a rel="noreferrer" href={LINKS?.phone}>
-  //     <RiPhoneFill />
-  //   </a>
-  // </>,
-]
+import useAppCxt from '../hook/app.hook'
+import { CONTACT_LINKS } from '@/constant/contact'
+import { NavLink } from './styled'
 
 const GAP = 5
 
-const tab: Record<PAGES, { title: JSX.Element; content: React.FC }> = {
+const tab: Record<
+  PAGES,
+  { title: JSX.Element | null; content: () => JSX.Element | null }
+> = {
   [PAGES.ABOUT]: {
     title: <p>About Me</p>,
     content: AboutMe,
   },
+
   [PAGES.WORK_EXP]: {
     title: <p>Work Experience</p>,
     content: WorkExperience,
@@ -73,6 +55,10 @@ const tab: Record<PAGES, { title: JSX.Element; content: React.FC }> = {
   [PAGES.PROJECT]: {
     title: <p>Projects</p>,
     content: Projects,
+  },
+  [PAGES.BLOG]: {
+    title: <p>Blog</p>,
+    content: Blog,
   },
   [PAGES.CONTACT]: {
     title: <p>Contact</p>,
@@ -148,12 +134,13 @@ function App() {
     const [isTopDisabled, setDisableTop] = React.useState(window.scrollY === 0)
 
     const [isBottomDisabled, setDisableBottom] = React.useState(
-      window.scrollY !== 0 && window.scrollY >=
-        Math.abs(
-          document.body.scrollHeight -
-            document.body.clientHeight -
-            document.body.scrollTop
-        )
+      window.scrollY !== 0 &&
+        window.scrollY >=
+          Math.abs(
+            document.body.scrollHeight -
+              document.body.clientHeight -
+              document.body.scrollTop
+          )
     )
 
     React.useEffect(() => {
@@ -223,7 +210,7 @@ function App() {
         {/* <FixedRightPanel /> */}
         <div
           ref={menu_container_ref}
-          className="fixed right-[30px] bottom-[60px] z-[10]"
+          className="fixed left-[30px] top-[35px] z-[10]"
         >
           <div className="flex flex-col gap-[10px] items-center">
             <ThemeSwitcher />
@@ -232,13 +219,13 @@ function App() {
             <Menu
               placement={{ initial: 6, area: menu_placement }}
               container={menu_container_ref}
-              className={cn('right-[90px] mt-[-60px]')}
+              className={cn('left-[90px] top-[100px] w-[370px]')}
             >
               <div>
                 {Object.entries(tab).map(([id, { title }]) => (
                   <Menu.Item
                     key={id}
-                    text={title}
+                    text={title && title}
                     title={id}
                     onClick={() => {
                       appCxt.setPage(id as PAGES)
@@ -292,7 +279,34 @@ function App() {
               </>
             }
             contact_links={CONTACT_LINKS}
-          />
+          >
+            <div className="boxed_layout flex-column flex items-center">
+              <div className="flex flex-row justify-evenly w-full items-center mt-[100px] flex-wrap gap-2">
+                <NavLink
+                  href={`#${PAGES.PROJECT}`}
+                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                  title="Go to projects"
+                  onClick={() => appCxt.setPage(PAGES.PROJECT)}
+                >
+                  Projects
+                </NavLink>
+                <NavLink
+                  href={`#${PAGES.WORK_EXP}`}
+                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                  onClick={() => appCxt.setPage(PAGES.WORK_EXP)}
+                >
+                  Work Experience
+                </NavLink>
+                <NavLink
+                  href={`#${PAGES.BLOG}`}
+                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                  onClick={() => appCxt.setPage(PAGES.BLOG)}
+                >
+                  Blogs
+                </NavLink>
+              </div>
+            </div>
+          </Hero>
         </div>
         {/* Tab*/}
         <main id="main-content" className="z-[2] relative hidden_scrollbar">

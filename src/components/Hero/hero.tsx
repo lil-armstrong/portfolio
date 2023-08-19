@@ -1,8 +1,9 @@
 import './style.scss'
 import MePng from '@/assets/me.png'
 import ImageSense from '../ImageSense/image_sense'
+import { PropsWithChildren } from 'react'
 
-interface PropInterface {
+interface PropInterface extends PropsWithChildren {
   mainTitle: JSX.Element | string
   subTitle: JSX.Element | string
   contact_links: Array<JSX.Element | string>
@@ -12,6 +13,7 @@ export function Hero({
   mainTitle = <></>,
   subTitle = <></>,
   contact_links = [],
+  children
 }: PropInterface) {
   return (
     <div id="page_hero">
@@ -46,6 +48,7 @@ export function Hero({
             </li>
           ))}
         </ul>
+        {children}
       </div>
     </div>
   )
