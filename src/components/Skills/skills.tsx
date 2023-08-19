@@ -18,7 +18,7 @@ interface SkillDataToolInterface {
 
 export default function Skills() {
   return (
-    <ContainerStyled bordered>
+    <ContainerStyled >
       <h3 className="section-heading">Skills</h3>
       <section className="boxed_layout">
         <div className="flex flex-col gap-[30px] py-[60px] pb-[100px]">
