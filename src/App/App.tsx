@@ -12,6 +12,7 @@ import {
   WorkExperience,
 } from '@/components'
 import Hero from '@/components/Hero/hero'
+import { CONTACT_LINKS } from '@/constant/contact'
 import * as ThemeContext from '@/context/theme.context'
 import '@/styles/index.scss'
 import { PAGES } from '@/types/pages'
@@ -23,10 +24,8 @@ import 'animate.css'
 import cn from 'classnames'
 import React, { createRef, useContext, useEffect } from 'react'
 import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
-import { RiGithubLine, RiLinkedinFill } from 'react-icons/ri'
 import { Poppable } from 'webrix/components'
 import useAppCxt from '../hook/app.hook'
-import { CONTACT_LINKS } from '@/constant/contact'
 import { NavLink } from './styled'
 
 const GAP = 5

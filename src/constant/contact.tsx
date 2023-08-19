@@ -23,7 +23,7 @@ export const CONTACT_LINKS: any[] = [
     href={LINKS?.dev_to}
     title="Dev.to account"
   >
-    <img src={'/dev_to_logo.png'} alt="dev.to" style={{ width: 35 }} />
+    <img src={'/devto-logo.svg'} alt="dev.to logo" style={{ width: 45, fontSize: 12 }} />
   </a>,
   <a
     rel="noreferrer"
