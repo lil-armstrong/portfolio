@@ -9,7 +9,7 @@ export const ContainerStyled = styled.section<{bordered?: boolean}>(
   justify-content: center;
   display: flex;
   flex-direction column;
-  padding-top: 100px;
+  padding-top: 60px;
   overflow-y: auto;
   ${
     bordered ? `

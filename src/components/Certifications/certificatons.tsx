@@ -10,7 +10,7 @@ export function Certifications() {
     <ContainerStyled>
       <h3 className="section-heading">Certification</h3>
       <div className="boxed_layout">
-        <ul className="lg:columns-2 gap-[20px] flex-grow ">
+        <ul className="lg:columns-2 gap-[20px] py-[30px] flex-grow ">
           {certifications?.map(({ name, timeline, link }, idx) => (
             <li key={idx} className={`card mb-[20px]`}>
               <div>
@@ -34,7 +34,7 @@ export function Certifications() {
         </ul>
       </div>
 
-      <div className="sticky bottom-0">
+      <div className="absolute w-full left-0 bottom-0">
         <BottomNavigation
           leftSlot={{ content: 'Skills', to: PAGES.SKILL }}
           rightSlot={{

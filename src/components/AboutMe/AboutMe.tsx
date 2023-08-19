@@ -14,7 +14,7 @@ export function AboutMe() {
         <h3 className="section-heading">About Me</h3>
         <section className="boxed_layout">
           {/* ABOUT */}
-          <section className="flex-grow flex flex-col  justify-center">
+          <section className="flex-grow flex flex-col py-[30px]  justify-center">
             <div className="">
               <p className="lead prose">
                 <span className="block pb-2 pt-4 text-2xl">

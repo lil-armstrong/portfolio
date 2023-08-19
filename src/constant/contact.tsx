@@ -1,4 +1,5 @@
 import { RiGithubLine, RiLinkedinFill } from 'react-icons/ri'
+import devToLogo from '@/assets/devto-logo.svg';
 
 export const LINKS = {
   cv: 'https://docs.google.com/document/d/1fHUQRdyf2RzSXUNME7ASAehzVarY-Fl2541if2EUQyI/edit?usp=sharing',
@@ -23,7 +24,11 @@ export const CONTACT_LINKS: any[] = [
     href={LINKS?.dev_to}
     title="Dev.to account"
   >
-    <img src={'/devto-logo.svg'} alt="dev.to logo" style={{ width: 45, fontSize: 12 }} />
+    <img
+      src={devToLogo}
+      alt="dev.to logo"
+      style={{ width: 45, fontSize: 12 }}
+    />
   </a>,
   <a
     rel="noreferrer"

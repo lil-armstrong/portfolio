@@ -11,7 +11,7 @@ export function ContactMe() {
       <ContainerStyled>
         <h3 className="section-heading">Contact</h3>
         <section className="boxed_layout">
-          <div className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center my-[30px]">
+          <div className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center py-[30px]">
             <header className="flex flex-col gap-x-[10px] my-[30px] grow items-center justify-center w-full mx-[30px]">
               <p className="text-[4rem]">👋</p>
               <p className={cl(styles.title, 'text-center mb-4')}>
@@ -85,7 +85,7 @@ export function ContactMe() {
       </ContainerStyled>
       <div className="absolute bottom-0 w-full left-0">
         <BottomNavigation
-          leftSlot={{ content: 'Project', to: PAGES.PROJECT }}
+          leftSlot={{ content: 'Project', to: PAGES.BLOG }}
           rightComponent={<></>}
         />
       </div>

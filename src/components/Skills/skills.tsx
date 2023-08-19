@@ -18,10 +18,10 @@ interface SkillDataToolInterface {
 
 export default function Skills() {
   return (
-    <ContainerStyled >
+    <ContainerStyled>
       <h3 className="section-heading">Skills</h3>
       <section className="boxed_layout">
-        <div className="flex flex-col gap-[30px] py-[60px] pb-[100px]">
+        <div className="flex py-[30px] flex-col gap-[30px]">
           {Object.entries(skills)?.map(
             ([key, value]: [key: string, value?: Array<any>], indx) => (
               <ul key={indx} className="flex flex-col gap-[15px] ">

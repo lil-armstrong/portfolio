@@ -8,46 +8,6 @@ import './style.scss'
 import { StyledCard } from './styled'
 import { ContainerStyled } from '../common/styled'
 
-export function Projects() {
-  const isMounted = useRef<boolean>(true)
-
-  useEffect(() => {
-    if (!isMounted?.current) isMounted.current = true
-
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
-
-  return (
-    <ContainerStyled >
-      <h3 className="section-heading">Projects</h3>
-
-      <div className="boxed_layout">
-        <ul className="flex flex-wrap gap-[20px] ">
-          {projects?.map((data, idx: number) => {
-            return (
-              <li key={idx} className="flex-grow">
-                <ProjectCard data={data} />
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-
-      <div className="absolute bottom-0 w-full left-0">
-        <BottomNavigation
-          leftSlot={{ content: 'Certifications', to: PAGES.CERT }}
-          rightSlot={{
-            content: 'Contact',
-            to: PAGES.CONTACT,
-          }}
-        />
-      </div>
-    </ContainerStyled>
-  )
-}
-
 function ProjectCard(props: { data: IProject }): JSX.Element {
   const [image, setImage] = useState<string>()
   const { name, roles, timeline, link, org, image_url } = props.data
@@ -123,4 +83,46 @@ function ProjectCard(props: { data: IProject }): JSX.Element {
     </StyledCard>
   )
 }
+
+
+export function Projects() {
+  const isMounted = useRef<boolean>(true)
+
+  useEffect(() => {
+    if (!isMounted?.current) isMounted.current = true
+
+    return () => {
+      isMounted.current = false
+    }
+  }, [])
+
+  return (
+    <ContainerStyled>
+      <h3 className="section-heading">Projects</h3>
+
+      <div className="boxed_layout">
+        <ul className="flex flex-wrap py-[30px] gap-[20px] ">
+          {projects?.map((data, idx: number) => {
+            return (
+              <li key={idx} className="flex-grow">
+                <ProjectCard data={data} />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+
+      <div className="absolute bottom-0 w-full left-0">
+        <BottomNavigation
+          leftSlot={{ content: 'Certifications', to: PAGES.CERT }}
+          rightSlot={{
+            content: 'Blog',
+            to: PAGES.BLOG,
+          }}
+        />
+      </div>
+    </ContainerStyled>
+  )
+}
+
 export default Projects

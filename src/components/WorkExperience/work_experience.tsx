@@ -6,17 +6,18 @@ import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import type { TSingleWorkExperience } from './IProps'
 import './style.scss'
 import { StyledPictureHolder, StyledTimelineCard } from './styled'
+import { ContainerStyled } from '../common/styled'
 
 export default function WorkExperience() {
   const list = Object.entries(work_experience).reverse()
 
   return (
-    <div className="max-h-screen h-full flex-grow overflow-hidden">
+    <ContainerStyled>
       <div className="flex flex-col flex-grow " id={PAGES.WORK_EXP}>
         <header className="">
           <h3 className="section-heading">Work Experience</h3>
         </header>
-        <section className="boxed_layout overflow-y-auto">
+        <section className="boxed_layout py-[30px]">
           <div className="timeline-listing">
             {list.map(([year, experiences], yidx) => {
               return (
@@ -31,7 +32,7 @@ export default function WorkExperience() {
           </div>
         </section>
       </div>
-      <div className="sticky bottom-0 w-full left-0  z-[100]">
+      <div className="absolute bottom-0 w-full left-0  z-[100]">
         <BottomNavigation
           leftSlot={{ content: 'About', to: PAGES.ABOUT }}
           rightSlot={{
@@ -40,7 +41,7 @@ export default function WorkExperience() {
           }}
         />
       </div>
-    </div>
+    </ContainerStyled>
   )
 }
 
