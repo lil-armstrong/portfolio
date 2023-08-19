@@ -8,10 +8,16 @@ function ThemeSwitcher() {
   return (
     <>
       <button
+        aria-label="Change theme"
+        id="switch-theme"
         className={cl(styles.button, 'floating__btn rounded-full')}
         onClick={() => theme?.toggle()}
       >
-        {theme?.mode === 'light' ? <BiMoon /> : <BiSun />}
+        {theme?.mode === 'light' ? (
+          <BiMoon aria-labelledby="switch-theme" />
+        ) : (
+          <BiSun aria-labelledby="switch-theme" />
+        )}
         {/* <span className="hidden md:block">
           {theme?.currentValue === 'light' ? 'Dark' : 'Light'}
         </span> */}

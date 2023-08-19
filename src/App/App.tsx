@@ -166,14 +166,14 @@ function App() {
           onClick={handleScrollUp}
           className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
         >
-          <AiOutlineUp />
+          <AiOutlineUp aria-label="scroll up" />
         </button>
         <button
           disabled={isBottomDisabled}
           onClick={handleScrollDown}
           className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
         >
-          <AiOutlineDown />
+          <AiOutlineDown aria-label="scroll down" />
         </button>
       </>
     )
@@ -205,9 +205,9 @@ function App() {
 
   return (
     <>
-      <div className="block relative">
+      <div role="presentation"  className="block relative">
         {/* <FixedRightPanel /> */}
-        <div
+        <div role="presentation"
           ref={menu_container_ref}
           className="fixed left-[30px] top-[35px] z-[10]"
         >
@@ -220,12 +220,15 @@ function App() {
               container={menu_container_ref}
               className={cn('left-[90px] top-[100px] w-[370px]')}
             >
-              <div>
+              <div role="presentation">
                 {Object.entries(tab).map(([id, { title }]) => (
                   <Menu.Item
+                    role="menuitem"
                     key={id}
                     text={title && title}
                     title={id}
+                    tabIndex={0}
+                    aria-readonly
                     onClick={() => {
                       appCxt.setPage(id as PAGES)
                     }}
@@ -301,7 +304,7 @@ function App() {
                   className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
                   onClick={() => appCxt.setPage(PAGES.BLOG)}
                 >
-                  Blogs
+                  Blog
                 </NavLink>
               </div>
             </div>

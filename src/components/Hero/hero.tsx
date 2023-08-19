@@ -17,7 +17,7 @@ export function Hero({
 }: PropInterface) {
   return (
     <div id="page_hero">
-      <figure className="me_passport">
+      <figure className="me_passport" aria-label='Ebong, Okposong hero image'>
         <ImageSense>
           <img src={MePng} alt="Ebong, Okposong" />
         </ImageSense>

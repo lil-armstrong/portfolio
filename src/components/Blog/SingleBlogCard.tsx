@@ -8,9 +8,16 @@ export const SingleBlogCard = ({
   article: ArticleMeta
 }) => {
   return (
-    <ArticleStyled>
-      <a href={url}>
-        <h4 className={cn('text-lg font-bold')}>{title}</h4>
+    <ArticleStyled role="presentation">
+      <a
+        role="link"
+        tabIndex={0}
+        href={url}
+        rel="noreferrer"
+        target="_blank"
+        title={title}
+      >
+        <h4 className={cn('text-xl font-extrabold capitalize', 'opacity-[.75]')}>{title}</h4>
 
         <picture
           className={cn(

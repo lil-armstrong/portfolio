@@ -29,7 +29,8 @@ export function AboutMe() {
                   Software engineer with a passion for solving complex problems
                   and creating innovative solutions. Strong background in
                   mobile, web and command line app development. Passionate about
-                  creating <strong className="highlight">intuitive</strong> and
+                  creating <strong className="highlight">accessibility-friendly</strong>
+                  , <strong className="highlight">intuitive</strong> and
                   <strong className="highlight">user-friendly</strong>{' '}
                   applications.
                 </span>
@@ -88,7 +89,9 @@ export function AboutMe() {
               >
                 Download CV
               </a>
-              <span className="flex-grow text-center">OR</span>
+              <span className="flex-grow text-center opacity-[.25] font-bold text-lg">
+                OR
+              </span>
               <button
                 // href={`#${PAGES.CONTACT}`}
                 // target="_blank"

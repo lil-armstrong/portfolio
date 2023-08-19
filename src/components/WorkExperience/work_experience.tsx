@@ -13,25 +13,22 @@ export default function WorkExperience() {
 
   return (
     <ContainerStyled>
-      <div className="flex flex-col flex-grow " id={PAGES.WORK_EXP}>
-        <header className="">
-          <h3 className="section-heading">Work Experience</h3>
-        </header>
-        <section className="boxed_layout py-[30px]">
-          <div className="timeline-listing">
-            {list.map(([year, experiences], yidx) => {
-              return (
-                <div key={`year_${year}_${yidx}`}>
-                  <h3 className="sticky top-0 watermark__text">{year}</h3>
-                  {experiences.map((data, idx) => (
-                    <WorkExperienceCard key={idx} data={data} />
-                  ))}
-                </div>
-              )
-            })}
-          </div>
-        </section>
-      </div>
+      <h3 className="section-heading">Work Experience</h3>
+      <header className=""></header>
+      <section className="boxed_layout py-[30px]" id={PAGES.WORK_EXP}>
+        <div className="timeline-listing">
+          {list.map(([year, experiences], yidx) => {
+            return (
+              <div key={`year_${year}_${yidx}`}>
+                <h3 className="sticky top-0 watermark__text">{year}</h3>
+                {experiences.map((data, idx) => (
+                  <WorkExperienceCard key={idx} data={data} />
+                ))}
+              </div>
+            )
+          })}
+        </div>
+      </section>
       <div className="absolute bottom-0 w-full left-0  z-[100]">
         <BottomNavigation
           leftSlot={{ content: 'About', to: PAGES.ABOUT }}
@@ -64,7 +61,7 @@ function WorkExperienceCard(props: TSingleWorkExperience) {
         <div>
           <ul className="dot-list opacity-70">
             <li className="list-item flex-row inline-flex" title={timeline}>
-              <AiOutlineCalendar /> {timeline}
+              <AiOutlineCalendar role="presentation" /> {timeline}
             </li>
           </ul>
         </div>

@@ -24,9 +24,10 @@ export function Certifications() {
                   href={link}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`Visit external link: ${link}`}
                   className="absolute right-[30px] top-[30px]"
                 >
-                  <RiExternalLinkLine />
+                  <RiExternalLinkLine role="presentation" />
                 </a>
               </div>
             </li>

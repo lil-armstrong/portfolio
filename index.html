@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" role="document">
   <head>
     <title>Ebong Okposong - Personal portfolio website</title>
     <meta charset="UTF-8" />
@@ -61,8 +61,8 @@
     />
     <link rel="shortcut icon" type="image/png" href="me.png" />
   </head>
-  <body class="hidden_scrollbar">
-    <div id="root"></div>
+  <body class="hidden_scrollbar" role="presentation">
+    <div id="root" tabIndex={0} role="presentation"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

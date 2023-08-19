@@ -15,14 +15,16 @@ export const CONTACT_LINKS: any[] = [
     target="_blank"
     href={LINKS?.github}
     title="Github account"
+    aria-label='Visit and connect with me via Github'
   >
-    <RiGithubLine />
+    <RiGithubLine aria-label="github icon" />
   </a>,
   <a
     rel="noreferrer"
     target="_blank"
     href={LINKS?.dev_to}
     title="Dev.to account"
+    aria-label="Visit and connect with me on Dev.to"
   >
     <img
       src={devToLogo}
@@ -33,10 +35,11 @@ export const CONTACT_LINKS: any[] = [
   <a
     rel="noreferrer"
     target="_blank"
+    aria-label='Visit and connect with me via linkedin'
     href={LINKS?.linkedin}
     title="Linkedin account"
   >
-    <RiLinkedinFill />
+    <RiLinkedinFill aria-label="Linkedin icon" />
   </a>,
   // <>
   //   <a rel="noreferrer" href={LINKS?.phone}>

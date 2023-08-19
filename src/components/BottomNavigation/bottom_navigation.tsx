@@ -29,7 +29,7 @@ function BottomNavigation(props: Props) {
       if (component) return component
       else if (slot) {
         return (
-          <button
+          <button 
             className={`cursor-pointer px-[25px] nav-link ${
               right ? 'justify-end' : 'justify-start'
             }`}
@@ -49,10 +49,10 @@ function BottomNavigation(props: Props) {
   return (
     <div className="flex lg:flex-row bottom_nav w-full flex-wrap items-end  justify-between">
       <RenderSlot slot={props.leftSlot} component={props.leftComponent}>
-        <AiOutlineLeftCircle />
+        <AiOutlineLeftCircle aria-label='(Go to previous)'/>
       </RenderSlot>
       <RenderSlot component={props.rightComponent} right slot={props.rightSlot}>
-        <AiOutlineRightCircle />
+        <AiOutlineRightCircle aria-label='(Go to next)' />
       </RenderSlot>
     </div>
   )

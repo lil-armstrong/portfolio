@@ -1,3 +1,4 @@
+import cls from 'classnames'
 import React from 'react'
 import { BiCaretRight, BiMenu, BiX } from 'react-icons/bi'
 import { Poppable } from 'webrix/components'
@@ -6,23 +7,8 @@ import {
   useDimensions,
   useVisibilityState,
 } from 'webrix/hooks'
+import { MenuButton, MenuItemProps, MenuProps } from './IProps'
 import styles from './style.module.scss'
-import cls from 'classnames'
-
-type MenuProps = React.PropsWithChildren<
-  {
-    reference?: DOMRect
-    container?: React.RefObject<HTMLElement>
-  } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
->
-
-type MenuItemProps = React.PropsWithChildren<
-  {
-    active?: boolean
-    text: JSX.Element | string | null
-    icon?: JSX.Element | null
-  } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement>
->
 
 const GAP = 5
 
@@ -93,20 +79,12 @@ const Leaf = ({ children, reference, container }: MenuProps) => {
     </div>
   )
 }
-type MenuButton = React.PropsWithChildren<
-  {
-    open: boolean
-  } & React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLElement>,
-    HTMLButtonElement
-  >
->
 
 const Button = React.forwardRef<HTMLButtonElement, MenuButton>((props, ref) => {
   const { children, open, ...rest } = props
 
   function Icon() {
-    return open ? <BiX /> : <BiMenu />
+    return open ? <BiX aria-label='Close menu'/> : <BiMenu aria-label='Open menu'/>
   }
 
   const className = cls('floating__btn', styles.button)
@@ -182,15 +160,27 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
   const handleOnMouseDownCapture = useClickOutside(hide)
 
   return (
-    <div ref={reference}>
-      <Button open={visible} ref={btn_ref} onClick={visible ? hide : show} />
+    <div role="menu" ref={reference}>
+      <Button
+        aria-label={`${visible ? 'Close' : 'Open'} menu`}
+        open={visible}
+        ref={btn_ref}
+        onClick={visible ? hide : show}
+      />
 
       <Poppable
         {...poppable_props}
         onMouseDownCapture={handleOnMouseDownCapture}
       >
         {visible && child && (
-          <div className={cls(styles.container, 'select-none rounded-lg', className)}>
+          <div
+            role="presentation"
+            className={cls(
+              styles.container,
+              'select-none rounded-lg',
+              className
+            )}
+          >
             {/* <div
               className={cls(
                 styles.menu__title,
