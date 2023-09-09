@@ -1,17 +1,16 @@
-import {
-  AboutMe,
-  Blog,
-  Certifications,
-  ContactMe,
-  Menu,
-  Projects,
-  Skills,
-  Tab,
-  ThemeSwitcher,
-  TypeWriter,
-  WorkExperience,
-} from '@/components'
+import AboutMe from '@/components/AboutMe/AboutMe'
+import Blog from '@/components/Blog/Blog'
+import Certifications from '@/components/Certifications/certificatons'
+import Collapsible from '@/components/Collapsible/Collapsible'
+import ContactMe from '@/components/ContactMe/contact'
 import Hero from '@/components/Hero/hero'
+import Menu from '@/components/Menu/menu'
+import Projects from '@/components/Projects/project'
+import Skills from '@/components/Skills/skills'
+import Tab from '@/components/Tab'
+import ThemeSwitcher from '@/components/ThemeSwitcher/theme_switcher'
+import TypeWriter from '@/components/TypeWriter/type_writer'
+import WorkExperience from '@/components/WorkExperience/work_experience'
 import { CONTACT_LINKS } from '@/constant/contact'
 import * as ThemeContext from '@/context/theme.context'
 import '@/styles/index.scss'
@@ -23,7 +22,7 @@ import '@fontsource/bakbak-one'
 import 'animate.css'
 import cn from 'classnames'
 import React, { createRef, useContext, useEffect } from 'react'
-import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai'
+import { AiOutlineCaretDown, AiOutlineCaretUp } from 'react-icons/ai'
 import { Poppable } from 'webrix/components'
 import useAppCxt from '../hook/app.hook'
 import { NavLink } from './styled'
@@ -159,21 +158,23 @@ function App() {
         window.removeEventListener('scroll', onScroll)
       }
     }, [])
+
+    const iconSize = 16
     return (
       <>
         <button
           disabled={isTopDisabled}
           onClick={handleScrollUp}
-          className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 border-b border-solid border-[#0000002c] top-[0] w-full h-[50px]"
+          className="flex items-center justify-center py-[8px] absolute left-0 top-[0] w-full h-[32px]"
         >
-          <AiOutlineUp aria-label="scroll up" />
+          <AiOutlineCaretUp aria-label="scroll up" size={iconSize} />
         </button>
         <button
           disabled={isBottomDisabled}
           onClick={handleScrollDown}
-          className="text-[20px] flex items-center justify-center py-[8px] absolute left-0 bottom-[0]   w-full h-[50px]"
+          className="flex items-center justify-center py-[8px] absolute left-0 bottom-[0] w-full h-[30px]"
         >
-          <AiOutlineDown aria-label="scroll down" />
+          <AiOutlineCaretDown aria-label="scroll down" size={iconSize} />
         </button>
       </>
     )
@@ -205,20 +206,23 @@ function App() {
 
   return (
     <>
-      <div role="presentation"  className="block relative">
+      <div role="presentation" className="block relative">
         {/* <FixedRightPanel /> */}
-        <div role="presentation"
+        <Collapsible
           ref={menu_container_ref}
-          className="fixed left-[30px] top-[35px] z-[10]"
+          className="fixed left-[10px] md:left-[20px]  top-[10px]  z-[10]"
         >
-          <div className="flex flex-col gap-[10px] items-center">
+          <div
+           
+            className="flex flex-col gap-[10px] items-center"
+          >
             <ThemeSwitcher />
 
             {/* Menu bar */}
             <Menu
               placement={{ initial: 6, area: menu_placement }}
               container={menu_container_ref}
-              className={cn('left-[90px] top-[100px] w-[370px]')}
+              className={cn('left-[60px] top-[60px] w-[300px]')}
             >
               <div role="presentation">
                 {Object.entries(tab).map(([id, { title }]) => (
@@ -239,14 +243,11 @@ function App() {
             </Menu>
             {/* END: Menu bar */}
 
-            <div
-              id="scroll__btn"
-              className="relative h-[100px]  w-[50px] floating__btn overflow-hidden rounded-[25px] py-[4px] flex flex-col items-center justify-center"
-            >
+            <div className="relative h-[70px] border-2 w-[30px] floating__btn overflow-hidden rounded-[8px] py-[4px] flex flex-col items-center justify-center">
               <ScrollButton />
             </div>
           </div>
-        </div>
+        </Collapsible>
 
         <div className="z-[1] sticky top-0">
           <Hero

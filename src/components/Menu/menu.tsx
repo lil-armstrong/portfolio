@@ -82,12 +82,16 @@ const Leaf = ({ children, reference, container }: MenuProps) => {
 
 const Button = React.forwardRef<HTMLButtonElement, MenuButton>((props, ref) => {
   const { children, open, ...rest } = props
-
+  const iconSize = 18
   function Icon() {
-    return open ? <BiX aria-label='Close menu'/> : <BiMenu aria-label='Open menu'/>
+    return open ? (
+      <BiX size={iconSize} aria-label="Close menu" />
+    ) : (
+      <BiMenu size={iconSize} aria-label="Open menu" />
+    )
   }
 
-  const className = cls('floating__btn', styles.button)
+  const className = cls(styles.button)
 
   const $props = {
     ...rest,

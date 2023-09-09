@@ -1,6 +1,6 @@
 import './style.scss'
 import MePng from '@/assets/me.png'
-import ImageSense from '../ImageSense/image_sense'
+import MotionSentiivieImage from '../MotionSentiivieImage/MotionSentiivieImage'
 import { PropsWithChildren } from 'react'
 
 interface PropInterface extends PropsWithChildren {
@@ -18,9 +18,7 @@ export function Hero({
   return (
     <div id="page_hero">
       <figure className="me_passport" aria-label='Ebong, Okposong hero image'>
-        <ImageSense>
-          <img src={MePng} alt="Ebong, Okposong" />
-        </ImageSense>
+        <MotionSentiivieImage src={MePng} alt="Ebong, Okposong"/>
       </figure>
 
       <div className="hero_content">

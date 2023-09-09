@@ -28,7 +28,7 @@ export const SingleBlogCard = ({
             src={cover_image}
             alt={slug}
             className={cn(
-              'w-full opacity-[.65] h-full object-cover',
+              'w-full dark:opacity-[.65] h-full object-cover',
               'transition-transform ease-in-out delay-150',
               'hover:opacity-1 hover:scale-110 hover:-translate-y-2'
             )}

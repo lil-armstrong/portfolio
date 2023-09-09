@@ -4,19 +4,20 @@ import { BiMoon, BiSun } from 'react-icons/bi'
 import cl from 'classnames'
 function ThemeSwitcher() {
   const { theme } = useAppCxt()
+  const size = 18;
 
   return (
     <>
       <button
         aria-label="Change theme"
         id="switch-theme"
-        className={cl(styles.button, 'floating__btn rounded-full')}
+        className={cl(styles.button, '')}
         onClick={() => theme?.toggle()}
       >
         {theme?.mode === 'light' ? (
-          <BiMoon aria-labelledby="switch-theme" />
+          <BiMoon size={size} aria-labelledby="switch-theme" />
         ) : (
-          <BiSun aria-labelledby="switch-theme" />
+          <BiSun size={size} aria-labelledby="switch-theme" />
         )}
         {/* <span className="hidden md:block">
           {theme?.currentValue === 'light' ? 'Dark' : 'Light'}

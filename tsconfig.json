@@ -20,7 +20,8 @@
       "@/*": ["./*"]
     },
     "useUnknownInCatchVariables": true,
-    "typeRoots": ["src/types"]
+    "types": ["cypress", "types"]
+    // "typeRoots": ["src"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

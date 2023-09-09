@@ -1,10 +1,11 @@
 import { animated as anm, useSpring } from '@react-spring/web'
-import { useCallback } from 'react'
+import React, { ImgHTMLAttributes, useCallback } from 'react'
 import styles from './styles.module.scss'
+import BlurOnScroll from './BlurOnScroll/BlurOnScroll'
 
-type Props = React.PropsWithChildren
+type Props = React.PropsWithChildren & ImgHTMLAttributes<HTMLImageElement>
 
-function ImageSense(props: Props) {
+function MotionSentiivieImage(props: Props) {
   const [{ xyz }, springRef] = useSpring(() => ({
     xyz: [0, 0, 1],
   }))
@@ -18,7 +19,7 @@ function ImageSense(props: Props) {
   }
   const interpPerps = xyz.to(
     (x, y, z) =>
-      `perspective(1700px) rotateX(${x}deg) rotateY(${y}deg) scale(${z})`
+      `perspective(1700px) rotateX(${x}deg) rotateY(${y}degImgHTMLAttributes) scale(${z})`
   )
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = useCallback(
     ({ clientX: x, clientY: y }) => {
@@ -39,21 +40,19 @@ function ImageSense(props: Props) {
   )
 
   return (
-    <div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={``}
-    >
+    <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       <anm.div
         className={styles.card}
         style={{
           transform: interpPerps,
         }}
       >
-        {props.children}
+        <BlurOnScroll y={100}>
+          <img src={props?.src} alt={props?.alt} />
+        </BlurOnScroll>
       </anm.div>
     </div>
   )
 }
 
-export default ImageSense
+export default MotionSentiivieImage

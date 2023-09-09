@@ -17,7 +17,7 @@ export function Blog() {
 
   return (
     <ContainerStyled>
-      <h3 className="section-heading">Articles</h3>
+      <h3 className="section-heading">Blog</h3>
 
       <div className="boxed_layout" id={PAGES.BLOG}>
         <div className="py-[30px]">

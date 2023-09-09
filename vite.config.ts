@@ -26,7 +26,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         "@": resolve(__dirname, "src"),
       },
     },
-    publicDir: "./public"
+    publicDir: "./public",
+    
   };
   if (mode == "development")
     return {
