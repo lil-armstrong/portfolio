@@ -1,6 +1,6 @@
 import React from 'react'
-import useAppCxt from '@/hook/app.hook'
 import { PAGES } from '@/types/pages'
+import usePage from '@/hook/usePage'
 
 interface TabPropsInterface {
   (props: {
@@ -10,14 +10,14 @@ interface TabPropsInterface {
 }
 
 export default function Tab({ children }: { children: TabPropsInterface }) {
-  const appCxt = useAppCxt()
+  const page = usePage()
   const [activeIndex, setActiveIndex] = React.useState<PAGES>()
 
   React.useEffect(() => {
-    if (appCxt.active) {
-      setActiveIndex(appCxt.active)
+    if (page.activePage) {
+      setActiveIndex(page.activePage)
     }
-  }, [appCxt.active])
+  }, [page.activePage])
 
   return children({ activeIndex, setActiveIndex })
 }

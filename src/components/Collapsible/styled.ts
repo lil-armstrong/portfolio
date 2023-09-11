@@ -24,8 +24,14 @@ margin-left: -20px;
 `
 )
 
-export const WrapperStyled = styled.nav(
-  () => `
+export const WrapperStyled = styled.nav<{ isHidden?: boolean }>(
+  ({ isHidden }) =>
+    isHidden
+      ? `
+  display: none`
+      : `
+  display: flex;
+  flex-direction:column;
   box-shadow: var(--beam-shadow);
   padding: 4px;
   border-radius: 12px;

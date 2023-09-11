@@ -11,10 +11,6 @@ import BottomNavigation from '../BottomNavigation/bottom_navigation'
 export function Blog() {
   const { loading, result } = useFetch(blog.getMany())
 
-  useEffect(() => {
-    console.log(result)
-  }, [result])
-
   return (
     <ContainerStyled>
       <h3 className="section-heading">Blog</h3>

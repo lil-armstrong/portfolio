@@ -14,8 +14,7 @@ import BlurOnScroll from './BlurOnScroll'
 
 describe('BlurOnScrollComponent', () => {
   it('renders', () => {
-    // cy.children().should('be.null')
-    cy.mount(<BlurOnScroll />).should('exist')
+    cy.mount(<BlurOnScroll />)
   })
 
   it('renders the correct children', () => {
@@ -23,15 +22,13 @@ describe('BlurOnScrollComponent', () => {
       <BlurOnScroll>
         <div data-cy="test_child" />
       </BlurOnScroll>
-    )
-      .get("[data-cy='test_child']")
-      .should('exist')
+    ).get("[data-cy='test_child']")
   })
 
   it('Updates scroll distance and blur ratio', () => {
     const containerHeight = 5000
     const expectedScrollDistance = 4000
-    const expectedBlurValue = (expectedScrollDistance / containerHeight) * 100; 
+    const expectedBlurValue = (expectedScrollDistance / containerHeight) * 100
     const container = cy.mount(
       <BlurOnScroll y={0}>
         <div
@@ -43,17 +40,16 @@ describe('BlurOnScrollComponent', () => {
       </BlurOnScroll>
     )
 
-    container.get("[data-cy='test-value']").should('exist').contains('0/0')
+    container.get("[data-cy='test-value']").as('testValue').contains('0/0')
 
-    container.get("[data-cy='scrollable-container']").should('exist')
+    container.get("[data-cy='scrollable-container']").as('scrollable')
 
     cy.scrollTo(0, expectedScrollDistance, {
       easing: 'linear',
-      duration: 2000
+      duration: 2000,
     }).then(() => {
       container
-        .get("[data-cy='test-value']")
-        .should('exist')
+        .get('@testValue')
         .contains(`${expectedScrollDistance}/${expectedBlurValue}`)
     })
 
@@ -61,10 +57,7 @@ describe('BlurOnScrollComponent', () => {
       easing: 'linear',
       duration: 2000,
     }).then(() => {
-      container
-        .get("[data-cy='test-value']")
-        .should('exist')
-        .contains(`${0}/${0}`)
+      container.get('@testValue').contains(`${0}/${0}`)
     })
   })
 })

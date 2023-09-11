@@ -1,8 +1,8 @@
 import React, {
-    ForwardRefExoticComponent,
-    HTMLAttributes,
-    RefAttributes,
-    forwardRef,
+  ForwardRefExoticComponent,
+  HTMLAttributes,
+  RefAttributes,
+  forwardRef,
 } from 'react'
 import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai'
 import { ActionButtonStyled, WrapperStyled } from './styled'
@@ -18,19 +18,15 @@ const Collapsible: ForwardRefExoticComponent<
     setHidden(!hidden)
   }
   return (
-    <div
-      role="presentation"
-      title={`
-    ${hidden ? 'Open' : 'Close'}
-     menu   
-    `}
-      ref={ref}
-      {...props}
-    >
+    <div ref={ref} {...props}>
       <ActionButtonStyled
         data-cy="action-button"
         onClick={handleToggle}
         className="floating__btn"
+        title={`
+        ${hidden ? 'Open' : 'Close'}
+        menu   
+        `}
       >
         {hidden ? (
           <AiOutlineCaretRight size={iconSize} />
@@ -38,7 +34,9 @@ const Collapsible: ForwardRefExoticComponent<
           <AiOutlineCaretLeft size={iconSize} />
         )}
       </ActionButtonStyled>
-      <WrapperStyled id="fixed__nav__btn">{!hidden && children}</WrapperStyled>
+      <WrapperStyled isHidden={hidden} data-cy="childrenWrapper"  id="fixed__nav__btn">
+        {children}
+      </WrapperStyled>
     </div>
   )
 })

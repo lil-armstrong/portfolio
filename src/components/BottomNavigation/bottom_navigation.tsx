@@ -1,6 +1,6 @@
+import usePage from '@/hook/usePage'
 import './style.scss'
 import { PAGES } from '@/types/pages'
-import useAppCxt from '@/hook/app.hook'
 import React from 'react'
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from 'react-icons/ai'
 type TSlot = { content: string; to: PAGES }
@@ -13,7 +13,7 @@ type Props = React.PropsWithChildren<{
 }>
 
 function BottomNavigation(props: Props) {
-  const setPage = useAppCxt().setPage
+  const setPage = usePage().onPageChange
 
   const RenderSlot = React.useCallback(
     ({
@@ -29,7 +29,7 @@ function BottomNavigation(props: Props) {
       if (component) return component
       else if (slot) {
         return (
-          <button 
+          <button
             className={`cursor-pointer px-[25px] nav-link ${
               right ? 'justify-end' : 'justify-start'
             }`}
@@ -49,10 +49,10 @@ function BottomNavigation(props: Props) {
   return (
     <div className="flex lg:flex-row bottom_nav w-full flex-wrap items-end  justify-between">
       <RenderSlot slot={props.leftSlot} component={props.leftComponent}>
-        <AiOutlineLeftCircle aria-label='(Go to previous)'/>
+        <AiOutlineLeftCircle aria-label="(Go to previous)" />
       </RenderSlot>
       <RenderSlot component={props.rightComponent} right slot={props.rightSlot}>
-        <AiOutlineRightCircle aria-label='(Go to next)' />
+        <AiOutlineRightCircle aria-label="(Go to next)" />
       </RenderSlot>
     </div>
   )

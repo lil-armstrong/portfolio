@@ -1,18 +1,19 @@
 import AboutMe from '@/components/AboutMe/AboutMe'
 import Blog from '@/components/Blog/Blog'
-import Certifications from '@/components/Certifications/certificatons'
+import Certifications from '@/components/Certifications'
 import Collapsible from '@/components/Collapsible/Collapsible'
 import ContactMe from '@/components/ContactMe/contact'
 import Hero from '@/components/Hero/hero'
 import Menu from '@/components/Menu/menu'
 import Projects from '@/components/Projects/project'
+import ScrollButton from '@/components/ScrollButton'
 import Skills from '@/components/Skills/skills'
-import Tab from '@/components/Tab'
-import ThemeSwitcher from '@/components/ThemeSwitcher/theme_switcher'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 import TypeWriter from '@/components/TypeWriter/type_writer'
 import WorkExperience from '@/components/WorkExperience/work_experience'
 import { CONTACT_LINKS } from '@/constant/contact'
-import * as ThemeContext from '@/context/theme.context'
+import usePage from '@/hook/usePage'
+import useTheme from '@/hook/useTheme'
 import '@/styles/index.scss'
 import { PAGES } from '@/types/pages'
 import '@fontsource/alexandria/200.css'
@@ -21,18 +22,16 @@ import '@fontsource/anonymous-pro'
 import '@fontsource/bakbak-one'
 import 'animate.css'
 import cn from 'classnames'
-import React, { createRef, useContext, useEffect } from 'react'
-import { AiOutlineCaretDown, AiOutlineCaretUp } from 'react-icons/ai'
+import React, { createRef, useEffect } from 'react'
 import { Poppable } from 'webrix/components'
-import useAppCxt from '../hook/app.hook'
 import { NavLink } from './styled'
+import Tab from '@/components/Tab'
 
 const GAP = 5
 
-const tab: Record<
-  PAGES,
-  { title: JSX.Element | null; content: () => JSX.Element | null }
-> = {
+const tab: {
+  [t in PAGES]: { title: JSX.Element | null; content: () => JSX.Element | null }
+} = {
   [PAGES.ABOUT]: {
     title: <p>About Me</p>,
     content: AboutMe,
@@ -66,16 +65,16 @@ const tab: Record<
 
 // MAIN APP
 function App() {
-  const theme = useContext(ThemeContext.ThemeCtx)
+  const theme = useTheme()
+  const { activePage, onPageChange } = usePage()
   const scrollRef = createRef<HTMLDivElement>()
   const currentPageRef = React.useRef<PAGES>()
-  const appCxt = useAppCxt(),
-    activePage = appCxt.active
+  const menu_container_ref = React.createRef<HTMLDivElement>()
 
   useEffect(() => {
     const body = document?.body
     if (theme && body) {
-      body?.setAttribute('data-theme', theme?.currentValue)
+      body?.setAttribute('data-theme', theme?.mode)
     }
   }, [theme])
 
@@ -102,7 +101,7 @@ function App() {
   }, [activePage, scrollRef])
 
   const RenderTabContent = React.useCallback(() => {
-    const page = activePage ? activePage : PAGES.ABOUT
+    const page: PAGES = activePage ? activePage : PAGES.ABOUT
 
     const value = tab[page]
     const key = page
@@ -113,72 +112,6 @@ function App() {
       </div>
     )
   }, [activePage])
-
-  const handleScrollUp = React.useCallback(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: 0,
-    })
-  }, [])
-
-  const handleScrollDown = React.useCallback(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: window.innerHeight,
-    })
-  }, [])
-
-  const ScrollButton = React.useCallback(() => {
-    const [isTopDisabled, setDisableTop] = React.useState(window.scrollY === 0)
-
-    const [isBottomDisabled, setDisableBottom] = React.useState(
-      window.scrollY !== 0 &&
-        window.scrollY >=
-          Math.abs(
-            document.body.scrollHeight -
-              document.body.clientHeight -
-              document.body.scrollTop
-          )
-    )
-
-    React.useEffect(() => {
-      const onScroll = () => {
-        setDisableTop(window.scrollY === 0)
-        setDisableBottom(
-          window.scrollY >=
-            Math.abs(
-              document.body.scrollHeight -
-                document.body.clientHeight -
-                document.body.scrollTop
-            )
-        )
-      }
-      window.addEventListener('scroll', onScroll)
-      return () => {
-        window.removeEventListener('scroll', onScroll)
-      }
-    }, [])
-
-    const iconSize = 16
-    return (
-      <>
-        <button
-          disabled={isTopDisabled}
-          onClick={handleScrollUp}
-          className="flex items-center justify-center py-[8px] absolute left-0 top-[0] w-full h-[32px]"
-        >
-          <AiOutlineCaretUp aria-label="scroll up" size={iconSize} />
-        </button>
-        <button
-          disabled={isBottomDisabled}
-          onClick={handleScrollDown}
-          className="flex items-center justify-center py-[8px] absolute left-0 bottom-[0] w-full h-[30px]"
-        >
-          <AiOutlineCaretDown aria-label="scroll down" size={iconSize} />
-        </button>
-      </>
-    )
-  }, [])
 
   const isMenuItemActive = React.useCallback(
     (itemId: PAGES) => {
@@ -202,7 +135,6 @@ function App() {
       { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
     ]
   }, [])
-  const menu_container_ref = React.createRef<HTMLDivElement>()
 
   return (
     <>
@@ -212,11 +144,8 @@ function App() {
           ref={menu_container_ref}
           className="fixed left-[10px] md:left-[20px]  top-[10px]  z-[10]"
         >
-          <div
-           
-            className="flex flex-col gap-[10px] items-center"
-          >
-            <ThemeSwitcher />
+          <div className="flex flex-col gap-[10px] items-center">
+            <ThemeSwitcher onChange={theme.onToggle} mode={theme?.mode} />
 
             {/* Menu bar */}
             <Menu
@@ -234,7 +163,7 @@ function App() {
                     tabIndex={0}
                     aria-readonly
                     onClick={() => {
-                      appCxt.setPage(id as PAGES)
+                      onPageChange(id as PAGES)
                     }}
                     active={isMenuItemActive(id as PAGES)}
                   />
@@ -289,21 +218,21 @@ function App() {
                   href={`#${PAGES.PROJECT}`}
                   className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
                   title="Go to projects"
-                  onClick={() => appCxt.setPage(PAGES.PROJECT)}
+                  onClick={() => onPageChange(PAGES.PROJECT)}
                 >
                   Projects
                 </NavLink>
                 <NavLink
                   href={`#${PAGES.WORK_EXP}`}
                   className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
-                  onClick={() => appCxt.setPage(PAGES.WORK_EXP)}
+                  onClick={() => onPageChange(PAGES.WORK_EXP)}
                 >
                   Work Experience
                 </NavLink>
                 <NavLink
                   href={`#${PAGES.BLOG}`}
                   className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
-                  onClick={() => appCxt.setPage(PAGES.BLOG)}
+                  onClick={() => onPageChange(PAGES.BLOG)}
                 >
                   Blog
                 </NavLink>

@@ -166,7 +166,7 @@ function Wrapper({ children, placement, className, container }: WrapperProps) {
   return (
     <div role="menu" ref={reference}>
       <Button
-        aria-label={`${visible ? 'Close' : 'Open'} menu`}
+        aria-label={`${visible ? 'Close' : 'Open'} the menu`}
         open={visible}
         ref={btn_ref}
         onClick={visible ? hide : show}

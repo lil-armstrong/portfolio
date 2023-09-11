@@ -5,7 +5,7 @@ import BlurOnScroll from './BlurOnScroll/BlurOnScroll'
 
 type Props = React.PropsWithChildren & ImgHTMLAttributes<HTMLImageElement>
 
-function MotionSentiivieImage(props: Props) {
+function MotionSensitiveImage(props: Props) {
   const [{ xyz }, springRef] = useSpring(() => ({
     xyz: [0, 0, 1],
   }))
@@ -17,7 +17,7 @@ function MotionSentiivieImage(props: Props) {
     ]
     return output
   }
-  const interpPerps = xyz.to(
+  const interpolatePerspective = xyz.to(
     (x, y, z) =>
       `perspective(1700px) rotateX(${x}deg) rotateY(${y}degImgHTMLAttributes) scale(${z})`
   )
@@ -44,7 +44,7 @@ function MotionSentiivieImage(props: Props) {
       <anm.div
         className={styles.card}
         style={{
-          transform: interpPerps,
+          transform: interpolatePerspective,
         }}
       >
         <BlurOnScroll y={100}>
@@ -55,4 +55,4 @@ function MotionSentiivieImage(props: Props) {
   )
 }
 
-export default MotionSentiivieImage
+export default MotionSensitiveImage

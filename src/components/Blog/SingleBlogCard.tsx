@@ -1,12 +1,14 @@
 import { ArticleMeta } from '@/api/blog/Model'
 import cn from 'classnames'
 import { ArticleStyled } from './styled'
+import useTheme from '@/hook/useTheme/useTheme'
 
 export const SingleBlogCard = ({
   article: { url, title, cover_image, description, tag_list, slug },
 }: {
   article: ArticleMeta
 }) => {
+  const { mode } = useTheme()
   return (
     <ArticleStyled role="presentation">
       <a
@@ -17,7 +19,14 @@ export const SingleBlogCard = ({
         target="_blank"
         title={title}
       >
-        <h4 className={cn('text-xl font-extrabold capitalize', 'opacity-[.75]')}>{title}</h4>
+        <h4
+          className={cn(
+            'text-xl font-extrabold capitalize',
+            mode === 'dark' ? 'opacity-[.75]' : ''
+          )}
+        >
+          {title}
+        </h4>
 
         <picture
           className={cn(
@@ -28,7 +37,8 @@ export const SingleBlogCard = ({
             src={cover_image}
             alt={slug}
             className={cn(
-              'w-full dark:opacity-[.65] h-full object-cover',
+              (mode === 'dark' && 'opacity-[.65]') || '',
+              'w-full  h-full object-cover',
               'transition-transform ease-in-out delay-150',
               'hover:opacity-1 hover:scale-110 hover:-translate-y-2'
             )}

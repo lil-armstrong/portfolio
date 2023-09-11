@@ -1,12 +1,11 @@
-import { PAGES } from '@/types/pages'
+import usePage from '@/hook/usePage'
 import { LINKS } from '@/types/links'
+import { PAGES } from '@/types/pages'
 import BottomNavigation from '../BottomNavigation/bottom_navigation'
-import useAppCxt from '@/hook/app.hook'
-import cl from 'classnames'
 import { ContainerStyled } from '../common/styled'
 
 export function AboutMe() {
-  const setPage = useAppCxt().setPage
+  const setPage = usePage().onPageChange
 
   return (
     <>
@@ -29,8 +28,9 @@ export function AboutMe() {
                   Software engineer with a passion for solving complex problems
                   and creating innovative solutions. Strong background in
                   mobile, web and command line app development. Passionate about
-                  creating <strong className="highlight">accessibility-friendly</strong>
-                  , <strong className="highlight">intuitive</strong> and
+                  creating{' '}
+                  <strong className="highlight">accessibility-friendly</strong>,{' '}
+                  <strong className="highlight">intuitive</strong> and
                   <strong className="highlight">user-friendly</strong>{' '}
                   applications.
                 </span>

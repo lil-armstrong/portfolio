@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
 
 export const useFetch = <T = unknown>(request: Promise<T>) => {
