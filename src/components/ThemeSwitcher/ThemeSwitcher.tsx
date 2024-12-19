@@ -1,42 +1,20 @@
-import { IThemeProps } from '@/types/theme'
+import { tColorScheme } from '@/types/theme'
 import cl from 'classnames'
-import { BiMoon, BiSun, BiAdjust } from 'react-icons/bi'
+import { BiMoon, BiSun } from 'react-icons/bi'
 import styles from './style.module.scss'
-import { useCallback } from 'react'
 
-const size = 18
-
-function ThemeSwitcher({ onChange, mode = 'system' }: IThemeProps) {
-  const ButtonIcon = useCallback(() => {
-    switch (mode) {
-      case 'dark':
-        return (
-          <BiSun
-            size={size}
-            aria-labelledby="switch-theme"
-            data-cy="darkModeIcon"
-          />
-        )
-
-      case 'light':
-        return (
-          <BiMoon
-            size={size}
-            aria-labelledby="switch-theme"
-            data-cy="lightModeIcon"
-          />
-        )
-      case 'system':
-      default:
-        return (
-          <BiAdjust
-            size={size}
-            aria-labelledby="switch-theme"
-            data-cy="defaultModeIcon"
-          />
-        )
-    }
-  }, [mode])
+function ThemeSwitcher({
+  onChange,
+  mode = 'system',
+}: {
+  onChange?: () => void | undefined
+  /**
+   * Mode should be a stateful property.
+   * It determines the state of the icon
+   */
+  mode?: tColorScheme
+}) {
+  const size = 18
 
   return (
     <button
@@ -48,7 +26,19 @@ function ThemeSwitcher({ onChange, mode = 'system' }: IThemeProps) {
         onChange && onChange()
       }}
     >
-      <ButtonIcon />
+      {mode === 'light' ? (
+        <BiMoon
+          size={size}
+          aria-labelledby="switch-theme"
+          data-cy="lightModeIcon"
+        />
+      ) : (
+        <BiSun
+          size={size}
+          aria-labelledby="switch-theme"
+          data-cy="darkModeIcon"
+        />
+      )}
     </button>
   )
 }
