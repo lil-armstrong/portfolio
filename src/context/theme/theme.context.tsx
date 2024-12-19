@@ -1,25 +1,23 @@
-import { tColorScheme, iThemeContextValue, iThemeState } from '@/types/theme'
-import { createContext, useEffect, useState } from 'react'
+import { TColorScheme, IThemeContextValue, IThemeState } from '@/types/theme'
+import { createContext, useEffect, useMemo, useState } from 'react'
 
-export const ThemeCtx = createContext<iThemeContextValue>({
+export const ThemeCtx = createContext<IThemeContextValue>({
   mode: 'system',
   onChange() {},
   onToggle() {},
 })
 
 export default function ThemeContextProvider(props: any) {
-  const [theme, setTheme] = useState<iThemeState>({
-    mode: 'system',
-  })
+  const [theme, setTheme] = useState<TColorScheme>('system')
 
-  const setThemeMode = (themeValue: tColorScheme): void => {
+  const setThemeMode = (themeValue: TColorScheme): void => {
     document.body.setAttribute('data-theme', themeValue)
-    setTheme((prev) => ({ ...prev, mode: themeValue }))
+    setTheme(themeValue)
   }
 
-  function onModeChange(mode?: tColorScheme) {
+  function onModeChange(mode?: TColorScheme) {
     if (!mode) {
-      const fromLocalStore = localStorage.getItem('theme') as tColorScheme
+      const fromLocalStore = localStorage.getItem('theme') as TColorScheme
       const value = fromLocalStore === 'light' ? 'dark' : 'light'
       localStorage.setItem('theme', value)
       setThemeMode(value)
@@ -29,19 +27,35 @@ export default function ThemeContextProvider(props: any) {
   }
 
   function onModeToggle() {
-    let value = (localStorage.getItem('theme') || theme.mode) as tColorScheme
+    let value = (localStorage.getItem('theme') || theme) as TColorScheme
 
     value = value === 'light' ? 'dark' : 'light'
     localStorage.setItem('theme', value)
     setThemeMode(value)
   }
 
+  function getBrowserTheme(): TColorScheme {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      return 'dark'
+    } else if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: light)').matches
+    ) {
+      return 'light'
+    }
+    return 'system' // If the media query is not supported
+  }
+
   useEffect(() => {
-    const fromLocalStore = localStorage.getItem('theme') as tColorScheme
+    const fromLocalStore = localStorage.getItem('theme') as TColorScheme
+    const mode = getBrowserTheme()
+
+    setThemeMode(mode)
 
     if (!fromLocalStore) {
-      // document.documentElement.style.display = 'none'
-
       if (window) {
         if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
           const darkModeMediaQuery = window.matchMedia(
@@ -49,7 +63,7 @@ export default function ThemeContextProvider(props: any) {
           )
 
           let darkModeOn = darkModeMediaQuery.matches
-          let themeValue: tColorScheme = darkModeOn ? 'dark' : 'light'
+          let themeValue: TColorScheme = darkModeOn ? 'dark' : 'light'
           if (!theme) {
             setThemeMode(themeValue)
             localStorage.setItem('theme', themeValue)
@@ -63,20 +77,17 @@ export default function ThemeContextProvider(props: any) {
           })
         }
       }
-    } else {
-      setThemeMode(fromLocalStore)
     }
   }, [])
 
-  return (
-    <ThemeCtx.Provider
-      value={{
-        mode: theme.mode,
-        onChange: onModeChange,
-        onToggle: onModeToggle,
-      }}
-    >
-      {props?.children}
-    </ThemeCtx.Provider>
+  const value = useMemo(
+    () => ({
+      mode: theme,
+      onChange: onModeChange,
+      onToggle: onModeToggle,
+    }),
+    [theme]
   )
+
+  return <ThemeCtx.Provider value={value}>{props?.children}</ThemeCtx.Provider>
 }
