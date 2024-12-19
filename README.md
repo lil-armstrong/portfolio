@@ -1,6 +1,8 @@
 [![ci](https://github.com/lil-armstrong/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/lil-armstrong/portfolio/actions/workflows/ci.yml)
 [![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=typescript&package-manager=npm_and_yarn&previous-version=4.9.5&new-version=5.1.6)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
 
+[![.github/workflows/deploy.yml](https://github.com/lil-armstrong/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/lil-armstrong/portfolio/actions/workflows/deploy.yml)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

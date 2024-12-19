@@ -4,9 +4,6 @@ on:
       - main
 
 jobs:
-  trigger-ci:
-    uses: .github/workflows/ci.yml # Reference the reusable workflow
-
   build-and-deploy:
     runs-on: ${{ matrix.os }}
 
@@ -40,5 +37,13 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      - name: Deploy to GitHub Pages 🛠
-        run: yarn deploy
+      - name: Build app
+        run: yarn build
+
+      - name: Deploy to GitHub Pages
+        uses: Cecilapp/GitHub-Pages-deploy@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          email: oebong1@gmail.com
+          build_dir: ./build
