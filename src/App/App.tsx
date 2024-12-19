@@ -24,7 +24,7 @@ import 'animate.css'
 import cn from 'classnames'
 import React, { createRef, useEffect } from 'react'
 import { Poppable } from 'webrix/components'
-import { NavLink } from './styled'
+import { SpanLink } from './styled'
 import Tab from '@/components/Tab'
 
 const GAP = 5
@@ -63,13 +63,16 @@ const tab: {
   },
 }
 
+const HERO_ID = 'page_hero'
+const MAIN_CONTENT_ID = 'main-content'
+
 // MAIN APP
 function App() {
   const theme = useTheme()
   const { activePage, onPageChange } = usePage()
-  const scrollRef = createRef<HTMLDivElement>()
-  const currentPageRef = React.useRef<PAGES>()
-  const menu_container_ref = React.createRef<HTMLDivElement>()
+  const menuContainerRef = React.createRef<HTMLDivElement>()
+  const heroContentRef = React.createRef<HTMLDivElement>()
+  const mainContentRef = React.createRef<HTMLDivElement>()
 
   useEffect(() => {
     const body = document?.body
@@ -79,26 +82,45 @@ function App() {
   }, [theme])
 
   useEffect(() => {
-    const cpr = currentPageRef.current,
-      sr = scrollRef.current
-    if (activePage && sr) {
-      if (cpr) {
-        if (cpr != activePage) {
-          currentPageRef.current = activePage
-          scrollRef.current?.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          })
-        }
+    const viewportHeight = window.innerHeight
+
+    if (mainContentRef.current) {
+      if (activePage) {
+        const rect = mainContentRef.current.getBoundingClientRect()
+        // Check if the element is within the viewport
+        const inView =
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth)
+
+        !inView &&
+          mainContentRef.current.animate(
+            [
+              { transform: `translateY(-${viewportHeight}px)` }, // Start at the bottom of the viewport
+            ],
+            {
+              duration: 1000, // Animation duration in milliseconds
+              easing: 'ease-out', // Animation easing function
+              fill: 'forwards', // Keep the final state
+            }
+          )
       } else {
-        currentPageRef.current = activePage
-        scrollRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
+        mainContentRef.current.animate(
+          [
+            { transform: `translateY(${viewportHeight}px)` }, // Start at the bottom of the viewport
+          ],
+          {
+            duration: 1000, // Animation duration in milliseconds
+            easing: 'ease-out', // Animation easing function
+            fill: 'forwards', // Keep the final state
+          }
+        )
       }
     }
-  }, [activePage, scrollRef])
+  }, [activePage])
 
   const RenderTabContent = React.useCallback(() => {
     const page: PAGES = activePage ? activePage : PAGES.ABOUT
@@ -138,11 +160,14 @@ function App() {
 
   return (
     <>
-      <div role="presentation" className="block relative">
+      <div
+        role="presentation"
+        className="block relative h-[100vh] overflow-hidden"
+      >
         {/* <FixedRightPanel /> */}
         <Collapsible
-          ref={menu_container_ref}
-          className="fixed left-[10px] md:left-[20px]  top-[10px]  z-[10]"
+          ref={menuContainerRef}
+          className="fixed md:left-[20px]  top-[10px]  z-[10]"
         >
           <div className="flex flex-col gap-[10px] items-center">
             <ThemeSwitcher onChange={theme.onToggle} mode={theme?.mode} />
@@ -150,7 +175,7 @@ function App() {
             {/* Menu bar */}
             <Menu
               placement={{ initial: 6, area: menu_placement }}
-              container={menu_container_ref}
+              container={menuContainerRef}
               className={cn('left-[60px] top-[60px] w-[300px]')}
             >
               <div role="presentation">
@@ -178,95 +203,92 @@ function App() {
           </div>
         </Collapsible>
 
-        <div className="z-[1] sticky top-0">
-          <Hero
-            mainTitle={<div className="w-full">Ebong Okposong</div>}
-            subTitle={
-              <>
-                <ul
-                  className="list list-row "
-                  style={{ justifyContent: 'center' }}
-                >
-                  <li className="list-item font-bold">
-                    <TypeWriter
-                      speed={1000}
-                      loop
-                      text={[
-                        [
-                          ` <strong class="highlight">Roles</strong> Frontend_Engineer`,
-                          ` Backend_Engineer`,
-                          ` Technical_writer`,
-                        ],
-                        [
-                          `<strong class="highlight">Interest</strong> Web2_development`,
-                          ` Web3_development`,
-                          ` Mobile_development`,
-                          ` Electronics`,
-                          ` Design_(UI/UX)`,
-                        ],
-                      ]}
-                    />
-                  </li>
-                </ul>
-              </>
-            }
-            contact_links={CONTACT_LINKS}
-          >
-            <div className="boxed_layout flex-column flex items-center">
-              <div className="flex flex-row justify-evenly w-full items-center mt-[100px] flex-wrap gap-2">
-                <NavLink
-                  href={`#${PAGES.PROJECT}`}
-                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
-                  title="Go to projects"
-                  onClick={() => onPageChange(PAGES.PROJECT)}
-                >
-                  Projects
-                </NavLink>
-                <NavLink
-                  href={`#${PAGES.WORK_EXP}`}
-                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
-                  onClick={() => onPageChange(PAGES.WORK_EXP)}
-                >
-                  Work Experience
-                </NavLink>
-                <NavLink
-                  href={`#${PAGES.BLOG}`}
-                  className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
-                  onClick={() => onPageChange(PAGES.BLOG)}
-                >
-                  Blog
-                </NavLink>
-              </div>
+        <Hero
+          id={HERO_ID}
+          ref={heroContentRef}
+          mainTitle={<div className="w-full">Ebong Okposong</div>}
+          subTitle={
+            <>
+              <ul
+                className="list list-row "
+                style={{ justifyContent: 'center' }}
+              >
+                <li className="list-item font-bold">
+                  <TypeWriter
+                    speed={1000}
+                    loop
+                    text={[
+                      [
+                        ` <strong class="highlight">Roles</strong> Frontend_Engineer`,
+                        ` Backend_Engineer`,
+                        ` Technical_writer`,
+                      ],
+                      [
+                        `<strong class="highlight">Interest</strong> Web2_development`,
+                        ` Web3_development`,
+                        ` Mobile_development`,
+                        ` Electronics`,
+                        ` Design_(UI/UX)`,
+                      ],
+                    ]}
+                  />
+                </li>
+              </ul>
+            </>
+          }
+          contact_links={CONTACT_LINKS}
+        >
+          <div className="boxed_layout flex-column flex items-center">
+            <div className="flex flex-row justify-evenly w-full items-center mt-[100px] flex-wrap gap-2">
+              <SpanLink
+                className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                title="Go to projects"
+                onClick={() => onPageChange(PAGES.PROJECT)}
+              >
+                Projects
+              </SpanLink>
+              <SpanLink
+                className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                onClick={() => onPageChange(PAGES.WORK_EXP)}
+              >
+                Work Experience
+              </SpanLink>
+              <SpanLink
+                className={cn('nav-link', 'px-4 flex-grow-0 text-center')}
+                onClick={() => onPageChange(PAGES.BLOG)}
+              >
+                Blog
+              </SpanLink>
             </div>
-          </Hero>
-        </div>
+          </div>
+        </Hero>
+
         {/* Tab*/}
-        <main id="main-content" className="z-[2] relative hidden_scrollbar">
+        <main
+          ref={mainContentRef}
+          id={MAIN_CONTENT_ID}
+          className="z-[2] relative hidden_scrollbar"
+        >
           <Tab>
-            {({ activeIndex, setActiveIndex }) => {
-              return (
-                <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
-                  <div
-                    ref={scrollRef}
-                    className="flex z-[1] flex-grow  overflow-y-auto hidden_scrollbar md:flex-nowrap flex-wrap"
-                  >
-                    <div className="z-0 relative w-full h-full overflow-y-auto hidden_scrollbar">
-                      <RenderTabContent />
+            {() => (
+              <div className="md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen">
+                <div className="flex z-[1] flex-grow  overflow-y-auto hidden_scrollbar md:flex-nowrap flex-wrap">
+                  <div className="z-0 relative w-full h-full overflow-y-auto hidden_scrollbar">
+                    <RenderTabContent />
+                    {/* Keep scrolling section*/}
+                    <div className="scroll-indicator-container">
+                      <div className="scroll-indicator">
+                        <div className="">
+                          <span>KEEP SCROLLING</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              )
-            }}
+              </div>
+            )}
           </Tab>
         </main>
-        {/* Keep scrolling section*/}
-        <div className="scroll-indicator-container">
-          <div className="scroll-indicator">
-            <div className="">
-              <span>KEEP SCROLLING</span>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   )

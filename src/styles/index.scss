@@ -19,7 +19,6 @@
 }
 
 @mixin dark-theme() {
-  // --beam-shadow: 0px 20px 30px -6px rgba(40, 166, 249, 0.2);
   --beam-shadow: 0 -5px 35px 1px rgba(40, 166, 249, 0.2);
   --primary: hsl(204, 85%, 40%);
   --primary-accent: #127c9c;
@@ -40,7 +39,6 @@
   filter: contrast(70%) opacity(80%);
   padding: 4px 8px;
   word-break: break-all;
-  // border-radius: 20px;
   user-select: none;
   font-size: 12px;
   white-space: nowrap;
@@ -63,10 +61,8 @@
   --prose-font: 'Alexandria', serif;
   --code-font: 'Anonymous Pro', monospace;
   --display-font: 'Bakbak One', sans-serif;
-  // --display-font: 'Anonymous Pro', cursive;
 }
 * {
-  // outline: 2px dashed #abf;
   outline-offset: -2px;
   scroll-behavior: smooth;
   box-sizing: border-box;
@@ -93,12 +89,6 @@ button {
 }
 
 body {
-  // @media (prefers-color-scheme: dark) {
-  //   @include dark-theme();
-  // }
-  // @media (prefers-color-scheme: light) {
-  //   @include light-theme();
-  // }
   @include light-theme();
   &[data-theme='dark'] {
     @include dark-theme();
@@ -124,11 +114,8 @@ body {
 
 #gallery {
   background-color: var(--bg-accent);
-  // @media screen and (min-width: 768px){
-  //   position: sticky;
-  //   top: 0
-  // }
 }
+
 .boxed_layout {
   margin: 0 auto;
   height: 100%;
@@ -139,20 +126,16 @@ body {
   justify-content: flex-start;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
+  max-width: 500px;
+
   &::-webkit-scrollbar {
     display: none;
-    // color: red;
   }
-  max-width: 500px;
-  // outline: 2px dashed red;
-  // outline-offset: -5px;
   @media screen and (min-width: 768px) {
-    // width: calc(85%);
     width: 100%;
     max-width: 1024px;
   }
-  overflow-y: auto;
-  // display: none
 }
 
 .page_section {
@@ -322,24 +305,20 @@ textarea {
   color: inherit;
   text-transform: uppercase;
   &:hover {
+    box-shadow: var(--beam-shadow);
     @media screen and (min-width: 768px) {
       transform: translate(-15px, -6px);
     }
-    box-shadow: var(--beam-shadow);
   }
   &.btn-outline {
     border: 1px solid currentColor;
-    // margin-right: -17%;
   }
   &-lg {
-    // padding: 30px 30%;
+    width: 100%;
+    min-height: 80px;
     @media screen and (min-width: 768px) {
-      // min-width: 200px;
       width: 300px;
     }
-    width: 100%;
-    // flex-grow: 1;
-    min-height: 80px;
   }
   &.btn-primary {
     background-color: var(--primary);
