@@ -1,14 +1,13 @@
-name: ci
-
 on:
-  pull_request:
+  push:
     branches:
       - main
-      - master
-  workflow_call: # This makes the workflow reusable
 
 jobs:
-  ci:
+  trigger-ci:
+    uses: .github/workflows/ci.yml # Reference the reusable workflow
+
+  build-and-deploy:
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -41,5 +40,5 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: yarn
 
-      - name: Build app
-        run: yarn build
+      - name: Deploy to GitHub Pages 🛠
+        run: yarn deploy
