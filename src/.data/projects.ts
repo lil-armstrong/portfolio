@@ -50,7 +50,6 @@ const Librium: IProject[] = [
     \u2022 UI redesign
     \u2022 Completion of all UI flows
     \u2022 Instant messaging`,
-    link: 'https://play.google.com/store/apps/details?id=com.lopeer.lopeer',
     org: orgs?.librium,
     image_url: 'project/lopeer-icon.png',
   },
@@ -118,7 +117,6 @@ const Others: IProject[] = [
     \u2022 Completion of all UI flows
     \u2022 UI functionality implementation
     `,
-    link: 'https://play.google.com/store/apps/details?id=com.relaywash.com&pli=1',
     image_url: 'project/relaywash-icon.png',
   },
   {
@@ -148,7 +146,6 @@ const Others: IProject[] = [
       \u2022 UI design implementation
       \u2022 Instant messaging
       \u2022 Internalization`,
-    link: 'https://ordavonl.netlify.app',
     image_url: 'vue.svg',
   },
   {
