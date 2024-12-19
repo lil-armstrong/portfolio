@@ -4,9 +4,6 @@ on:
       - main
 
 jobs:
-  trigger-ci:
-    uses: .github/workflows/ci.yml # Reference the reusable workflow
-
   build-and-deploy:
     runs-on: ${{ matrix.os }}
 
