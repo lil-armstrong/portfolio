@@ -1,8 +1,8 @@
 import { PAGES } from '@/types/pages'
 import React, { PropsWithChildren, createContext, useState } from 'react'
-import { iPageContext, iPageContextState } from './type'
+import { IPageContext, iPageContextState } from './type'
 
-export const PageContext = createContext<iPageContext>({
+export const PageContext = createContext<IPageContext>({
   activePage: null,
   onPageChange: () => {},
 })
@@ -14,16 +14,25 @@ export const PageContextProvider = ({ children }: PropsWithChildren) => {
 
   React.useEffect(() => {
     const url = new URL(window.location.href)
-    const locationQuery = new URLSearchParams(url.search)
+    const urlQuery = new URLSearchParams(url.search)
 
-    if (locationQuery.has('page')) {
-      const page = locationQuery.get('page') as PAGES
+    if (urlQuery.has('page')) {
+      const page = urlQuery.get('page') as PAGES
       if (Object.values(PAGES).includes(page))
-        onPageChange(locationQuery.get('page') as PAGES)
+        onPageChange(urlQuery.get('page') as PAGES)
     }
   }, [])
 
-  function onPageChange(page: PAGES) {
+  function onPageChange(page?: PAGES) {
+    if (!page) {
+      const url = new URL(window.location.href)
+      url.search = '' // Clear the query string
+      window.history.replaceState(null, '', url.toString())
+      setState((prev) => ({ ...prev, activePage: null }))
+
+      return
+    }
+
     const url = new URLSearchParams('')
     url.append('page', page)
     window.history.pushState(
@@ -33,6 +42,7 @@ export const PageContextProvider = ({ children }: PropsWithChildren) => {
     )
     setState((prev) => ({ ...prev, activePage: page }))
   }
+
   return (
     <PageContext.Provider
       value={{

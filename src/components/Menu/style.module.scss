@@ -1,6 +1,6 @@
 .container {
   bottom: 0;
-  background: rgba(var(--bg), .75);
+  background: rgba(var(--bg), 0.75);
   border-radius: 16px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(2px);
@@ -12,7 +12,7 @@
   height: auto;
   box-shadow: var(--beam-shadow);
   position: fixed;
-   -ms-overflow-style: none;
+  -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
@@ -54,12 +54,11 @@
   margin-bottom: 8px;
   transition: var(--fade-in);
   &:hover {
+    box-shadow: none;
     @media screen and (min-width: 500px) {
       background: var(--bg-accent);
       color: var(--bg-contrast);
     }
-    box-shadow: none;
-    // transform: translate(8px, 0);
   }
   &.active {
     outline: 2px dashed red;

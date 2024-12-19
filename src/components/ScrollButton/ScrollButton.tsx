@@ -1,52 +1,30 @@
+import usePage from '@/hook/usePage'
+import { PAGES } from '@/types/pages'
 import React from 'react'
 import { AiOutlineCaretDown, AiOutlineCaretUp } from 'react-icons/ai'
 
-export const ScrollButton = () => {
-  const [isTopDisabled, setDisableTop] = React.useState(window.scrollY === 0)
+const iconSize = 16
 
-  const [isBottomDisabled, setDisableBottom] = React.useState(
-    window.scrollY !== 0 &&
-      window.scrollY >=
-        Math.abs(
-          document.body.scrollHeight -
-            document.body.clientHeight -
-            document.body.scrollTop
-        )
-  )
+export const ScrollButton = () => {
+  const { activePage, onPageChange } = usePage()
+  const isTopDisabled = React.useMemo(() => activePage === null, [activePage])
+  const isBottomDisabled = React.useMemo(() => !!activePage, [activePage])
+  const previousValidPage = React.useRef<PAGES>(PAGES.ABOUT)
 
   const handleScrollUp = React.useCallback(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: 0,
-    })
+    onPageChange()
   }, [])
 
   const handleScrollDown = React.useCallback(() => {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: window.innerHeight,
-    })
+    console.debug(previousValidPage.current)
+    onPageChange(previousValidPage.current)
   }, [])
 
   React.useEffect(() => {
-    const onScroll = () => {
-      setDisableTop(window.scrollY === 0)
-      setDisableBottom(
-        window.scrollY >=
-          Math.abs(
-            document.body.scrollHeight -
-              document.body.clientHeight -
-              document.body.scrollTop
-          )
-      )
+    if (activePage) {
+      previousValidPage.current = activePage
     }
-    window.addEventListener('scroll', onScroll)
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-    }
-  }, [])
-
-  const iconSize = 16
+  }, [activePage])
 
   return (
     <>

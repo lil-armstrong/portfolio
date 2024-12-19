@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const NavLink = styled('a')(() => ({
+export const SpanLink = styled('span')(() => ({
   paddingTop: 10,
   paddingBottom: 10,
   fontWeight: 'bold',
@@ -9,8 +9,8 @@ export const NavLink = styled('a')(() => ({
   flexGrow: 0,
   columnGap: 8,
   opacity: 0.5,
-//   textAlign: 'center'
-['&:hover']:{
-  opacity:1
-}
+  cursor: 'pointer',
+  ['&:hover']: {
+    opacity: 1,
+  },
 }))

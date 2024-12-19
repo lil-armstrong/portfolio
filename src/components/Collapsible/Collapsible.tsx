@@ -25,7 +25,7 @@ const Collapsible: ForwardRefExoticComponent<
         className="floating__btn"
         title={`
         ${hidden ? 'Open' : 'Close'}
-        menu   
+        menu
         `}
       >
         {hidden ? (
@@ -34,7 +34,7 @@ const Collapsible: ForwardRefExoticComponent<
           <AiOutlineCaretLeft size={iconSize} />
         )}
       </ActionButtonStyled>
-      <WrapperStyled isHidden={hidden} data-cy="childrenWrapper"  id="fixed__nav__btn">
+      <WrapperStyled $isHidden={hidden} data-cy="childrenWrapper"  id="fixed__nav__btn">
         {children}
       </WrapperStyled>
     </div>

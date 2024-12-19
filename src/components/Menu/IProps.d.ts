@@ -21,3 +21,20 @@ export type MenuItemProps = React.PropsWithChildren<
     icon?: JSX.Element | null
   } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLDivElement>
 >
+
+export type PlacementFnType = (
+  rbr: DOMRect,
+  tbr: DOMRect
+) => Array<{
+  top: number
+  left: number
+}>
+
+export type WrapperProps = React.PropsWithChildren<{
+  placement?: {
+    initial: number
+    area: PlacementFnType
+  }
+  container?: React.RefObject<HTMLElement | HTMLDivElement>
+  className?: string
+}>

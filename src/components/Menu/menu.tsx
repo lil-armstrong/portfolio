@@ -7,7 +7,13 @@ import {
   useDimensions,
   useVisibilityState,
 } from 'webrix/hooks'
-import { MenuButton, MenuItemProps, MenuProps } from './IProps'
+import {
+  MenuButton,
+  MenuItemProps,
+  MenuProps,
+  PlacementFnType,
+  WrapperProps,
+} from './IProps'
 import styles from './style.module.scss'
 
 const GAP = 5
@@ -36,7 +42,6 @@ export const Item = ({
     </div>
   )
 }
-// const Divider = () => <div className={cls(styles.divider)} />
 
 const Leaf = ({ children, reference, container }: MenuProps) => {
   const menu = React.useRef()
@@ -105,30 +110,7 @@ const Button = React.forwardRef<HTMLButtonElement, MenuButton>((props, ref) => {
     </button>
   )
 })
-type PlacementFnType = (
-  rbr: DOMRect,
-  tbr: DOMRect
-) => Array<{
-  top: number
-  left: number
-}>
-type PlacementTypes =
-  | 'top left'
-  | 'top center'
-  | 'top right'
-  | 'bottom left'
-  | 'bottom center'
-  | 'bottom right'
-  | 'center left'
-  | 'center right'
-type WrapperProps = React.PropsWithChildren<{
-  placement?: {
-    initial: number
-    area: PlacementFnType
-  }
-  container?: React.RefObject<HTMLElement | HTMLDivElement>
-  className?: string
-}>
+
 function Wrapper({ children, placement, className, container }: WrapperProps) {
   const btn_ref = React.createRef<HTMLButtonElement>()
   const reference = React.createRef<HTMLDivElement>()

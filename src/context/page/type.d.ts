@@ -1,8 +1,8 @@
-import { PAGES } from "@/types/pages"
+import { PAGES } from '@/types/pages'
 
 export interface iPageContextState {
   activePage: PAGES | null
 }
-export interface iPageContext extends iPageContextState {
-  onPageChange: (page: PAGES) => void
+export interface IPageContext extends iPageContextState {
+  onPageChange: (page?: PAGES) => void
 }
