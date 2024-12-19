@@ -74,12 +74,48 @@ function App() {
   const heroContentRef = React.createRef<HTMLDivElement>()
   const mainContentRef = React.createRef<HTMLDivElement>()
 
+  const RenderTabContent = React.useCallback(() => {
+    const page: PAGES = activePage ? activePage : PAGES.ABOUT
+
+    const value = tab[page]
+    const key = page
+
+    return (
+      <div className="h-full flex-grow m-auto">
+        <value.content key={`tab_body_${key}`} />
+      </div>
+    )
+  }, [activePage])
+
+  const isMenuItemActive = React.useCallback(
+    (itemId: PAGES) => {
+      return activePage == itemId
+    },
+    [activePage]
+  )
+
+  const menu_placement = React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
+    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
+      Poppable.Placements
+
+    return [
+      { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
+      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+      { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, -GAP) }, // Top right
+      { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
+      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, -GAP) }, // Bottom left
+      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
+    ]
+  }, [])
+
   useEffect(() => {
     const body = document?.body
     if (theme && body) {
       body?.setAttribute('data-theme', theme?.mode)
     }
-  }, [theme])
+  }, [theme.mode])
 
   useEffect(() => {
     const viewportHeight = window.innerHeight
@@ -121,42 +157,6 @@ function App() {
       }
     }
   }, [activePage])
-
-  const RenderTabContent = React.useCallback(() => {
-    const page: PAGES = activePage ? activePage : PAGES.ABOUT
-
-    const value = tab[page]
-    const key = page
-
-    return (
-      <div className="h-full flex-grow m-auto">
-        <value.content key={`tab_body_${key}`} />
-      </div>
-    )
-  }, [activePage])
-
-  const isMenuItemActive = React.useCallback(
-    (itemId: PAGES) => {
-      return activePage == itemId
-    },
-    [activePage]
-  )
-
-  const menu_placement = React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
-    const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
-      Poppable.Placements
-
-    return [
-      { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
-      { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
-      { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, -GAP) }, // Top right
-      { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
-      { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
-      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, -GAP) }, // Bottom left
-      { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
-      { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
-    ]
-  }, [])
 
   return (
     <>
