@@ -18,8 +18,9 @@ import '@/styles/index.scss'
 import { PAGES } from '@/types/pages'
 import '@fontsource/alexandria/200.css'
 import '@fontsource/alexandria/300.css'
-import '@fontsource/anonymous-pro'
 import '@fontsource/bakbak-one'
+// Supports weights 200-900
+import '@fontsource-variable/inconsolata';
 import 'animate.css'
 import cn from 'classnames'
 import React, { createRef, useEffect } from 'react'
@@ -104,7 +105,7 @@ function App() {
       { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, -GAP) }, // Top right
       { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
       { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
-      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, -GAP) }, // Bottom left
+      { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, -GAP) }, // Bottom right
       { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
       { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, -GAP) }, // Center right
     ]
