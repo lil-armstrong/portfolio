@@ -1,15 +1,17 @@
-import { defineConfig, UserConfigExport } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import dynamicImport from 'vite-plugin-dynamic-import'
 import { resolve } from 'path'
+import { defineConfig, UserConfigExport } from 'vite'
+import dynamicImport from 'vite-plugin-dynamic-import'
+import tailwindcss from '@tailwindcss/vite'
 
 const baseUrl = process.env.BASE_URL || '/portfolio/'
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode, ssrBuild }) => {
-  const defaultPlugin = [react(), dynamicImport()]
-  const defaultConfig: UserConfigExport = {
+export default defineConfig((config) => {
+  const mode = config.mode
+  const defaultPlugin = [react(), dynamicImport(), tailwindcss()]
+  const userConfig: UserConfigExport = {
+    ...config,
     plugins: defaultPlugin,
-
     build: {
       outDir: 'build',
     },
@@ -24,7 +26,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         },
       },
       postcss: {
-        plugins: [require('autoprefixer'), require('tailwindcss')],
+        plugins: [],
       },
     },
     resolve: {
@@ -34,16 +36,17 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     },
     publicDir: './public',
   }
+
   if (mode == 'development')
     return {
-      ...defaultConfig,
-      plugins: [...defaultConfig.plugins],
+      ...userConfig,
+      plugins: userConfig.plugins,
       appType: 'spa',
     }
   else {
     return {
-      ...defaultConfig,
-      plugins: [...defaultConfig.plugins],
+      ...userConfig,
+      plugins: userConfig.plugins,
     }
   }
 })
