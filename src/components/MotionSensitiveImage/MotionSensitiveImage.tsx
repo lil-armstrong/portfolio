@@ -31,7 +31,7 @@ function MotionSensitiveImage(props: Props) {
   )
 
   const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = useCallback(
-    ({ clientX: x, clientY: y }) => {
+    ({}) => {
       springRef.set({
         xyz: [0, 0, 1],
       })

@@ -1,50 +1,58 @@
 import blog from '@/api/blog/blog'
+import {
+  ContainerStyled,
+  ContentBoxStyled,
+  InnerContainerStyled,
+  ListContainerStyled,
+  SectionFooterStyled,
+  SectionHeaderStyled,
+  SectionHeaderTitleStyled,
+} from '@/components/common/styled'
 import { useFetch } from '@/hook/useFetch/useFetch'
 import { PAGES } from '@/types/pages'
-import cn from 'classnames'
-import { Fragment, useEffect } from 'react'
 import { Loader } from '../Loader/Loader'
-import { ContainerStyled } from '../common/styled'
+import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
 import { SingleBlogCard } from './SingleBlogCard'
-import BottomNavigation from '../BottomNavigation/bottom_navigation'
+import { GridListItemStyled, GridListStyled, LoaderBoxStyled } from './styled'
 
 export function Blog() {
   const { loading, result } = useFetch(blog.getMany())
 
   return (
     <ContainerStyled>
-      <h3 className="section-heading">Blog</h3>
+      <SectionHeaderStyled>
+        <SectionHeaderTitleStyled>Blog</SectionHeaderTitleStyled>
+      </SectionHeaderStyled>
 
-      <div className="boxed_layout" id={PAGES.BLOG}>
-        <div className="py-[30px]">
-          {!loading ? (
-            <div className="flex flex-wrap gap-[30px]">
-              {result?.map((article, index) => (
-                <Fragment key={`article_${index}`}>
-                  <SingleBlogCard article={article} />
-                </Fragment>
-              ))}
-            </div>
-          ) : (
-            <div
-              className={cn(
-                'flex flex-col items-center justify-end w-full h-full'
-              )}
-            >
-              <Loader type="ripple" w={50} h={50} />
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="absolute bottom-0 w-full left-0">
-        <BottomNavigation
+      <InnerContainerStyled id={PAGES.BLOG}>
+        <ContentBoxStyled>
+          <ListContainerStyled>
+            {!loading ? (
+              <GridListStyled>
+                {result?.map((article, index) => (
+                  <GridListItemStyled key={`article_${index}`}>
+                    <SingleBlogCard article={article} />
+                  </GridListItemStyled>
+                ))}
+              </GridListStyled>
+            ) : (
+              <LoaderBoxStyled>
+                <Loader type="ripple" w={50} h={50} />
+              </LoaderBoxStyled>
+            )}
+          </ListContainerStyled>
+        </ContentBoxStyled>
+      </InnerContainerStyled>
+
+      <SectionFooterStyled>
+        <SectionNavigationBar
           leftSlot={{ content: 'Projects', to: PAGES.PROJECT }}
           rightSlot={{
             content: 'Contact',
             to: PAGES.CONTACT,
           }}
         />
-      </div>
+      </SectionFooterStyled>
     </ContainerStyled>
   )
 }

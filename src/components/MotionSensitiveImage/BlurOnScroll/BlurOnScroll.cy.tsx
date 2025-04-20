@@ -1,16 +1,5 @@
-import React from 'react'
+import { cy, describe, it } from 'local-cypress'
 import BlurOnScroll from './BlurOnScroll'
-
-// beforeEach(() => {
-//   // setup a DOM element as a render target
-//   cy.mount(<BlurOnScroll />)
-// })
-
-// afterEach(() => {
-//   // cleanup on exiting
-//   //   cy.then(() => unmountComponentAtNode(getContainerEl()))
-//   unmount()
-// })
 
 describe('BlurOnScrollComponent', () => {
   it('renders', () => {
