@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios'
 import Request from '../'
 import { DEV_TO_USERNAME } from '../constants'
 import { ArticleMeta, SingleArticleMeta } from './Model'

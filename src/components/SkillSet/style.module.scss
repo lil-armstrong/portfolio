@@ -2,10 +2,10 @@
   font-weight: 600;
   font-size: 18px;
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   display: inline-flex;
-  margin-top: 30px;
   margin-bottom: 30px;
+  font-family: var(--display-font);
   &:before {
     content: '';
     background: var(--primary);
@@ -27,4 +27,12 @@
     left: 55%;
     transform: translate(0px, 32px);
   }
+}
+
+.skill_category_name {
+  font-family: var(--display-font);
+  display: block;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 12px;
 }

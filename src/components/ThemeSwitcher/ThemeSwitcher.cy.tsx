@@ -1,4 +1,5 @@
 import ThemeSwitcher from './ThemeSwitcher'
+import { cy, describe, it } from 'local-cypress'
 
 describe('ThemeSwitcher', () => {
   it('renders', () => {
