@@ -1,4 +1,6 @@
-@use "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 // @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap');
 
 @mixin light-theme() {
@@ -57,7 +59,7 @@
   --fancy-font: 'Anonymous Pro', sans-serif;
   --default-font: 'Alexandria', sans-serif;
   --prose-font: 'Alexandria', serif;
-  --code-font: 'Inconsolata', monospace;
+  --code-font: 'Anonymous Pro', monospace;
   --display-font: 'Bakbak One', sans-serif;
 }
 * {

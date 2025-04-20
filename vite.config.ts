@@ -2,22 +2,14 @@ import { defineConfig, UserConfigExport } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import dynamicImport from 'vite-plugin-dynamic-import'
 import { resolve } from 'path'
-import tailwindcss from '@tailwindcss/vite'
-import { fileURLToPath } from 'url'
-import { dirname } from 'path'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
 const baseUrl = process.env.BASE_URL || '/portfolio/'
-/**
- * @see {@link // https://vitejs.dev/config/}
- */
-export default defineConfig((config) => {
-  const mode = config.mode
-  const userConfig: UserConfigExport = {
-    ...config,
-    plugins: [react(), dynamicImport(), tailwindcss()],
+// https://vitejs.dev/config/
+export default defineConfig(({ command, mode, ssrBuild }) => {
+  const defaultPlugin = [react(), dynamicImport()]
+  const defaultConfig: UserConfigExport = {
+    plugins: defaultPlugin,
+
     build: {
       outDir: 'build',
     },
@@ -31,6 +23,9 @@ export default defineConfig((config) => {
           api: 'modern-compiler', // or "modern"
         },
       },
+      postcss: {
+        plugins: [require('autoprefixer'), require('tailwindcss')],
+      },
     },
     resolve: {
       alias: {
@@ -39,10 +34,16 @@ export default defineConfig((config) => {
     },
     publicDir: './public',
   }
-
-  return {
-    ...userConfig,
-    plugins: userConfig.plugins,
-    appType: 'spa',
+  if (mode == 'development')
+    return {
+      ...defaultConfig,
+      plugins: [...defaultConfig.plugins],
+      appType: 'spa',
+    }
+  else {
+    return {
+      ...defaultConfig,
+      plugins: [...defaultConfig.plugins],
+    }
   }
 })

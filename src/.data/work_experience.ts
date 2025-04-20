@@ -34,7 +34,7 @@ Simple. Convenient. Reliable.`,
       location: 'Remote, Seoul, South Korea',
       timeline: 'July 2022 - January 2023',
       description: `A leader in the development of blockchain technology for the future through professional security systems, trust with customers, and solutions in the right direction. `,
-      image_url: 'block-stars_logo.png',
+      image_url: 'block-stars_logo.jpg',
     },
     {
       org: 'APTECH, Uyo',
