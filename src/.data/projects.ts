@@ -1,4 +1,4 @@
-export interface IProject {
+export type IProject = {
   name: string
   roles: string[]
   timeline: string

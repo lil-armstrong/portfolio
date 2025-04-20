@@ -1,6 +1,7 @@
+
 export type TypeMeta = 'ripple' | 'roller'
 
-export interface IStyledProp {
+export type StyledProp = {
   /**
    * Width of loader
    */
@@ -11,6 +12,6 @@ export interface IStyledProp {
   h?: number
 }
 
-export interface IProps extends IStyledProp {
-  type?: TypeMeta
+export interface IProps extends StyledProp {
+  type?: TypeMeta,
 }

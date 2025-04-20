@@ -5,6 +5,6 @@ export enum PAGES {
   WORK_EXP = "work-experience",
   SKILL = "skills",
   PROJECT = "project",
-  CERTIFICATION = "certifications",
+  CERT = "certifications",
   BLOG = "blog"
 }

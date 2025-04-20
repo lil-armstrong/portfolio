@@ -5,16 +5,11 @@ export const useFetch = <T = unknown>(request: Promise<T>) => {
   const [result, setResult] = useState<T>()
 
   useEffect(() => {
-    request
-      .then((data) => {
-        setResult(data)
+    request.then((data) => {
+        setResult(data);
         setIsLoading(false)
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error)
-        setIsLoading(false)
-      })
-  }, [])
+    })
+  }, []);
 
-  return { loading: isLoading, result }
+  return { loading: isLoading, result}
 }

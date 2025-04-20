@@ -4,10 +4,7 @@ import { IPageContext, iPageContextState } from './type'
 
 export const PageContext = createContext<IPageContext>({
   activePage: null,
-  // No-op function to satisfy the context's default value
-  onPageChange: () => {
-    // This will be replaced by the actual implementation in the provider
-  },
+  onPageChange: () => {},
 })
 
 export const PageContextProvider = ({ children }: PropsWithChildren) => {

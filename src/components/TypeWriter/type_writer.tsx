@@ -1,5 +1,5 @@
+import $TypeWriter from 'typewriter-effect/dist/core'
 import React from 'react'
-import TypeWriter from 'typewriter-effect/dist/core'
 
 type Props = React.PropsWithChildren<{
   text: (string | string[])[]
@@ -7,16 +7,16 @@ type Props = React.PropsWithChildren<{
   repeat?: boolean
   loop?: boolean
 }>
-function TextTypingEffect({ speed = 500, text, loop }: Props) {
+function TypeWriter({ speed = 500, text, loop }: Props) {
+  const [char, set] = React.useState<string>('')
   const ref = React.createRef<HTMLDivElement>()
   const renderText = (text: string) => text.replaceAll('_', ' ')
   React.useEffect(() => {
     if (ref.current) {
-      const typewriter = new TypeWriter(ref.current, {
+      let typewriter = new $TypeWriter(ref.current, {
         loop,
         delay: 100,
       })
-
       text.forEach((value, index) => {
         typewriter.pauseFor(speed)
 
@@ -52,4 +52,4 @@ function TextTypingEffect({ speed = 500, text, loop }: Props) {
   return <code ref={ref}></code>
 }
 
-export default TextTypingEffect
+export default TypeWriter

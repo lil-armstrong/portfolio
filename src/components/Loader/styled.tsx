@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { IStyledProp, TypeMeta } from './IProps'
+import { StyledProp, TypeMeta } from './IProps'
 
-const RippleLoader = ({ w = 80, h = 80 }: IStyledProp) => `
+const RippleLoader = ({ w = 80, h = 80 }: StyledProp) => `
 display: inline-block;
 position: relative;
 width: ${w}px;
@@ -48,7 +48,7 @@ div:nth-child(2) {
   }
 }`
 
-export const RollerLoader = ({ w = 80, h = 80 }: IStyledProp) => `
+export const RollerLoader = ({ w = 80, h = 80 }: StyledProp) => `
 display: inline-block;
 position: relative;
 width: ${w};
@@ -134,7 +134,7 @@ div:nth-child(8):after {
 }
 `
 
-export const LoaderStyled = styled.div<{ type?: TypeMeta } & IStyledProp>(
+export const LoaderStyled = styled.div<{ type?: TypeMeta } & StyledProp>(
   ({ type = 'ripple', w = 80, h=80 }) => {
     switch (type) {
       case 'ripple': {

@@ -1,11 +1,14 @@
 .container {
+  bottom: 0;
+  background: rgba(var(--bg), 0.75);
   border-radius: 16px;
-  background-color: rgba(var(--bg), 0.5);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 0 2px 2px var(--bg-accent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--bg-accent);
   overflow: hidden;
   overflow-y: auto;
+  bottom: 30px;
+  max-height: 450px;
   height: auto;
   box-shadow: var(--beam-shadow);
   position: fixed;
@@ -15,18 +18,6 @@
   /* Firefox */
   &::-webkit-scrollbar {
     display: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--primary-contrast);
-    opacity: .75;
-    z-index: -1;
   }
 }
 .menu__title {

@@ -2,9 +2,8 @@ import usePage from '@/hook/usePage'
 import { PAGES } from '@/types/pages'
 import React from 'react'
 import { AiOutlineCaretDown, AiOutlineCaretUp } from 'react-icons/ai'
-import { BottomButtonStyled, TopButtonStyled } from './styled'
 
-const ICON_SIZE = 16
+const iconSize = 16
 
 export const ScrollButton = () => {
   const { activePage, onPageChange } = usePage()
@@ -17,6 +16,7 @@ export const ScrollButton = () => {
   }, [])
 
   const handleScrollDown = React.useCallback(() => {
+    console.debug(previousValidPage.current)
     onPageChange(previousValidPage.current)
   }, [])
 
@@ -28,20 +28,20 @@ export const ScrollButton = () => {
 
   return (
     <>
-      <TopButtonStyled
+      <button
         disabled={isTopDisabled}
         onClick={handleScrollUp}
         className="flex items-center justify-center py-[8px] absolute left-0 top-[0] w-full h-[32px]"
       >
-        <AiOutlineCaretUp aria-label="scroll up" size={ICON_SIZE} />
-      </TopButtonStyled>
-      <BottomButtonStyled
+        <AiOutlineCaretUp aria-label="scroll up" size={iconSize} />
+      </button>
+      <button
         disabled={isBottomDisabled}
         onClick={handleScrollDown}
         className="flex items-center justify-center py-[8px] absolute left-0 bottom-[0] w-full h-[30px]"
       >
-        <AiOutlineCaretDown aria-label="scroll down" size={ICON_SIZE} />
-      </BottomButtonStyled>
+        <AiOutlineCaretDown aria-label="scroll down" size={iconSize} />
+      </button>
     </>
   )
 }

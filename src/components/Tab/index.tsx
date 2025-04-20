@@ -2,10 +2,12 @@ import React from 'react'
 import { PAGES } from '@/types/pages'
 import usePage from '@/hook/usePage'
 
-type TabPropsInterface = (props: {
-  activeIndex: string | number | undefined
-  setActiveIndex: React.Dispatch<React.SetStateAction<PAGES | undefined>>
-}) => JSX.Element
+interface TabPropsInterface {
+  (props: {
+    activeIndex: string | number | undefined
+    setActiveIndex: React.Dispatch<React.SetStateAction<PAGES | undefined>>
+  }): JSX.Element
+}
 
 export default function Tab({ children }: { children: TabPropsInterface }) {
   const page = usePage()

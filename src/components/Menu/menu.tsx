@@ -15,10 +15,6 @@ import {
   WrapperProps,
 } from './IProps'
 import styles from './style.module.scss'
-import {
-  NonSelectablePopupWrapper,
-  PoppableChildrenWrapperStyled,
-} from './styled'
 
 const GAP = 5
 
@@ -29,37 +25,35 @@ export const Item = ({
   icon = null,
   ...rest
 }: MenuItemProps) => {
-  const { show } = useVisibilityState()
+  const { visible, show, hide } = useVisibilityState()
   const child = children && React.Children.only(children)
   const ref = React.createRef<HTMLDivElement>()
   return (
     <div
-      ref={ref}
       {...rest}
       {...(!!child ? { onClick: show } : null)}
+      ref={ref}
       className={cls(styles.menu__item, active ? styles.active_menu__item : '')}
     >
       {icon}
       {text}
       {child && <BiCaretRight />}
+      {/* {visible && child && React.cloneElement<JSX.Element>(child, { reference: ref })} */}
     </div>
   )
 }
 
-/**
- * The `Leaf` component wraps `Poppable` to position its children dynamically
- * relative to a reference or default centered position.
- *
- * @param {MenuProps} props - Component properties.
- * @param {React.ReactNode} props.children - Content inside the `Poppable`.
- * @param {DOMRect | undefined} props.reference - Reference element or bounding rectangle.
- * @param {HTMLElement | undefined} props.container - Container for the `Poppable`.
- *
- * @returns {JSX.Element} A `div` with positioned `Poppable` content.
- */
-function Leaf({ children, reference, container }: MenuProps): JSX.Element {
+const Leaf = ({ children, reference, container }: MenuProps) => {
   const menu = React.useRef()
-  useDimensions(menu)
+  const { width, height } = useDimensions(menu)
+  const ref = reference
+    ? reference
+    : new DOMRect(
+        (window.innerWidth - width) / 2,
+        (window.innerHeight - height) / 2,
+        0,
+        0
+      )
 
   const placements: PlacementFnType = React.useCallback((rbr, tbr) => {
     const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
@@ -91,71 +85,100 @@ function Leaf({ children, reference, container }: MenuProps): JSX.Element {
   )
 }
 
-const Button = React.forwardRef<HTMLButtonElement, MenuButton>(
-  ({ isOpen, ...rest }, ref) => {
-    const iconSize = 18
-
-    /**
-     * A functional component that renders an icon based on the `open` state.
-     * If `open` is true, it displays a close (X) icon with an accessible label "Close menu".
-     * Otherwise, it displays a menu icon with an accessible label "Open menu".
-     *
-     * @returns {JSX.Element} The appropriate icon component based on the `open` state.
-     */
-    const Icon = (): React.ReactElement =>
-      isOpen ? (
-        <BiX size={iconSize} aria-label="Close menu" />
-      ) : (
-        <BiMenu size={iconSize} aria-label="Open menu" />
-      )
-
-    const className = cls(styles.button)
-
-    return (
-      <button
-        {...{
-          ...rest,
-          className,
-          ref,
-        }}
-      >
-        <Icon />
-      </button>
+const Button = React.forwardRef<HTMLButtonElement, MenuButton>((props, ref) => {
+  const { children, open, ...rest } = props
+  const iconSize = 18
+  function Icon() {
+    return open ? (
+      <BiX size={iconSize} aria-label="Close menu" />
+    ) : (
+      <BiMenu size={iconSize} aria-label="Open menu" />
     )
   }
-)
 
-function Wrapper({ children, className }: WrapperProps) {
-  const btnRef = React.createRef<HTMLButtonElement>()
+  const className = cls(styles.button)
+
+  const $props = {
+    ...rest,
+    className,
+    ref,
+  }
+
+  return (
+    <button {...$props}>
+      <Icon />
+    </button>
+  )
+})
+
+function Wrapper({ children, placement, className, container }: WrapperProps) {
+  const btn_ref = React.createRef<HTMLButtonElement>()
   const reference = React.createRef<HTMLDivElement>()
 
+  const initial_placement = placement?.initial ?? 0
+
+  const placements = placement?.area
+    ? placement.area
+    : React.useCallback((rbr: DOMRect, tbr: DOMRect) => {
+        const { vbefore, vcenter, vafter, hbefore, hcenter, hafter } =
+          Poppable.Placements
+
+        return [
+          { ...vbefore(rbr, tbr, -GAP), ...hbefore(rbr, tbr, -GAP) }, // Top left
+          { ...vbefore(rbr, tbr, -GAP), ...hcenter(rbr, tbr) }, // Top center
+          { ...vbefore(rbr, tbr, -GAP), ...hafter(rbr, tbr, GAP) }, // Top right
+          { ...vafter(rbr, tbr, GAP), ...hbefore(rbr, tbr, -GAP) }, // Bottom left
+          { ...vafter(rbr, tbr, GAP), ...hcenter(rbr, tbr) }, // Bottom center
+          { ...vafter(rbr, tbr, GAP), ...hafter(rbr, tbr, GAP) }, // Bottom left
+          { ...vcenter(rbr, tbr), ...hbefore(rbr, tbr, -GAP) }, // Center left
+          { ...vcenter(rbr, tbr), ...hafter(rbr, tbr, GAP) }, // Center right
+        ]
+      }, [])
+
+  const poppable_props = {
+    default: initial_placement,
+    placements,
+    container,
+    reference: btn_ref,
+  }
   const { visible, show, hide } = useVisibilityState()
   const child = children && React.Children.only(children)
   const handleOnMouseDownCapture = useClickOutside(hide)
 
   return (
-    <div
-      role="menu"
-      ref={reference}
-      onMouseDownCapture={handleOnMouseDownCapture}
-    >
+    <div role="menu" ref={reference}>
       <Button
         aria-label={`${visible ? 'Close' : 'Open'} the menu`}
-        isOpen={visible}
-        ref={btnRef}
+        open={visible}
+        ref={btn_ref}
         onClick={visible ? hide : show}
       />
 
-      {visible && child && (
-        <NonSelectablePopupWrapper
-          role="presentation"
-          className={cls(styles.container, className)}
-        >
-          <PoppableChildrenWrapperStyled>
-            {React.Children.only(children)}
-          </PoppableChildrenWrapperStyled>
-        </NonSelectablePopupWrapper>
-      )}
+      <Poppable
+        {...poppable_props}
+        onMouseDownCapture={handleOnMouseDownCapture}
+      >
+        {visible && child && (
+          <div
+            role="presentation"
+            className={cls(
+              styles.container,
+              'select-none rounded-lg',
+              className
+            )}
+          >
+            {/* <div
+              className={cls(
+                styles.menu__title,
+                'sticky font-bold tracking-wide text-lg top-0 z-[1] shadow-lg'
+              )}
+            >
+              Navigation
+            </div> */}
+            <div className={cls('p-4 z-[0]')}>{children}</div>
+          </div>
+        )}
+      </Poppable>
     </div>
   )
 }

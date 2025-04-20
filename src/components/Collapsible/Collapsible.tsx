@@ -4,46 +4,40 @@ import React, {
   RefAttributes,
   forwardRef,
 } from 'react'
-import { BiMenuAltLeft, BiMenuAltRight } from 'react-icons/bi'
+import { AiOutlineCaretLeft, AiOutlineCaretRight } from 'react-icons/ai'
 import { ActionButtonStyled, WrapperStyled } from './styled'
 
-interface CollapsibleProps extends HTMLAttributes<HTMLDivElement> {
-  isExpanded?: boolean
-}
+interface CollapsibleProps extends HTMLAttributes<HTMLDivElement> {}
 
 const Collapsible: ForwardRefExoticComponent<
   CollapsibleProps & RefAttributes<HTMLDivElement>
 > = forwardRef(({ children, ...props }: CollapsibleProps, ref) => {
-  const [isExpanded, setIsExpanded] = React.useState(props.isExpanded || false)
+  const [hidden, setHidden] = React.useState(false)
   const iconSize = 18
-
   function handleToggle() {
-    setIsExpanded(!isExpanded)
+    setHidden(!hidden)
   }
-
   return (
     <div ref={ref} {...props}>
-      <WrapperStyled $isExpanded={isExpanded} data-cy="childrenWrapper">
-        {children}
-      </WrapperStyled>
-
       <ActionButtonStyled
         data-cy="action-button"
         onClick={handleToggle}
         className="floating__btn"
         title={`
-        ${isExpanded ? 'Open' : 'Close'}
+        ${hidden ? 'Open' : 'Close'}
         menu
         `}
       >
-        {isExpanded ? (
-          <BiMenuAltRight size={iconSize} />
+        {hidden ? (
+          <AiOutlineCaretRight size={iconSize} />
         ) : (
-          <BiMenuAltLeft size={iconSize} />
+          <AiOutlineCaretLeft size={iconSize} />
         )}
       </ActionButtonStyled>
+      <WrapperStyled $isHidden={hidden} data-cy="childrenWrapper"  id="fixed__nav__btn">
+        {children}
+      </WrapperStyled>
     </div>
   )
 })
-
 export default Collapsible

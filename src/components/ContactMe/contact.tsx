@@ -1,32 +1,21 @@
-import MePng from '@/assets/me.png'
 import { CONTACT_LINKS } from '@/constant/contact'
 import { PAGES } from '@/types/pages'
-import cl from 'classnames'
-import {
-  ContainerStyled,
-  InnerContainerStyled,
-  SectionFooterStyled,
-  SectionHeaderStyled,
-  SectionHeaderTitleStyled,
-} from '../common/styled'
-import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
-import { ContentStyled } from './style'
+import BottomNavigation from '../BottomNavigation/bottom_navigation'
 import styles from './style.module.scss'
+import cl from 'classnames'
+import { ContainerStyled } from '../common/styled'
 
 export function ContactMe() {
   return (
     <>
       <ContainerStyled>
-        <SectionHeaderStyled>
-          <SectionHeaderTitleStyled>Contact</SectionHeaderTitleStyled>
-        </SectionHeaderStyled>
-
-        <InnerContainerStyled>
-          <ContentStyled className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center py-[30px]">
-            <img src={MePng} alt="Ebong, Okposong" width={200} />
+        <h3 className="section-heading">Contact</h3>
+        <section className="boxed_layout">
+          <div className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center py-[30px]">
             <header className="flex flex-col gap-x-[10px] my-[30px] grow items-center justify-center w-full mx-[30px]">
+              <p className="text-[4rem]">👋</p>
               <p className={cl(styles.title, 'text-center mb-4')}>
-                Want to get in touch?
+                Nice to meet you!
               </p>
               <p>Do reach out to me using the following</p>
               <ul className="list mt-[60px] gap-[30px]">
@@ -62,16 +51,44 @@ export function ContactMe() {
                 />
               </a>
             </div>
-          </ContentStyled>
-        </InnerContainerStyled>
+          </div>
 
-        <SectionFooterStyled>
-          <SectionNavigationBar
-            leftSlot={{ content: 'Blog', to: PAGES.BLOG }}
-            rightSlot={{ content: null, to: undefined }}
-          />
-        </SectionFooterStyled>
+          {/* <form className="flex flex-col gap-[10px] my-[30px]">
+                <div className="px-[15px] flex flex-col gap-[10px]">
+                  <div className="flex md:flex-row flex-col gap-[10px] flex-wrap">
+                    <input
+                      type="text"
+                      name="full_name"
+                      placeholder="Full name"
+                      className="bg-gray-100 flex-1"
+                      id="contact_input-full_name"
+                    />
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      name="email_address"
+                      className="bg-gray-100 flex-1"
+                      id="contact_input-email_address"
+                    />
+                  </div>
+                  <textarea
+                    className="bg-gray-100"
+                    name="message"
+                    id="contact_input-message"
+                    cols={30}
+                    rows={10}
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+              </form> */}
+        </section>
       </ContainerStyled>
+      <div className="absolute bottom-0 w-full left-0">
+        <BottomNavigation
+          leftSlot={{ content: 'Project', to: PAGES.BLOG }}
+          rightComponent={<></>}
+        />
+      </div>
     </>
   )
 }

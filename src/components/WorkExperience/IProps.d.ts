@@ -1,4 +1,4 @@
-export interface ISingleWorkExperience {
+export type TSingleWorkExperience = {
   data: {
     org: string
     roles: string[]
@@ -6,10 +6,5 @@ export interface ISingleWorkExperience {
     timeline: string
     description: string
     image_url: string
-    highlights: string[]
   }
-}
-
-export interface IHighlightListProps {
-  highlights: string[]
 }

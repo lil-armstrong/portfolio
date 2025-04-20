@@ -2,7 +2,6 @@ import { ArticleMeta } from '@/api/blog/Model'
 import cn from 'classnames'
 import { ArticleStyled } from './styled'
 import useTheme from '@/hook/useTheme/useTheme'
-import { ListItemStyled, ListStyled } from '@/components/common/styled'
 
 export const SingleBlogCard = ({
   article: { url, title, cover_image, description, tag_list, slug },
@@ -20,7 +19,12 @@ export const SingleBlogCard = ({
         target="_blank"
         title={title}
       >
-        <h4 className={cn('title', mode === 'dark' ? 'opacity-[.75]' : '')}>
+        <h4
+          className={cn(
+            'text-xl font-extrabold capitalize',
+            mode === 'dark' ? 'opacity-[.75]' : ''
+          )}
+        >
           {title}
         </h4>
 
@@ -40,19 +44,18 @@ export const SingleBlogCard = ({
             )}
           />
         </picture>
-
-        <p className={cn('prose description')}>{description}</p>
-
-        <ListStyled
-          className={cn('flex flex-row gap-[8px] flex-wrap my-[8px]')}
-        >
-          {tag_list?.map((tag, ind) => (
-            <ListItemStyled className="tag" key={`tag_${ind}`}>
-              {tag}
-            </ListItemStyled>
-          ))}
-        </ListStyled>
       </a>
+
+      <div className={cn('py-2 ')}>
+        <p className={cn('text-sm prose opacity-[.75]')}>{description}</p>
+      </div>
+      <ul className={cn('flex flex-row gap-[8px] flex-wrap my-[8px]')}>
+        {tag_list?.map((tag, ind) => (
+          <li className="tag" key={`tag_${ind}`}>
+            {tag}
+          </li>
+        ))}
+      </ul>
     </ArticleStyled>
   )
 }

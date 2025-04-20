@@ -1,5 +1,4 @@
 import Collapsible from './Collapsible'
-import { cy, describe, it } from 'local-cypress'
 
 describe('Collapsible', () => {
   it('renders', () => {

@@ -2,21 +2,22 @@ import { defineConfig, UserConfigExport } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import dynamicImport from 'vite-plugin-dynamic-import'
 import { resolve } from 'path'
+import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
-import eslint from 'vite-plugin-eslint';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const baseUrl = process.env.BASE_URL || '/'
+const baseUrl = process.env.BASE_URL || '/portfolio/'
 /**
  * @see {@link // https://vitejs.dev/config/}
  */
 export default defineConfig((config) => {
+  const mode = config.mode
   const userConfig: UserConfigExport = {
     ...config,
-    plugins: [react(), dynamicImport(), eslint()],
+    plugins: [react(), dynamicImport(), tailwindcss()],
     build: {
       outDir: 'build',
     },

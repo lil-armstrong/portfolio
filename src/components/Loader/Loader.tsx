@@ -6,10 +6,10 @@ export const Loader = (props: IProps) => {
   const divs = useMemo(() => {
     switch (props?.type) {
       case 'ripple': {
-        return Array(2).fill(null) as null[]
+        return Array(2).fill(null)
       }
       case 'roller':{
-        return Array(8).fill(null)  as null[]
+        return Array(8).fill(null)
       }
       default: {
         return []

@@ -1,6 +1,6 @@
 export type MenuButton = React.PropsWithChildren<
   {
-    isOpen: boolean
+    open: boolean
   } & React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
     HTMLButtonElement
@@ -25,10 +25,10 @@ export type MenuItemProps = React.PropsWithChildren<
 export type PlacementFnType = (
   rbr: DOMRect,
   tbr: DOMRect
-) => {
+) => Array<{
   top: number
   left: number
-}[]
+}>
 
 export type WrapperProps = React.PropsWithChildren<{
   placement?: {

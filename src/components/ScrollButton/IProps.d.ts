@@ -1,6 +1,6 @@
-import { PropsWithChildren } from 'react'
+import { MutableRefObject, PropsWithChildren } from "react";
 
 export interface IProps extends PropsWithChildren {
-  scrollDownElementId?: string
+  scrollDownElementId?:string
   scrollUpElementId?: string
 }

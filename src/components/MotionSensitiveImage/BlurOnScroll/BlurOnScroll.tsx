@@ -16,7 +16,7 @@ const BlurOnScroll: FunctionComponent<BlurOnScrollProps> = ({
     blur: Math.ceil(blur),
   })
   function calcBlurValueFromScrollPosition(yValue: number) {
-    const totalScrollableHeight = Math.max(
+    var totalScrollableHeight = Math.max(
       document.body.scrollHeight,
       document.documentElement.scrollHeight,
       document.body.offsetHeight,
@@ -53,7 +53,7 @@ const BlurOnScroll: FunctionComponent<BlurOnScrollProps> = ({
         width: 'auto',
         display: 'inline-flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
       }}
       data-cy="scroll-blur"
     >
@@ -63,8 +63,8 @@ const BlurOnScroll: FunctionComponent<BlurOnScrollProps> = ({
           position: 'sticky',
           top: 10,
           left: 10,
-          visibility: 'hidden',
         }}
+        hidden
       >{`${scrollY}/${blur}`}</div>
       {children}
     </animated.span>
