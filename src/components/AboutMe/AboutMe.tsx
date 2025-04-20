@@ -1,85 +1,78 @@
+import React from 'react'
 import usePage from '@/hook/usePage'
 import { LINKS } from '@/types/links'
 import { PAGES } from '@/types/pages'
-import BottomNavigation from '../BottomNavigation/bottom_navigation'
-import { ContainerStyled } from '../common/styled'
+import ReactMarkdown from 'react-markdown'
+import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
+import {
+  ContainerStyled,
+  ContentBoxStyled,
+  InnerContainerStyled,
+  SectionFooterStyled,
+  SectionHeaderStyled,
+  SectionHeaderTitleStyled,
+} from '../common/styled'
+import {
+  ActionBoxStyled,
+  BoldTextStyled,
+  ParagraphStyled,
+  Heading2TextStyled,
+  TitleTextStyled,
+  Heading3TextStyled,
+  UnorderedListItemStyled,
+} from './styled'
+import MePng from '@/assets/me.png'
 
+const startYear = 2017
+const currentYear = new Date().getFullYear()
+const yearsOfExperience = currentYear - startYear
+
+const markdown = `
+**Ebong, Okposong** is a full-stack developer with **${yearsOfExperience}+ years** experience building software application for both web and mobile platforms.
+With proven track record across various industries including fintech, e-commerce, agriculture, and most recently electronics. Enjoys simplifying complex systems and creating smooth, reliable user experiences.
+
+
+### Highlights:
+
+- Improved frontend architecture to **speed up development by 30%**, and helped increase user retention by designing more intuitive mobile flows.
+- Championed the adoption of rigorous code review processes across the project, **reducing production bugs by 35%** within the first quarter.
+- Automated the deployment process using Expo’s EAS Update and Release system, cutting down the development team’s workload by **5 hours weekly**.
+
+### Outside of work
+
+Chess enthusiast, soccer player, table tennis lover, and spending time on what truly matters—good company, personal growth, and a clear mind.
+
+
+`
 export function AboutMe() {
   const setPage = usePage().onPageChange
 
   return (
     <>
       <ContainerStyled>
-        <h3 className="section-heading">About Me</h3>
-        <section className="boxed_layout">
+        <SectionHeaderStyled>
+          <SectionHeaderTitleStyled>About Me</SectionHeaderTitleStyled>
+        </SectionHeaderStyled>
+
+        <InnerContainerStyled>
           {/* ABOUT */}
-          <section className="flex-grow flex flex-col py-[30px]  justify-center">
-            <div className="">
-              <p className="lead prose">
-                <span className="block pb-2 pt-4 text-2xl">
-                  👋 Nice to meet you.
-                </span>
-                <span className="block pt-[16px]">
-                  I build applications for the{' '}
-                  <em className="highlight">web</em> and{' '}
-                  <em className="highlight">mobile</em>
-                </span>
-                <span className="block">
-                  Software engineer with a passion for solving complex problems
-                  and creating innovative solutions. Strong background in
-                  mobile, web and command line app development. Passionate about
-                  creating{' '}
-                  <strong className="highlight">accessibility-friendly</strong>,{' '}
-                  <strong className="highlight">intuitive</strong> and
-                  <strong className="highlight">user-friendly</strong>{' '}
-                  applications.
-                </span>
-                <span className="block">
-                  Proficient in a range of programming languages and frameworks,
-                  such as{' '}
-                  <strong className="highlight">
-                    React Native, Javascript, Nodejs, React, Vue, Python, C
-                  </strong>{' '}
-                  etc. with experience in both{' '}
-                  <em className="highlight">native</em> and
-                  <em className="highlight">cross-platform app development</em>.
-                </span>
-                <span className="block">
-                  Skilled in{' '}
-                  <strong className="highlight">design thinking</strong> and{' '}
-                  <strong className="highlight">agile</strong> methodologies,
-                  with a focus on delivering high-quality products that meet the
-                  needs of users.{' '}
-                  <a
-                    href={`#${PAGES.SKILL}`}
-                    className="nav-link hover:underline underline-offset-4 decoration-dashed"
-                    onClick={() => setPage && setPage(PAGES.SKILL)}
-                  >
-                    Find out more
-                  </a>
-                </span>
-                <span className="block">
-                  Proven track record in the fintech, agriculture, ecommerce,
-                  and the retail industries. Proven ability to work
-                  collaboratively in fast-paced, high-stress environments.
-                  Seeking a challenging, dynamic and rewarding role where I can
-                  leverage my technical expertise and problem-solving skills to
-                  drive business growth
-                </span>
-                {/* <a
-                  href={`#${PAGES.CONTACT}`}
-                  className={cl(
-                    'nav-link',
-                    'hover:underline underline-offset-4 decoration-dashed'
-                  )}
-                  onClick={() => setPage && setPage(PAGES.CONTACT)}
-                >
-                  Reach out
-                </a> */}
-              </p>
-            </div>
+          <ContentBoxStyled>
+            <img src={MePng} alt="Ebong, Okposong" width={200} />
+
+            <ReactMarkdown
+              components={{
+                p: ParagraphStyled,
+                strong: BoldTextStyled,
+                h1: TitleTextStyled,
+                h2: Heading2TextStyled,
+                h3: Heading3TextStyled,
+                li: UnorderedListItemStyled,
+              }}
+              children={markdown}
+            />
+
             {/*Button*/}
-            <div className="flex mt-[20px] flex-row-reverse mb-[70px] flex-wrap justify-evenly w-full items-center gap-[30px]">
+            <ActionBoxStyled className="">
               <a
                 href={LINKS?.CV}
                 download
@@ -89,9 +82,7 @@ export function AboutMe() {
               >
                 Download CV
               </a>
-              <span className="flex-grow text-center opacity-[.25] font-bold text-lg">
-                OR
-              </span>
+              <span>OR</span>
               <button
                 // href={`#${PAGES.CONTACT}`}
                 // target="_blank"
@@ -101,18 +92,23 @@ export function AboutMe() {
               >
                 📫 Reach out
               </button>
-            </div>
-          </section>
-        </section>
+            </ActionBoxStyled>
+          </ContentBoxStyled>
+        </InnerContainerStyled>
+
+        <SectionFooterStyled>
+          <SectionNavigationBar
+            leftSlot={{
+              content: null,
+              to: undefined,
+            }}
+            rightSlot={{
+              content: 'Work Experience',
+              to: PAGES.WORK_EXP,
+            }}
+          />
+        </SectionFooterStyled>
       </ContainerStyled>
-      <div className="absolute bottom-0 w-full text-center left-0">
-        <BottomNavigation
-          rightSlot={{
-            content: 'Work Experience',
-            to: PAGES.WORK_EXP,
-          }}
-        />
-      </div>
     </>
   )
 }

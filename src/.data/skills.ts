@@ -1,209 +1,238 @@
 export default {
-  "technical-skills": [
+  'technical-skills': [
     {
-      "name": "Javascript",
-      "tools": [
+      name: 'Frontend Development',
+      tools: [
         {
-          "name": "React Native",
-          "level": "Intermediate"
+          name: 'React Native + Expo SDK',
+          level: 'Intermediate',
         },
         {
-          "name": "Reactjs", 
-          "level": "Advanced"
+          name: 'ReactJS + NextJS',
+          level: 'Advanced',
         },
         {
-          "name": "Typescript",
-          "level": "Intermediate"
+          name: 'Typescript',
+          level: 'Advanced',
         },
         {
-          "name": "Nodejs",
-          "level": "Advanced"
+          name: 'Storybook',
+          level: 'Advanced',
         },
         {
-          "name": "Vuejs",
-          "level": "Advanced"
-        }
+          name: 'Nodejs',
+          level: 'Advanced',
+        },
+        {
+          name: 'Javascript',
+          level: 'Advanced',
+        },
+        {
+          name: 'Vuejs',
+          level: 'Advanced',
+        },
+        {
+          name: 'HTML5',
+          level: 'Advanced',
+        },
+        {
+          name: 'CSS/SCSS/SASS',
+          level: 'Advanced',
+        },
+        {
+          name: 'Zustand/Redux',
+          level: 'Advanced',
+        },
+        {
+          name: 'WebSocket',
+          level: 'Advanced',
+        },
       ],
-      "level": "Advanced",
-      "icon": ""
+      level: 'Advanced',
+      icon: '',
+    },
+
+    {
+      name: 'Code Testing',
+      tools: [
+        {
+          name: 'Cypress',
+        },
+        {
+          name: 'Jest + React Testing Library',
+        },
+        {
+          name: 'PyTest',
+        },
+        {
+          name: 'Mocha',
+        },
+      ],
+      level: 'Advanced',
     },
     {
-      "name": "Markup",
-      "tools": [
+      name: 'Database management',
+      tools: [
         {
-          "name": "HTML5"
+          name: 'SQL',
         },
         {
-          "name": "Markdown"
-        }
+          name: 'PostgreSQL',
+        },
+        {
+          name: 'SQLite',
+        },
+        {
+          name: 'MongoDB',
+        },
       ],
-      "level": "Advanced"
+      level: 'Advanced',
     },
     {
-      "name": "UI Development",
-      "tools": [
+      name: 'Server-side development',
+      tools: [
         {
-          "name": "CSS"
+          name: 'GraphQL',
         },
         {
-          "name": "SCSS"
+          name: 'NodeJS + ExpressJS',
         },
         {
-          "name": "TailwindCSS"
+          name: 'RESTAPI',
         },
         {
-          "name": "Bootstrap"
-        }
+          name: 'Python + FastAPI',
+        },
       ],
-      "level": "Advanced"
+      level: 'Advanced',
     },
     {
-      "name": "Database management",
-      "tools": [
+      name: 'DevOps',
+      tools: [
         {
-          "name": "SQL"
+          name: 'Git/Gitlab/BitBucket',
+          level: 'Intermediate',
         },
         {
-          "name": "PostgreSQL"
+          name: 'Heroku',
+          level: 'Intermediate',
         },
         {
-          "name": "SQLite"
+          name: 'Firebase',
+          level: 'Intermediate',
         },
         {
-          "name": "MongoDB"
-        }
+          name: 'Docker',
+          level: 'Intermediate',
+        },
       ],
-      "level": "Advanced"
+      level: 'Advanced',
     },
     {
-      "name": "Documentation",
-      "tools": [
+      name: 'Design',
+      tools: [
         {
-          "name": "GraphQL"
+          name: 'Figma',
+          level: 'Advanced',
         },
         {
-          "name": "RESTAPI"
-        }
+          name: 'Inkscape',
+          level: 'Intermediate',
+        },
+        {
+          name: 'GIMP',
+          level: 'Intermediate',
+        },
+        {
+          name: 'Adobe Illustrator',
+          level: 'Intermediate',
+        },
       ],
-      "level": "Advanced"
+      level: 'Advanced',
     },
     {
-      "name": "DevOps",
-      "tools": [
+      name: 'Project management',
+      tools: [
         {
-          "name": "Git & Git CLI",
-          "level": "Intermediate"
+          name: 'Jira',
+          level: 'Intermediate',
         },
         {
-          "name": "Heroku",
-          "level": "Intermediate"
+          name: 'Trello',
+          level: 'Intermediate',
         },
         {
-          "name": "Firebase",
-          "level": "Intermediate"
-        }
+          name: 'Notion',
+          level: 'Intermediate',
+        },
+        {
+          name: 'Slack',
+          level: 'Intermediate',
+        },
+        {
+          name: 'Microsoft Teams',
+          level: 'Intermediate',
+        },
+        {
+          name: 'Asana',
+          level: 'Intermediate',
+        },
       ],
-      "level": "Advanced"
+      level: 'Intermediate',
     },
-    {
-      "name": "Design",
-      "tools": [
-        {
-          "name": "Figma",
-          "level": "Advanced"
-        },
-        {
-          "name": "Inkscape",
-          "level": "Intermediate"
-        },
-        {
-          "name": "GIMP",
-          "level": "Intermediate"
-        },
-        {
-          "name": "Adobe Illustrator",
-          "level": "Intermediate"
-        }
-      ],
-      "level": "Advanced"
-    },
-    {
-      "name": "Project management",
-      "tools": [
-        {
-          "name": "Trello",
-          "level": "Intermediate"
-        },
-        {
-          "name": "Notion",
-          "level": "Intermediate"
-        },
-        {
-          "name": "Slack",
-          "level": "Intermediate"
-        },
-        {
-          "name": "Microsoft Teams",
-          "level": "Intermediate"
-        },
-        {
-          "name": "Asana",
-          "level": "Intermediate"
-        }
-      ],
-      "level": "Intermediate"
-    }
   ],
-  "interest": [
-    "Blockchain/Web3",
-    "Technical Writing",
-    "UI/UX implementation & optimization",
-    "Computer Programming",
-    "SEO optimization",
-    "Responsive Web design",
-    "Code optimization",
-    "Database development",
-    "System analysis and design",
-    "Web application interface design",
-    "Design Thinking & Research",
-    "Component-Driven Development",
-    "Web accessibility",
-    "Web scraping",
-    "Browser Extension Development",
-    "Progressive Web Application development",
-    "Basic computer architecture",
-    "Operating systems (Windows Linux)",
-    "Remote connection and virtual machines",
-    "Computer networking",
-    "Software management",
-    "Troubleshooting",
-    "Routing concepts",
-    "VPNs and proxies",
-    "Permissioning",
-    "Package and software management",
-    "Process management",
-    "Resource monitoring",
-    "Systems administration",
-    "Configuration",
-    "Centralized management",
-    "Implementing/managing directory services",
-    "Data management and recovery",
-    "IT security",
-    "Cryptology/encryption",
-    "Hashing",
-    "Cryptocurrency",
-    "Network security",
-    "Personal Development"
+  'soft-skills': [
+    'respectful',
+    'diligent',
+    'courteous',
+    'active listening',
+    'grit',
+    'attention to details',
+    'problem solving, flexible & adaptive',
+    'self-starter',
+    'strong work ethics',
+    'English (C1)',
+    'Deutsch (A1)',
   ],
-  "soft-skills": [
-    "respectful",
-    "diligent",
-    "courteous",
-    "active listening",
-    "grit",
-    "attention to details",
-    "problem solving, flexible & adaptive",
-    "self-starter",
-    "strong work ethics"
-  ]
+  interest: [
+    'Blockchain/Web3',
+    'Technical Writing',
+    'UI/UX implementation & optimization',
+    'Computer Programming',
+    'SEO optimization',
+    'Responsive Web design',
+    'Code optimization',
+    'Database development',
+    'System analysis and design',
+    'Web application interface design',
+    'Design Thinking & Research',
+    'Component-Driven Development',
+    'Web accessibility',
+    'Web scraping',
+    'Browser Extension Development',
+    'Progressive Web Application development',
+    'Basic computer architecture',
+    'Operating systems (Windows Linux)',
+    'Remote connection and virtual machines',
+    'Computer networking',
+    'Software management',
+    'Troubleshooting',
+    'Routing concepts',
+    'VPNs and proxies',
+    'Permissioning',
+    'Package and software management',
+    'Process management',
+    'Resource monitoring',
+    'Systems administration',
+    'Configuration',
+    'Centralized management',
+    'Implementing/managing directory services',
+    'Data management and recovery',
+    'IT security',
+    'Cryptology/encryption',
+    'Hashing',
+    'Cryptocurrency',
+    'Network security',
+    'Personal Development',
+  ],
 }

@@ -1,6 +1,3 @@
-import { IAppContext } from './app'
-import { PAGES } from './pages'
-
 export type TColorScheme = 'light' | 'dark' | 'system'
 
 export interface IThemeState {
@@ -16,7 +13,7 @@ export interface IThemeProps {
    * Function to handle the change in theme action
    * @returns
    */
-  onChange?: () => void | undefined
+  onChange?: () => void
 }
 export interface IThemeContextValue extends IThemeState {
   onChange: (mode?: TColorScheme) => void

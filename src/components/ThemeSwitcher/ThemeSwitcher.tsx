@@ -45,7 +45,9 @@ function ThemeSwitcher({ onChange, mode = 'system' }: IThemeProps) {
       id="switch-theme"
       className={cl(styles.button, '')}
       onClick={() => {
-        onChange && onChange()
+        if (onChange) {
+          onChange()
+        }
       }}
     >
       <ButtonIcon />

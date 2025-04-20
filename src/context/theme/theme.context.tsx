@@ -1,13 +1,29 @@
-import { TColorScheme, IThemeContextValue, IThemeState } from '@/types/theme'
-import { createContext, useEffect, useMemo, useState } from 'react'
+import { IThemeContextValue, TColorScheme } from '@/types/theme'
+import {
+  createContext,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 
 export const ThemeCtx = createContext<IThemeContextValue>({
   mode: 'system',
-  onChange() {},
-  onToggle() {},
+  onChange(mode?: TColorScheme) {
+    if (!mode) return
+    localStorage.setItem('theme', mode)
+    document.body.setAttribute('data-theme', mode)
+  },
+  onToggle() {
+    const currentTheme =
+      (localStorage.getItem('theme') as TColorScheme) || 'system'
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+    localStorage.setItem('theme', newTheme)
+    document.body.setAttribute('data-theme', newTheme)
+  },
 })
 
-export default function ThemeContextProvider(props: any) {
+export default function ThemeContextProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<TColorScheme>('system')
 
   const setThemeMode = (themeValue: TColorScheme): void => {
@@ -77,6 +93,8 @@ export default function ThemeContextProvider(props: any) {
           })
         }
       }
+    } else {
+      setThemeMode(fromLocalStore)
     }
   }, [])
 
@@ -89,5 +107,5 @@ export default function ThemeContextProvider(props: any) {
     [theme]
   )
 
-  return <ThemeCtx.Provider value={value}>{props?.children}</ThemeCtx.Provider>
+  return <ThemeCtx.Provider value={value}>{children}</ThemeCtx.Provider>
 }

@@ -1,33 +1,33 @@
-@use "tailwindcss";
 // @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Work+Sans:wght@300;400;700&display=swap');
+@use 'normalize.css';
 
 @mixin light-theme() {
-  --bg: rgb(233, 233, 233);
-  --bg-accent: hsla(0, 0%, 85%, 1);
+  --bg: hsl(204, 0%, 91%);
+  --bg-accent: hsla(204, 0%, 80%, 1);
   --text-color: #131313;
   --text-contrast: #f3f3f3;
-  --highlighted: hwb(340 24% 41%);
+  --highlighted: hsl(204, 95%, 30%);
   --highlighted-contrast: #fff;
   --primary-accent: hwb(340 24% 41%);
-  --primary-contrast: rgb(234, 235, 241);
-  --primary: #120e27;
+  --primary-contrast: hsl(204, 69%, 95%);
+  --primary: hsl(204, 69%, 11%);
   --subtle: hsl(326, 14%, 65%);
   --lighten: #72788b;
   --beam-shadow: 0px 20px 30px 6px rgba(0, 0, 0, 0.125);
 }
 
 @mixin dark-theme() {
-  --beam-shadow: 0 -5px 35px 1px rgba(40, 166, 249, 0.2);
-  --primary: hsl(204, 85%, 40%);
+  --beam-shadow: 0 4px 95px 2px rgba(40, 166, 249, 0.2);
+  --primary: #0f77bd;
   --primary-accent: #127c9c;
   --bg: #141a31;
-  --primary-contrast: rgb(239, 240, 245) 25;
+  --primary-contrast: hsl(204, 95%, 5%);
   --bg-accent: #1d233a;
   --subtle: #384368;
   --lighten: #72788b;
   --text-color: #f2f2f2;
   --text-contrast: #121212;
-  --highlighted: #7b1f46;
+  --highlighted: hsl(204, 95%, 40%);
   --highlighted-contrast: #fff;
 }
 
@@ -55,10 +55,10 @@
 :root {
   --fade-in: all 0.125s ease-in-out;
   --fancy-font: 'Anonymous Pro', sans-serif;
-  --default-font: 'Alexandria', sans-serif;
-  --prose-font: 'Alexandria', serif;
+  --default-font: 'Manrope Variable', sans-serif;
+  --prose-font: 'Inter Variable', serif;
   --code-font: 'Inconsolata', monospace;
-  --display-font: 'Bakbak One', sans-serif;
+  --display-font: 'Inter Variable', sans-serif;
 }
 * {
   outline-offset: -2px;
@@ -84,6 +84,11 @@ a {
 }
 button {
   appearance: none;
+  border: none;
+  background-color: var(--primary-contrast);
+  border-radius: 4px;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 body {
@@ -115,29 +120,38 @@ body {
 }
 
 .boxed_layout {
-  margin: 0 auto;
   height: 100%;
-  padding: 0 30px;
+  width: 100%;
   flex-grow: 1;
   display: flex;
+  gap: 12px;
   flex-direction: column;
   justify-content: flex-start;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   overflow-y: auto;
-  max-width: 500px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    max-width: 1024px;
-  }
+  position: relative;
+  z-index: 1;
+  padding: 55px 20px 65px;
 }
 
 .page_section {
   height: 100vh;
+}
+
+ul {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  list-style-type: none;
+  list-style-position: inside;
+}
+li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .list {
@@ -169,24 +183,22 @@ body {
 .card {
   --opacity: 0.75;
   display: flex;
-  row-gap: 10px;
-  column-gap: 30px;
+  gap: 10px;
   padding: 20px;
   user-select: none;
   position: relative;
-  // margin-bottom: 30px;
   background-color: var(--bg-accent);
   color: var(--text-color);
   transition: var(--fade-in);
   filter: contrast(95%);
   border-radius: 4px;
-  flex-grow: 1;
+
   &:hover {
     // color: var(--primary);
-    box-shadow: 0px 0px 0px 4px var(--primary);
+    box-shadow: -4px 8px 0px 4px var(--bg);
     --opacity: 1;
     @media screen and (min-width: 768px) {
-      transform: translate(8px, -8px);
+      transform: translate(2px, -2px);
     }
   }
   .card-icon {
@@ -195,7 +207,6 @@ body {
     width: 60px;
     height: 60px;
     background: transparent;
-    // border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -206,42 +217,9 @@ body {
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
-    /* identical to box height */
-  }
 
-  &.project {
-    position: relative;
-
-    .roles {
-      display: flex;
-      gap: 4px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      .role {
-        @include tag();
-      }
-    }
-
-    .meta {
-      font-size: 10px;
-      user-select: none;
-      text-transform: capitalize;
-      li:not(:last-of-type):after {
-        content: '\2022';
-        margin-left: 8px;
-      }
-    }
-    .description {
-      position: relative;
-      font-size: 12px;
-      user-select: none;
-      margin: 8px 0;
-      margin-left: 8px;
-      color: var(--text-color);
-      word-wrap: break-word;
-      word-break: break-all;
-      max-width: 100%;
+    ul {
+      margin-top: 8px;
     }
   }
 }
@@ -249,6 +227,9 @@ body {
   color: var(--text-color);
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
 .card_listing {
   display: flex;
   flex-direction: column;
@@ -288,6 +269,7 @@ textarea {
 }
 
 .btn {
+  border-radius: 4px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -619,47 +601,21 @@ a {
   font-family: var(--display-font);
   opacity: 0.6;
   position: absolute;
-  right: 0;
+  left: 30px;
   top: 0;
   color: var(--primary-accent);
   margin: 20px;
   max-width: 350px;
-  text-align: right;
+  text-align: left;
   letter-spacing: -0.025em;
   background: linear-gradient(to bottom, var(--primary) 60%, transparent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
-  // text-shadow: 0px 0px 1px var(--primary);
-}
-
-#fixed__nav__btn {
-  opacity: 1;
-  animation: bounceInLeft; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 1s;
-  background: var(--bg);
-
-  button {
-    &:focus {
-      box-shadow: none;
-      outline: none;
-      border: none;
-    }
-    &:disabled {
-      opacity: 0.25;
-    }
-    &:not(:disabled):hover {
-      background: var(--primary);
-      color: var(--primary-contrast);
-    }
-  }
 }
 
 .floating__btn {
   transition: var(--fade-in);
-  // box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.377), 0 0 8px -2px var(--subtle);
-  // border: 1px solid var(--subtle);
   box-shadow: var(--beam-shadow);
   background: var(--bg);
   font-size: 18px;
