@@ -9,7 +9,7 @@ import eslint from 'vite-plugin-eslint';
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const baseUrl = process.env.BASE_URL || '/portfolio/'
+const baseUrl = process.env.BASE_URL || '/portfolio'
 /**
  * @see {@link // https://vitejs.dev/config/}
  */
