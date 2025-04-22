@@ -11,23 +11,38 @@ export const SectionNavContainerStyled = styled('div')(() => ({
   width: '100%',
   padding: '0 20px',
   gap: 10,
-  
 }))
 
 export const NavButtonStyled = styled('button')(() => ({
-  padding: '8px 0',
+  padding: '12px 24px',
   flexGrow: 0,
   minWidth: 150,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   gap: 10,
-  background: 'transparent',
-
+  position: 'relative',
   borderRadius: 4,
-  boxShadow: '0 4px 30px var(--bg)',
+  background: 'transparent',
+  fontWeight: 400,
 
   '&:not(:disabled)': {
     cursor: 'pointer',
+    background: 'var(--bg-accent)',
+
+    '&:hover': {
+      background: 'var(--primary)',
+      boxShadow: 'var(--beam-shadow)',
+      color: 'var(--text-contrast)',
+    },
   },
+}))
+
+export const DividerStyled = styled('div')(() => ({
+  content: '""',
+  display: 'block',
+  width: 1,
+  height: '100%',
+  background: 'var(--bg-accent)',
+  position: 'relative',
 }))

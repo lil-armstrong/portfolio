@@ -1,7 +1,7 @@
 import usePage from '@/hook/usePage'
 import { PAGES } from '@/types/pages'
 import React, { ReactElement } from 'react'
-import { NavButtonStyled, SectionNavContainerStyled } from './styled'
+import { DividerStyled, NavButtonStyled, SectionNavContainerStyled } from './styled'
 interface ISlot {
   content: ReactElement | string | null
   to?: PAGES
@@ -35,12 +35,8 @@ function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
 
   return (
     <SectionNavContainerStyled>
-      <RenderSlot slot={leftSlot}>
-        {/* <AiOutlineLeftCircle aria-label="(Go to previous)" /> */}
-      </RenderSlot>
-      <RenderSlot slot={rightSlot}>
-        {/* <AiOutlineRightCircle aria-label="(Go to next)" /> */}
-      </RenderSlot>
+      <RenderSlot slot={leftSlot} />
+      <RenderSlot slot={rightSlot} />
     </SectionNavContainerStyled>
   )
 }

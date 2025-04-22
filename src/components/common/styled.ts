@@ -80,12 +80,14 @@ export const SectionFooterStyled = styled.footer(() => ({
   borderTopRightRadius: 8,
   borderTopLeftRadius: 8,
   position: 'relative',
-  padding: '10px 20px',
+  padding: '10px 0px',
   bottom: 0,
   margin: '0 auto',
   display: 'flex',
   flexFlow: 'column nowrap',
   width: '100%',
+  boxShadow: 'var(--beam-shadow)',
+
   '@media (min-width: 768px)': {
     maxWidth: 1024,
   },
