@@ -78,14 +78,14 @@ function WorkExperienceCard(props: ISingleWorkExperience) {
     <>
       <StyledTimelineCard>
         <TitleContentStyled>
-          {image ? (
+          {/* {image ? (
             <StyledPictureHolder>
               <img
                 alt={`${org} logo`}
                 src={new URL(image, window.location.origin).href}
               />
             </StyledPictureHolder>
-          ) : null}
+          ) : null} */}
           <div>
             <p className="work__org">{org}</p>
 

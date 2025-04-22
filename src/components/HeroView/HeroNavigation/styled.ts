@@ -32,13 +32,16 @@ export const InnerWrapperStyled = styled('div')(() => ({
   justifyContent: 'space-evenly',
   width: '100%',
   alignItems: 'center',
-  marginTop: '100px',
-  gap: '2rem',
+  gap: 4,
+  maxWidth: 800,
+
+  '@media (max-width: 768px)': {
+    margin: '0 auto'
+  },
 }))
 
 export const SpanLinkStyled = styled(SpanLink)(() => ({
-  paddingLeft: 10,
-  paddingRight: 10,
+  padding: '8px 12px',
   flexGrow: 0,
   textAlign: 'center',
 }))

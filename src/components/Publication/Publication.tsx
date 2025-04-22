@@ -15,16 +15,16 @@ import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
 import { SingleBlogCard } from './SingleBlogCard'
 import { GridListItemStyled, GridListStyled, LoaderBoxStyled } from './styled'
 
-export function Blog() {
+export function Publication() {
   const { loading, result } = useFetch(blog.getMany())
 
   return (
     <ContainerStyled>
       <SectionHeaderStyled>
-        <SectionHeaderTitleStyled>Blog</SectionHeaderTitleStyled>
+        <SectionHeaderTitleStyled>Publications</SectionHeaderTitleStyled>
       </SectionHeaderStyled>
 
-      <InnerContainerStyled id={PAGES.BLOG}>
+      <InnerContainerStyled id={PAGES.PUBLICATION}>
         <ContentBoxStyled>
           <ListContainerStyled>
             {!loading ? (
@@ -56,4 +56,4 @@ export function Blog() {
     </ContainerStyled>
   )
 }
-export default Blog
+export default Publication

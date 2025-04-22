@@ -120,8 +120,8 @@ export function Projects() {
         <SectionNavigationBar
           leftSlot={{ content: 'Certifications', to: PAGES.CERTIFICATION }}
           rightSlot={{
-            content: 'Blog',
-            to: PAGES.BLOG,
+            content: 'Publications',
+            to: PAGES.PUBLICATION,
           }}
         />
       </SectionFooterStyled>

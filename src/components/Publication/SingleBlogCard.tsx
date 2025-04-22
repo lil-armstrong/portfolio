@@ -3,9 +3,18 @@ import cn from 'classnames'
 import { ArticleStyled } from './styled'
 import useTheme from '@/hook/useTheme/useTheme'
 import { ListItemStyled, ListStyled } from '@/components/common/styled'
+import { AiOutlineCalendar } from 'react-icons/ai'
 
 export const SingleBlogCard = ({
-  article: { url, title, cover_image, description, tag_list, slug },
+  article: {
+    url,
+    title,
+    cover_image,
+    description,
+    tag_list,
+    slug,
+    readable_publish_date,
+  },
 }: {
   article: ArticleMeta
 }) => {
@@ -41,8 +50,10 @@ export const SingleBlogCard = ({
           />
         </picture>
 
-        <p className={cn('prose description')}>{description}</p>
-
+        <span className='date'>
+          <AiOutlineCalendar size={12} role="presentation" />
+          {readable_publish_date}
+        </span>
         <ListStyled
           className={cn('flex flex-row gap-[8px] flex-wrap my-[8px]')}
         >
@@ -52,6 +63,8 @@ export const SingleBlogCard = ({
             </ListItemStyled>
           ))}
         </ListStyled>
+        <p className={cn('prose description')}>{description}</p>
+
       </a>
     </ArticleStyled>
   )

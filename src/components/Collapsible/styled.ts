@@ -4,17 +4,20 @@ export const ActionButtonStyled = styled.button(() => ({
   marginTop: 20,
   marginBottom: 20,
   padding: 8,
-  borderTopRightRadius: 8,
-  borderBottomRightRadius: 8,
+  borderRadius: 0,
+  borderTopLeftRadius: 8,
+  borderBottomLeftRadius: 8,
   appearance: 'none',
   userSelect: 'none',
-  border: 'none',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
   textAlign: 'center',
   boxShadow: 'var(--beam-shadow)',
+  background: 'var(--bg-accent)',
+  border: '2px solid var(--bg-contrast)',
+  borderRight: 0
 }))
 
 export const WrapperStyled = styled.nav<{ $isExpanded?: boolean }>(
@@ -31,7 +34,7 @@ export const WrapperStyled = styled.nav<{ $isExpanded?: boolean }>(
       animationDuration: '1s',
       background: 'var(--bg)',
       position: 'absolute',
-      bottom: 70,
+      bottom: 80,
       right: 0,
 
       button: {

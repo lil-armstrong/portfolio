@@ -77,7 +77,7 @@ export function ContactMe() {
 
         <SectionFooterStyled>
           <SectionNavigationBar
-            leftSlot={{ content: 'Blog', to: PAGES.BLOG }}
+            leftSlot={{ content: 'Publications', to: PAGES.PUBLICATION }}
             rightSlot={{ content: null, to: undefined }}
           />
         </SectionFooterStyled>

@@ -9,14 +9,14 @@ export const SectionNavContainerStyled = styled('div')(() => ({
   flexGrow: 1,
   zIndex: 10,
   width: '100%',
-  padding: '0 20px',
-  gap: 10,
+  padding: '0 12px',
+  gap: 8,
 }))
 
 export const NavButtonStyled = styled('button')(() => ({
   padding: '12px 24px',
-  flexGrow: 0,
-  minWidth: 150,
+  flexGrow: 1,
+  width: 180,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -25,10 +25,16 @@ export const NavButtonStyled = styled('button')(() => ({
   borderRadius: 4,
   background: 'transparent',
   fontWeight: 400,
+  cursor: 'default',
+
+  '@media (min-width: 768px)': {
+    flexGrow: 0,
+  },
 
   '&:not(:disabled)': {
     cursor: 'pointer',
     background: 'var(--bg-accent)',
+    border: '1px solid var(--bg-contrast)',
 
     '&:hover': {
       background: 'var(--primary)',
@@ -42,18 +48,21 @@ export const DividerStyled = styled('div')(() => ({
   content: '""',
   display: 'block',
   width: 1,
-  height: '100%',
-  background: 'var(--bg-accent)',
+  height: 'auto',
+  background: 'var(--bg-contrast)',
   position: 'relative',
+  margin: '0 12px',
 }))
 
 export const CopyrightStyled = styled('div')(() => ({
   opacity: 0.45,
+  padding: '12px 24px',
   textAlign: 'center',
   fontSize: 12,
-  marginTop: 10,
   order: 3,
   width: '100%',
+  display: 'inline-flex',
+  justifyContent: 'center',
 
   '@media screen and (min-width: 768px)': {
     order: 0,

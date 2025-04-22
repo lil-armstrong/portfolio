@@ -1,10 +1,10 @@
 import '@fontsource-variable/inter'
 import '@fontsource-variable/manrope'
 import 'animate.css'
-import React, { useEffect } from 'react'
+import React, { ReactElement, useEffect } from 'react'
 
 import AboutMe from '@/components/AboutMe/AboutMe'
-import Blog from '@/components/Blog/Blog'
+import Publication from '@/components/Publication/Publication'
 import Certifications from '@/components/Certifications'
 import ContactMe from '@/components/ContactMe/ContactMe'
 import HeroNavigation from '@/components/HeroView/HeroNavigation'
@@ -40,10 +40,10 @@ const MAIN_CONTENT_ID = 'main-content'
 
 const tab: Record<
   PAGES,
-  { title: JSX.Element | null; content: () => JSX.Element | null }
+  { title: ReactElement | string | null; content: () => JSX.Element | null }
 > = {
   [PAGES.ABOUT]: {
-    title: <p>About Me</p>,
+    title: 'About Me',
     content: AboutMe,
   },
 
@@ -63,9 +63,9 @@ const tab: Record<
     title: <p>Projects</p>,
     content: Projects,
   },
-  [PAGES.BLOG]: {
+  [PAGES.PUBLICATION]: {
     title: <p>Blog</p>,
-    content: Blog,
+    content: Publication,
   },
   [PAGES.CONTACT]: {
     title: <p>Contact</p>,
@@ -174,6 +174,7 @@ function App() {
               <div role="presentation">
                 {Object.entries(tab).map(([id, { title }]) => (
                   <Menu.Item
+                    className="main_menu_item"
                     role="menuitem"
                     key={id}
                     text={title && title}

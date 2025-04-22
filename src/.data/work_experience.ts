@@ -14,7 +14,7 @@ export default {
         'Championed the adoption of rigorous code review processes across the project, reducing production bugs by 35% within the first quarter.',
         'Engineered an intuitive & searchable electronic Bill of Materials (BOM) table with React, enabling engineers to filter components by 10+ parameters, and slashed project prototyping time by 30%.',
       ],
-      image_url: 'celus_logo.png',
+      image_url: 'celus_logo.jpg',
     },
   ],
   2022: [
@@ -42,7 +42,7 @@ Send and receive money globally, pay bills, save and spend with USD cards.`,
       location: 'Remote, Seoul, South Korea',
       timeline: 'July 2022 - January 2023',
       description: `A leader in the development of blockchain technology for the future through professional security systems, trust with customers, and solutions in the right direction. `,
-      image_url: 'block-stars_logo.png',
+      image_url: 'block_stars_logo.png',
       highlights: [
         'Implemented a comprehensive data validation framework using Node.js to resolve inconsistencies, achieving a 99.9% data accuracy rate for client reporting.',
         'Revamped data infrastructure by addressing over 100 daily data inconsistencies, ensuring robust real-time financial market updates',

@@ -14,7 +14,7 @@ export const ContainerStyled = styled('div')(() => ({
 // fixed md:left-[20px]  top-[10px]  z-[10]
 export const CollapsibleStyled = styled(Collapsible)(() => ({
   position: 'fixed',
-  bottom: 70,
+  bottom: 90,
   right: 0,
   zIndex: 100,
 }))
@@ -29,7 +29,7 @@ export const CollapsibleWrapperStyled = styled('div')(() => ({
 // left-[60px] top-[60px] w-[300px]
 export const MenuStyled = styled(menu)(() => ({
   right: 70,
-  bottom: 60,
+  bottom: 100,
   width: 300,
 }))
 
@@ -54,7 +54,7 @@ export const MainContentStyled = styled('main')(() => ({
   position: 'relative',
   height: '100vh',
   width: '100%',
-  bottom: 0
+  bottom: 0,
 }))
 
 // md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen

@@ -4,6 +4,7 @@
 @mixin light-theme() {
   --bg: hsl(204, 0%, 91%);
   --bg-accent: hsla(204, 0%, 80%, 1);
+  --bg-contrast: hsl(204, 0%, 20%);
   --text-color: #131313;
   --text-contrast: #f3f3f3;
   --highlighted: hsl(204, 95%, 30%);
@@ -21,8 +22,9 @@
   --primary: #0f77bd;
   --primary-accent: #127c9c;
   --primary-contrast: hsl(204, 95%, 5%);
-  --bg: #141a31;
+  --bg: hsl(228, 42%, 14%);
   --bg-accent: hsl(228, 33%, 20%);
+  --bg-contrast: hsl(228, 42%, 60%);
   --subtle: #384368;
   --lighten: #72788b;
   --text-color: #f2f2f2;

@@ -21,12 +21,11 @@ export const ArticleStyled = styled.article(() => ({
   '& .description': {
     color: 'var(--text-color)',
     fontSize: 14,
-    opacity: 0.75,
+    opacity: 0.5,
     display: 'block',
     marginTop: 8,
-    marginBottom: 8,
     lineHeight: 1.5,
-    minHeight: 62,
+    minHeight: 60,
   },
 
   img: {
@@ -39,6 +38,15 @@ export const ArticleStyled = styled.article(() => ({
     '--opacity': 1,
     transform: 'translate(2px, -2px)',
   },
+
+  '.date': {
+    display: 'flex',
+    gap: 4,
+    alignItems: 'center',
+    opacity: .75,
+    color: 'var(--text-color)',
+    fontSize: '.75em',
+  }
 }))
 
 // flex flex-col items-center justify-end w-full h-full

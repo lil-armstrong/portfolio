@@ -28,8 +28,10 @@ function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
     }: React.PropsWithChildren<{
       slot?: ISlot
     }>) => {
-      return slot ? (
+      return slot && slot.content ? (
         <NavButtonStyled
+          type="button"
+          role='button'
           disabled={!slot.content}
           onClick={() => setPage && slot.to && setPage(slot.to)}
         >
@@ -45,7 +47,9 @@ function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
       <SectionNavContainerStyled>
         <RenderSlot slot={leftSlot} />
         <CopyrightStyled>
-          Copyright © [2022 - {currentYear}] | Ebong, Okposong
+          <span>Copyright © 2022 - {currentYear}</span>
+          <DividerStyled />
+          <span>Ebong, Okposong</span>
         </CopyrightStyled>
         <RenderSlot slot={rightSlot} />
       </SectionNavContainerStyled>
