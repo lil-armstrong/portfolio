@@ -15,7 +15,7 @@ const Collapsible: ForwardRefExoticComponent<
   CollapsibleProps & RefAttributes<HTMLDivElement>
 > = forwardRef(({ children, ...props }: CollapsibleProps, ref) => {
   const [isExpanded, setIsExpanded] = React.useState(props.isExpanded || false)
-  const iconSize = 18
+  const iconSize = 22
 
   function handleToggle() {
     setIsExpanded(!isExpanded)

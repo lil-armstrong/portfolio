@@ -14,7 +14,7 @@ export const ContainerStyled = styled('div')(() => ({
 // fixed md:left-[20px]  top-[10px]  z-[10]
 export const CollapsibleStyled = styled(Collapsible)(() => ({
   position: 'fixed',
-  bottom: 10,
+  bottom: 70,
   right: 0,
   zIndex: 100,
 }))

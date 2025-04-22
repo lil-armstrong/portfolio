@@ -46,3 +46,10 @@ export const DividerStyled = styled('div')(() => ({
   background: 'var(--bg-accent)',
   position: 'relative',
 }))
+
+export const CopyrightStyled = styled('div')(() => ({
+  opacity: 0.45,
+  textAlign: 'center',
+  fontSize: 12,
+  marginTop: 10,
+}))

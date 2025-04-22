@@ -1,7 +1,12 @@
 import usePage from '@/hook/usePage'
 import { PAGES } from '@/types/pages'
 import React, { ReactElement } from 'react'
-import { DividerStyled, NavButtonStyled, SectionNavContainerStyled } from './styled'
+import {
+  CopyrightStyled,
+  DividerStyled,
+  NavButtonStyled,
+  SectionNavContainerStyled,
+} from './styled'
 interface ISlot {
   content: ReactElement | string | null
   to?: PAGES
@@ -14,6 +19,8 @@ type Props = React.PropsWithChildren<{
 
 function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
   const setPage = usePage().onPageChange
+
+  const currentYear = new Date().getFullYear()
 
   const RenderSlot = React.useCallback(
     ({
@@ -34,10 +41,15 @@ function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
   )
 
   return (
-    <SectionNavContainerStyled>
-      <RenderSlot slot={leftSlot} />
-      <RenderSlot slot={rightSlot} />
-    </SectionNavContainerStyled>
+    <>
+      <SectionNavContainerStyled>
+        <RenderSlot slot={leftSlot} />
+        <RenderSlot slot={rightSlot} />
+      </SectionNavContainerStyled>
+      <CopyrightStyled>
+        Copyright © [2022 - {currentYear}] | Ebong, Okposong
+      </CopyrightStyled>
+    </>
   )
 }
 
