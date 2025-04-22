@@ -7,7 +7,8 @@ import AboutMe from '@/components/AboutMe/AboutMe'
 import Blog from '@/components/Blog/Blog'
 import Certifications from '@/components/Certifications'
 import ContactMe from '@/components/ContactMe/ContactMe'
-import HeroNavigation from '@/components/Hero/HeroNavigation'
+import HeroNavigation from '@/components/HeroView/HeroNavigation'
+import HeroView from '@/components/HeroView/HeroView'
 import Menu from '@/components/Menu/menu'
 import Projects from '@/components/Projects/Projects'
 import ScrollButton from '@/components/ScrollButton'
@@ -33,7 +34,6 @@ import {
   TabContentStyled,
   TabInnerContainerStyled,
 } from './styled'
-import Hero from '@/components/Hero/Hero'
 
 const HERO_ID = 'page_hero'
 const MAIN_CONTENT_ID = 'main-content'
@@ -144,16 +144,11 @@ function App() {
             )
           }
         } else {
-          mainContentRef.current.animate(
-            [
-              { transform: `translateY(0px)` },
-            ],
-            {
-              duration: 1000, // Animation duration in milliseconds
-              easing: 'ease-out', // Animation easing function
-              fill: 'forwards', // Keep the final state
-            }
-          )
+          mainContentRef.current.animate([{ transform: `translateY(0px)` }], {
+            duration: 1000, // Animation duration in milliseconds
+            easing: 'ease-out', // Animation easing function
+            fill: 'forwards', // Keep the final state
+          })
         }
       }
     }
@@ -201,7 +196,7 @@ function App() {
           </CollapsibleWrapperStyled>
         </CollapsibleStyled>
 
-        <Hero
+        <HeroView
           id={HERO_ID}
           ref={heroContentRef}
           mainTitle="Ebong Okposong"
@@ -232,7 +227,7 @@ function App() {
           }
         >
           <HeroNavigation />
-        </Hero>
+        </HeroView>
 
         {/* Tab*/}
         <MainContentStyled
