@@ -58,7 +58,7 @@ export const StyledTimelineCard = styled.div`
     width: 20px;
     top: 30px;
     background-color: var(--bg-accent);
-    height: 4px;
+    height: 2px;
     content: '';
     font-size: 40px;
     position: absolute;
@@ -137,7 +137,7 @@ export const StyledTimelineCard = styled.div`
 export const StyledTimelineStyled = styled.div(() => ({
   position: 'absolute',
   content: '',
-  width: 4,
+  width: 2,
   height: '100%',
   left: 0,
   top: 0,

@@ -75,7 +75,10 @@ export const SectionHeaderTitleStyled = styled.h3(() => ({
 }))
 
 export const SectionFooterStyled = styled.footer(() => ({
-  borderTop: '1px solid var(--bg-accent)',
+  border: '1px solid var(--bg-accent)',
+  borderBottom: 0,
+  borderTopRightRadius: 8,
+  borderTopLeftRadius: 8,
   position: 'relative',
   padding: '10px 20px',
   bottom: 0,

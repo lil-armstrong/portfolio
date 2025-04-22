@@ -11,6 +11,7 @@ export const SectionNavContainerStyled = styled('div')(() => ({
   width: '100%',
   padding: '0 20px',
   gap: 10,
+  
 }))
 
 export const NavButtonStyled = styled('button')(() => ({
