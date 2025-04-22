@@ -38,7 +38,7 @@ const Hero = forwardRef<HTMLDivElement, IPropInterface>(
           <div className="hero_subtitle select-none">{subTitle}</div>
         </header>
 
-        <ul className="list">
+        <ul className="list contact_links">
           {contactLinks.map((content, idx) => (
             <li key={idx} className="list-item social_icon">
               {content}

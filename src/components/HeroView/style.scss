@@ -13,6 +13,11 @@
   z-index: 0;
   overflow: hidden;
   flex-wrap: nowrap;
+
+  .contact_links{
+    max-width: 500px;
+    margin: 0 auto;;
+  }
 }
 
 .hero_title {

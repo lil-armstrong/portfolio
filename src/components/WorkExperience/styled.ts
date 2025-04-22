@@ -5,19 +5,19 @@ export const StyledPictureHolder = styled.picture`
   right: 0;
   top: 0;
   margin-top: -40px;
+  margin-right: 8px;
   width: 100px;
   height: 100px;
-  max-height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
-  box-shadow: 0 0 70px -30px var(--primary);
+  box-shadow: 0 0 70px -30px var(--primary), var(--beam-shadow);
   border-radius: 8px;
   padding: 8px 12px;
-  border: 4px solid transparent;
+  border: 3px solid transparent;
   overflow: hidden;
-  background: var(--bg-accent);
+  background: var(--bg);
 
 
   img {
@@ -96,11 +96,11 @@ export const StyledTimelineCard = styled.div`
   }
 
   &:hover {
-    // transform: translate(0);
     box-shadow: var(--beam-shadow);
+    // transform: translate(0);
     &:after {
       animation-name: headShake;
-      border: 4px solid var(--primary);
+      border: 3px solid var(--primary);
     }
 
     .meta {
