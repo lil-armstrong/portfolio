@@ -137,7 +137,7 @@ export const StyledTimelineCard = styled.div`
 export const StyledTimelineStyled = styled.div(() => ({
   position: 'absolute',
   content: '',
-  width: 2,
+  width: 4,
   height: '100%',
   left: 0,
   top: 0,
