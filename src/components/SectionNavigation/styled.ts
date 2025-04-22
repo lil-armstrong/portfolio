@@ -3,7 +3,7 @@ import styled from 'styled-components'
 // flex lg:flex-row w-full flex-wrap items-end  justify-between
 export const SectionNavContainerStyled = styled('div')(() => ({
   display: 'flex',
-  flexFlow: 'row nowrap',
+  flexFlow: 'row wrap',
   alignItems: 'center',
   justifyContent: 'space-between',
   flexGrow: 1,
@@ -52,4 +52,11 @@ export const CopyrightStyled = styled('div')(() => ({
   textAlign: 'center',
   fontSize: 12,
   marginTop: 10,
+  order: 3,
+  width: '100%',
+
+  '@media screen and (min-width: 768px)': {
+    order: 0,
+    width: 'auto',
+  },
 }))

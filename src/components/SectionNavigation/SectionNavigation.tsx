@@ -44,11 +44,11 @@ function SectionNavigationBar({ leftSlot, rightSlot }: Props) {
     <>
       <SectionNavContainerStyled>
         <RenderSlot slot={leftSlot} />
+        <CopyrightStyled>
+          Copyright © [2022 - {currentYear}] | Ebong, Okposong
+        </CopyrightStyled>
         <RenderSlot slot={rightSlot} />
       </SectionNavContainerStyled>
-      <CopyrightStyled>
-        Copyright © [2022 - {currentYear}] | Ebong, Okposong
-      </CopyrightStyled>
     </>
   )
 }
