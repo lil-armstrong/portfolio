@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 export const StyledPictureHolder = styled.picture`
-  position: absolute;
+  position: relative;
   right: 0;
-  margin-right: 10px;
   top: 0;
   margin-top: -40px;
   width: 100px;
   height: 100px;
-  max-height: 100px;
-  display: inline-flex;
+  max-height: 200px;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
@@ -20,16 +19,13 @@ export const StyledPictureHolder = styled.picture`
   overflow: hidden;
   background: var(--bg-accent);
 
+
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     border-radius: inherit;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 70px;
-    height: 70px;
   }
 `
 
@@ -54,6 +50,7 @@ export const StyledTimelineCard = styled.div`
     color: inherit;
     line-height: 1.5;
     opacity: 0.75;
+    font-weight: 400;
   }
 
   &:before {
@@ -67,7 +64,6 @@ export const StyledTimelineCard = styled.div`
     position: absolute;
     transition: var(--fade-in);
     z-index: -1;
-    border-radius: inherit;
   }
   &:after {
     border-radius: inherit;
@@ -96,6 +92,7 @@ export const StyledTimelineCard = styled.div`
     z-index: 1;
     color: var(--text-color);
     opacity: 0.5;
+    display: flex;
   }
 
   &:hover {
@@ -123,8 +120,17 @@ export const StyledTimelineCard = styled.div`
     opacity: var(--opacity);
     font-weight: 600;
     font-size: 20px;
-    max-width: 85%;
     user-select: none;
+  }
+
+  .work_date {
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: -8px;
+    opacity: 0.5;
+    line-height: 1;
   }
 `
 
@@ -155,7 +161,8 @@ export const HighlightListItemStyled = styled.li(() => ({
   lineHeight: 1.75,
   listStyle: 'none',
   listStyleType: 'none',
-  opacity: 0.75,
+  opacity: 0.65,
+  fontSize: '0.95em',
 
   '&&::before': {
     content: '""',
@@ -184,4 +191,10 @@ export const TimelineYearStyled = styled.h3(() => ({
   zIndex: 0,
   position: 'sticky',
   top: 0,
+}))
+
+export const TitleContentStyled = styled.div(() => ({
+  display: 'flex',
+  gap: 12,
+  marginBottom: 12,
 }))

@@ -15,11 +15,11 @@
   flex-wrap: nowrap;
 }
 
-.hero-title {
+.hero_title {
   --slid_width: 10%;
   font-style: normal;
   font-weight: 800;
-  font-size: 70px;
+  font-size: 2em;
   line-height: 1;
   text-transform: uppercase;
   text-align: center;
@@ -27,18 +27,20 @@
   color: var(--text-color);
   text-shadow: 2px 2px 2px var(--text-contrast);
   font-family: var(--display-font);
+  margin-top: 30px;
 
-  @media screen and (max-width: 768px) {
-    font-size: 40px;
+  @media screen and (min-width: 768px) {
+    font-size: 4em;
   }
   .before-title {
     content: '';
-    height: 2px;
+    height: 4px;
     background-color: var(--text-color);
     position: relative;
-    margin: 20px auto;
+    margin: 12px auto;
     transition: var(--fade-in);
     &::before {
+      border-top-left-radius: 8px;
       content: '';
       background-color: currentColor;
       position: absolute;
@@ -52,23 +54,24 @@
   &:hover {
     .before-title {
       &::before {
-        transform: skew(45deg, 0deg) translate(-5px, 1px);
+        transform: skew(-35deg, 0deg) translate(4px, 0);
       }
     }
     .after-title {
       &::before {
-        transform: skew(45deg, 0deg) translate(5px, -1px);
+        transform: skew(-35deg, 0deg) translate(-4px, 0);
       }
     }
   }
   .after-title {
     content: '';
-    height: 2px;
-    margin: 20px auto;
+    height: 4px;
+    margin: 12px auto;
     position: relative;
     background-color: var(--text-color);
 
     &::before {
+      border-bottom-right-radius: 8px;
       transition: var(--fade-in);
       display: block;
       content: '';
@@ -80,6 +83,14 @@
       right: 0px;
     }
   }
+}
+
+.hero_subtitle {
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 24px;
+  position: relative;
+  margin-top: -12px
 }
 .hero_content {
   position: relative;
@@ -100,8 +111,8 @@
   }
 
   .subtitle {
-    font-weight: 200;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 1.5em;
   }
 }
 .me_passport {

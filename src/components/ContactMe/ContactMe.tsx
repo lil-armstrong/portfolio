@@ -10,8 +10,9 @@ import {
   SectionHeaderTitleStyled,
 } from '../common/styled'
 import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
-import { ContentStyled } from './style'
+import { ContentStyled } from './styled'
 import styles from './style.module.scss'
+import { BiEnvelope, BiMessageX } from 'react-icons/bi'
 
 export function ContactMe() {
   return (
@@ -22,45 +23,54 @@ export function ContactMe() {
         </SectionHeaderStyled>
 
         <InnerContainerStyled>
-          <ContentStyled className="flex flex-col self-center w-full h-full justify-center gap-[20px] items-center py-[30px]">
+          <ContentStyled>
             <img src={MePng} alt="Ebong, Okposong" width={200} />
-            <header className="flex flex-col gap-x-[10px] my-[30px] grow items-center justify-center w-full mx-[30px]">
-              <p className={cl(styles.title, 'text-center mb-4')}>
-                Want to get in touch?
+            <header className={cl(styles.header)}>
+              <p className={cl(styles.title)}>Want to get in touch?</p>
+              <p className={cl(styles.subtitle)}>
+                You can reach out to me using the following social media
+                platforms
               </p>
-              <p>Do reach out to me using the following</p>
-              <ul className="list mt-[60px] gap-[30px]">
-                {CONTACT_LINKS?.map((item, idx) => (
-                  <li className="list-item social_icon" key={idx}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </header>
-            <button type="submit" className="btn btn-outline btn-lg">
-              <a href="mailto:oebong1@gmail.com">Get in touch</a>
-            </button>
-            <div className="p-[8px] flex-grow justify-end items-center flex">
-              <a
-                href="https://www.buymeacoffee.com/lilarmstrong"
-                target="_blank"
-                rel="noreferrer"
-                data-name="bmc-button"
-                data-slug="lilarmstrong"
-                data-color="#000000"
-                data-emoji=""
-                data-font="Cookie"
-                data-text="Buy me a coffee"
-                data-outline-color="#ffffff"
-                data-font-color="#ffffff"
-                data-coffee-color="#FFDD00"
+            <ul className="list mt-[60px] gap-[30px]">
+              {CONTACT_LINKS?.map((item, idx) => (
+                <li className="list-item social_icon" key={idx}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <div className={cl(styles.button_container)}>
+              <div className={cl(styles.buy_me_a_coffee)}>
+                <a
+                  href="https://www.buymeacoffee.com/lilarmstrong"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-name="bmc-button"
+                  data-slug="lilarmstrong"
+                  data-color="#000000"
+                  data-emoji=""
+                  data-font="Cookie"
+                  data-text="Buy me a coffee"
+                  data-outline-color="#ffffff"
+                  data-font-color="#ffffff"
+                  data-coffee-color="#FFDD00"
+                >
+                  <img
+                    src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                    alt="Buy Me A Coffee"
+                    style={{ height: '70px', flexGrow: 1 }}
+                  />
+                </a>
+              </div>
+
+              <button
+                type="submit"
+                className={cl(styles.button, 'btn btn-outline btn-lg')}
               >
-                <img
-                  src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                  alt="Buy Me A Coffee"
-                  style={{ height: '70px', flexGrow: 1 }}
-                />
-              </a>
+                <BiEnvelope />
+                <a href="mailto:oebong1@gmail.com">Get in touch</a>
+              </button>
+
             </div>
           </ContentStyled>
         </InnerContainerStyled>

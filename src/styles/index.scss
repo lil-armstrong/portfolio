@@ -104,15 +104,25 @@ body {
   max-height: 100vh;
   font-family: var(--default-font);
   background-color: var(--bg-accent);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.027em;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text-color);
   &[data-schema='true'] * {
     outline: 1px dashed #71c1f055;
     outline-offset: 0px;
   }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.fade_text {
+  opacity: 0.25;
+  font-weight: 600;
 }
 
 #gallery {
@@ -269,7 +279,7 @@ textarea {
 }
 
 .btn {
-  border-radius: 4px;
+  border-radius: 8px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -279,15 +289,22 @@ textarea {
   align-items: center;
   user-select: none;
   transition: var(--fade-in);
-  /* identical to box height, or 137% */
   text-align: center;
   letter-spacing: 0.2em;
   color: inherit;
   text-transform: uppercase;
+
+  a {
+    color: var(--text-color);
+    :hover {
+      color: var(--text-color);
+    }
+  }
+
   &:hover {
     box-shadow: var(--beam-shadow);
     @media screen and (min-width: 768px) {
-      transform: translate(-15px, -6px);
+      transform: translate(-5px, -6px);
     }
   }
   &.btn-outline {
@@ -295,7 +312,7 @@ textarea {
   }
   &-lg {
     width: 100%;
-    min-height: 80px;
+    min-height: 70px;
     @media screen and (min-width: 768px) {
       width: 300px;
     }

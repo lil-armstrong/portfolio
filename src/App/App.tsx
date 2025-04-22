@@ -33,7 +33,7 @@ import {
   TabContentStyled,
   TabInnerContainerStyled,
 } from './styled'
-import Hero from '@/components/Hero/hero'
+import Hero from '@/components/Hero/Hero'
 
 const HERO_ID = 'page_hero'
 const MAIN_CONTENT_ID = 'main-content'
@@ -130,7 +130,11 @@ function App() {
           if (!inView) {
             mainContentRef.current.animate(
               [
-                { transform: `translateY(-${viewportHeight}px)` }, // Start at the bottom of the viewport
+                // { transform: `translateY(-${viewportHeight}px)` }, // Start at the bottom of the viewport
+                {
+                  transform: `translateY(-100%)`,
+                }, // Start at the bottom of the viewport
+                // End at the top of the viewport
               ],
               {
                 duration: 1000, // Animation duration in milliseconds
@@ -142,7 +146,7 @@ function App() {
         } else {
           mainContentRef.current.animate(
             [
-              { transform: `translateY(${viewportHeight}px)` }, // Start at the bottom of the viewport
+              { transform: `translateY(0px)` },
             ],
             {
               duration: 1000, // Animation duration in milliseconds

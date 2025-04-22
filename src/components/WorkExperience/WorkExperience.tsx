@@ -10,6 +10,7 @@ import {
   StyledTimelineCard,
   StyledTimelineStyled,
   TimelineYearStyled,
+  TitleContentStyled,
 } from './styled'
 import {
   ContainerStyled,
@@ -76,35 +77,36 @@ function WorkExperienceCard(props: ISingleWorkExperience) {
   return (
     <>
       <StyledTimelineCard>
-        <p className="work__org mb-1">{org}</p>
+        <TitleContentStyled>
+          {image ? (
+            <StyledPictureHolder>
+              <img
+                alt={`${org} logo`}
+                src={new URL(image, window.location.origin).href}
+              />
+            </StyledPictureHolder>
+          ) : null}
+          <div>
+            <p className="work__org">{org}</p>
 
-        <ul className="flex dot-list meta gap-[4px] flex-wrap items-center">
-          {roles?.map((role, roleIdx) => (
-            <li className="text-sm list-item" title={role} key={roleIdx}>
-              <small>{role}</small>
-            </li>
-          ))}
-        </ul>
-        <div>
-          <ul className="dot-list opacity-70">
-            <li className="list-item flex-row inline-flex" title={timeline}>
-              <AiOutlineCalendar role="presentation" /> {timeline}
-            </li>
-          </ul>
-        </div>
+            <ul className="dot-list meta">
+              {roles?.map((role, roleIdx) => (
+                <li className="list-item" title={role} key={roleIdx}>
+                  <small>{role}</small>
+                </li>
+              ))}
+            </ul>
+
+            <div className="work_date" title={timeline}>
+              <AiOutlineCalendar size={12} role="presentation" />
+              <span>{timeline}</span>
+            </div>
+          </div>
+        </TitleContentStyled>
 
         <p className="description text-normal text-xs my-2">{description}</p>
 
         <HighlightList highlights={highlights} />
-
-        {image ? (
-          <StyledPictureHolder>
-            <img
-              alt={`${org} logo`}
-              src={new URL(image, window.location.origin).href}
-            />
-          </StyledPictureHolder>
-        ) : null}
       </StyledTimelineCard>
     </>
   )

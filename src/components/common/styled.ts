@@ -7,6 +7,7 @@ export const ContainerStyled = styled.section<{ bordered?: boolean }>(() => ({
   position: 'relative',
   overflowY: 'auto',
   overflowX: 'hidden',
+  height: '100%',
   maxHeight: '100vh',
   boxSizing: 'border-box',
 

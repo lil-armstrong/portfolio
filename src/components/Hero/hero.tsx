@@ -30,12 +30,12 @@ const Hero = forwardRef<HTMLDivElement, IPropInterface>(
             justifyContent: 'center',
           }}
         >
-          <h1 className="hero-title select-none">
+          <h1 className="hero_title select-none">
             <div className="before-title"></div>
             {mainTitle}
             <div className="after-title"></div>
           </h1>
-          <div className="subtitle select-none">{subTitle}</div>
+          <div className="hero_subtitle select-none">{subTitle}</div>
         </header>
 
         <ul className="list">

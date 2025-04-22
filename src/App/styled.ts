@@ -54,6 +54,7 @@ export const MainContentStyled = styled('main')(() => ({
   position: 'relative',
   height: '100vh',
   width: '100%',
+  bottom: 0
 }))
 
 // md:flex-auto w-full relative z-[1] flex flex-col meta_box-right max-h-screen

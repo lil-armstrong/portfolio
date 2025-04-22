@@ -4,7 +4,7 @@ import { ContentBoxStyled } from '../common/styled'
 // flex flex-col self-center w-full h-full justify-center gap-[20px] items-center py-[30px]
 export const ContentStyled = styled(ContentBoxStyled)(() => ({
   display: 'flex',
-  flexFlow: 'column wrap',
+  flexFlow: 'column nowrap',
   alignSelf: 'center',
   width: '100%',
   height: '100%',
@@ -15,3 +15,5 @@ export const ContentStyled = styled(ContentBoxStyled)(() => ({
   paddingBottom: 30,
   textAlign: 'center',
 }))
+
+

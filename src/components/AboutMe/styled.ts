@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ContentBoxStyled } from '../common/styled'
 
 // flex mt-[20px] flex-row-reverse mb-[70px] flex-wrap justify-evenly w-full items-center gap-[30px]
 export const ActionBoxStyled = styled('div')(() => ({
@@ -40,6 +41,8 @@ export const Heading3TextStyled = styled('h2')(() => ({
   fontSize: '18px',
   textTransform: 'capitalize',
   textDecoration: 'underline',
+  marginBottom: 0,
+  lineHeight: 1.5
 }))
 
 export const UnorderedListStyled = styled('ul')(() => ({}))
@@ -47,6 +50,7 @@ export const UnorderedListItemStyled = styled('li')(() => ({
   paddingLeft: 20,
   textIndent: '-20px',
   lineHeight: 1.5,
+  opacity: .65,
 
   '&&::before': {
     content: '""',
@@ -54,9 +58,21 @@ export const UnorderedListItemStyled = styled('li')(() => ({
     width: 8,
     height: 8,
     borderRadius: '50%',
-    background: 'var(--highlighted)',
+    opacity: .5,
+    background: 'var(--text-color)',
     marginRight: 8,
     marginLeft: 4,
     marginTop: 4,
-  }
+  },
+}))
+
+export const TextContentStyled = styled('div')(() => ({
+  display: 'flex',
+  flexFlow: 'column nowrap',
+  gap: 12,
+  marginBottom: 20,
+}))
+
+export const ContentContainerStyled = styled(ContentBoxStyled)(() => ({
+  '@media screen and (min-width: 768px)': { paddingTop: 120 },
 }))

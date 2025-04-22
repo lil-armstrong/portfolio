@@ -20,6 +20,8 @@ import {
   TitleTextStyled,
   Heading3TextStyled,
   UnorderedListItemStyled,
+  ContentContainerStyled,
+  TextContentStyled,
 } from './styled'
 import MePng from '@/assets/me.png'
 
@@ -56,20 +58,24 @@ export function AboutMe() {
 
         <InnerContainerStyled>
           {/* ABOUT */}
-          <ContentBoxStyled>
-            <img src={MePng} alt="Ebong, Okposong" width={200} />
+          <ContentContainerStyled>
+            <picture>
+              <img src={MePng} alt="Ebong, Okposong" width={200} />
+            </picture>
 
-            <ReactMarkdown
-              components={{
-                p: ParagraphStyled,
-                strong: BoldTextStyled,
-                h1: TitleTextStyled,
-                h2: Heading2TextStyled,
-                h3: Heading3TextStyled,
-                li: UnorderedListItemStyled,
-              }}
-              children={markdown}
-            />
+            <TextContentStyled>
+              <ReactMarkdown
+                components={{
+                  p: ParagraphStyled,
+                  strong: BoldTextStyled,
+                  h1: TitleTextStyled,
+                  h2: Heading2TextStyled,
+                  h3: Heading3TextStyled,
+                  li: UnorderedListItemStyled,
+                }}
+                children={markdown}
+              />
+            </TextContentStyled>
 
             {/*Button*/}
             <ActionBoxStyled className="">
@@ -82,7 +88,7 @@ export function AboutMe() {
               >
                 Download CV
               </a>
-              <span>OR</span>
+              <span className="fade_text">OR</span>
               <button
                 // href={`#${PAGES.CONTACT}`}
                 // target="_blank"
@@ -93,7 +99,7 @@ export function AboutMe() {
                 📫 Reach out
               </button>
             </ActionBoxStyled>
-          </ContentBoxStyled>
+          </ContentContainerStyled>
         </InnerContainerStyled>
 
         <SectionFooterStyled>
