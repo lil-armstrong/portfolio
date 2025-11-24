@@ -6,8 +6,8 @@ import {
   HighlightListTogglerStyled,
 } from './styled'
 
-const HighlightList = ({ highlights }: IHighlightListProps) => {
-  const [isVisible, setIsVisible] = useState(true)
+const HighlightList = ({ highlights, show = false }: IHighlightListProps) => {
+  const [isVisible, setIsVisible] = useState(show)
 
   const handleVisibilityToggle = () => {
     setIsVisible(!isVisible)
@@ -20,7 +20,7 @@ const HighlightList = ({ highlights }: IHighlightListProps) => {
           type="button"
           onClick={handleVisibilityToggle}
         >
-          {isVisible ? 'Hide highlights' : 'See highlights'}
+          {isVisible ? 'Hide highlights' : 'Show highlights'}
         </HighlightListTogglerStyled>
       ) : null}
 

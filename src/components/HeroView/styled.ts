@@ -20,4 +20,5 @@ export const HeaderContainerStyled = styled('div')(() => ({
   position: 'relative',
   top: '50vh',
   zIndex: 0,
+  gap: 8,
 }))

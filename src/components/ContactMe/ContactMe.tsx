@@ -2,6 +2,7 @@ import MePng from '@/assets/me.png'
 import { CONTACT_LINKS } from '@/constant/contact'
 import { PAGES } from '@/types/pages'
 import cl from 'classnames'
+import { BiEnvelope } from 'react-icons/bi'
 import {
   ContainerStyled,
   InnerContainerStyled,
@@ -10,9 +11,8 @@ import {
   SectionHeaderTitleStyled,
 } from '../common/styled'
 import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
-import { ContentStyled } from './styled'
 import styles from './style.module.scss'
-import { BiEnvelope, BiMessageX } from 'react-icons/bi'
+import { ContentStyled } from './styled'
 
 export function ContactMe() {
   return (
@@ -32,6 +32,7 @@ export function ContactMe() {
                 platforms
               </p>
             </header>
+
             <ul className="list mt-[60px] gap-[30px]">
               {CONTACT_LINKS?.map((item, idx) => (
                 <li className="list-item social_icon" key={idx}>
@@ -39,6 +40,7 @@ export function ContactMe() {
                 </li>
               ))}
             </ul>
+
             <div className={cl(styles.button_container)}>
               <div className={cl(styles.buy_me_a_coffee)}>
                 <a
@@ -64,13 +66,12 @@ export function ContactMe() {
               </div>
 
               <button
-                type="submit"
+                type="button"
                 className={cl(styles.button, 'btn btn-outline btn-lg')}
               >
                 <BiEnvelope />
                 <a href="mailto:oebong1@gmail.com">Get in touch</a>
               </button>
-
             </div>
           </ContentStyled>
         </InnerContainerStyled>

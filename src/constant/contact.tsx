@@ -1,3 +1,4 @@
+import CollectiveLogo from '@/assets/collective-logo.png'
 import devToLogo from '@/assets/devto-logo.svg'
 import { ReactElement } from 'react'
 import { RiGithubLine, RiLinkedinFill } from 'react-icons/ri'
@@ -8,6 +9,7 @@ export const LINKS = {
   linkedin: 'https://linkedin.com/in/lil-armstrong',
   dev_to: 'https://dev.to/lilarmstrong',
   phone: 'tel:+2348109875593',
+  collective: 'https://www.collective.work/profile/okposong-ebong',
 }
 
 export const CONTACT_LINKS: ReactElement[] = [
@@ -41,5 +43,20 @@ export const CONTACT_LINKS: ReactElement[] = [
     title="Linkedin account"
   >
     <RiLinkedinFill aria-label="Linkedin icon" />
+  </a>,
+  <a
+    rel="noreferrer"
+    target="_blank"
+    aria-label="Visit and connect with me via The Collective"
+    href={LINKS?.collective}
+    title="The Collective account"
+  >
+    <img
+      src={CollectiveLogo}
+      width={25}
+      height={25}
+      aria-label="The Collective icon"
+      style={{ backgroundColor: 'black', padding: 2, borderRadius: 2 }}
+    />
   </a>,
 ]

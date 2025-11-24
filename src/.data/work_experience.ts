@@ -1,10 +1,26 @@
 export default {
+  2025: [
+    {
+      org: 'Impulse Audio Lab GmbH',
+      roles: ['Svelte Frontend Engineer'],
+      location: 'Hybrid, Munich Germany',
+      timeline: 'July 2025 - Present',
+      description: `An interdisciplinary team of experts in interactive sound design and audio software development, who share a passion for everything sound`,
+      highlights: [
+        'Contributed in developing UI interfaces for the BOSE ASDS audio tuning software, enabling real-time visualization and control of audio features.',
+        'Proposed and established an intermediary release branch to support continuous development and internal testing.',
+        'Exposed and addressed process blind spots, including the absence of developer guidelines and inconsistent code formatting standards—driving the adoption of unified coding conventions across the frontend team.',
+        'Proposed and advocated a “review-first” development workflow, strengthening peer learning & team awareness',
+      ],
+      image_url: 'ial-logo.svg',
+    },
+  ],
   2023: [
     {
       org: 'CELUS GmbH',
       roles: ['React Frontend Engineer'],
       location: 'Hybrid, Munich Germany',
-      timeline: 'June 2023 - Present',
+      timeline: 'June 2023 - June 2025',
       description: `The cloud-based CELUS Engineering Platform uses Al and smart algorithms to automatically turn functions and requirements into fully functional electronic solutions. Using this technology, electronics engineers are offered the best components for their projects, generate a bill of material, and the corresponding schematics in native EDA formats.`,
       highlights: [
         'Improved and maintained an SVG-based reactive canvas with 50+ successful Cypress component tests, accelerating feature releases by two weeks per quarter.',

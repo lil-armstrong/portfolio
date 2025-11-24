@@ -1,4 +1,5 @@
 export interface ISingleWorkExperience {
+  index: number
   data: {
     org: string
     roles: string[]
@@ -12,4 +13,5 @@ export interface ISingleWorkExperience {
 
 export interface IHighlightListProps {
   highlights: string[]
+  show?: boolean
 }

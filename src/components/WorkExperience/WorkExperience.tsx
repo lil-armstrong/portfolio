@@ -2,16 +2,6 @@ import work_experience from '@/.data/work_experience'
 import { PAGES } from '@/types/pages'
 import React from 'react'
 import { AiOutlineCalendar } from 'react-icons/ai'
-import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
-import type { ISingleWorkExperience } from './IProps'
-import './style.scss'
-import {
-  StyledPictureHolder,
-  StyledTimelineCard,
-  StyledTimelineStyled,
-  TimelineYearStyled,
-  TitleContentStyled,
-} from './styled'
 import {
   ContainerStyled,
   InnerContainerStyled,
@@ -19,7 +9,16 @@ import {
   SectionHeaderStyled,
   SectionHeaderTitleStyled,
 } from '../common/styled'
+import SectionNavigationBar from '../SectionNavigation/SectionNavigation'
 import HighlightList from './HighlightList'
+import type { ISingleWorkExperience } from './IProps'
+import './style.scss'
+import {
+  StyledTimelineCard,
+  StyledTimelineStyled,
+  TimelineYearStyled,
+  TitleContentStyled,
+} from './styled'
 
 export default function WorkExperience() {
   const list = Object.entries(work_experience).reverse()
@@ -39,7 +38,7 @@ export default function WorkExperience() {
                 <TimelineYearStyled>{year}</TimelineYearStyled>
 
                 {experiences.map((data, idx) => (
-                  <WorkExperienceCard key={idx} data={data} />
+                  <WorkExperienceCard index={yidx} key={idx} data={data} />
                 ))}
               </div>
             )
@@ -64,6 +63,7 @@ function WorkExperienceCard(props: ISingleWorkExperience) {
   const [image, setImage] = React.useState<string>()
   const { image_url, org, roles, timeline, description, highlights } =
     props?.data
+  const index = props.index
 
   React.useEffect(() => {
     if (image_url) {
@@ -106,7 +106,7 @@ function WorkExperienceCard(props: ISingleWorkExperience) {
 
         <p className="description text-normal text-xs my-2">{description}</p>
 
-        <HighlightList highlights={highlights} />
+        <HighlightList show={index < 1} highlights={highlights} />
       </StyledTimelineCard>
     </>
   )
